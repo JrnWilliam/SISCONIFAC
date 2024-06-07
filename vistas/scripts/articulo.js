@@ -3,6 +3,8 @@ var tablaarticulo
 function IniciarArticulos()
 {
     MostrarFormulario(false)
+    ListarRegistros()
+
 }
 
 //Funcion que se encargara de limpiar los campos
@@ -71,6 +73,28 @@ function ListarRegistros()
 }
 
 //Funcion encargada de guardar los articulos que se agreguen a la base de datos
+function GuardarRegistroArticulo(e)
+{
+    e.preventDefault()
+    $("#BtnGuardar").prop("disabled",true)
+    var formData = new FormData($("#formulario")[0])
 
+    $.ajax(
+        {
+            url: "../ajax/Articulo.php?operacion=EditaryGuardar",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            proccessData: false,
+
+            success: function(datos)
+            {
+                bootbox.alert(datos)
+                MostrarFormulario(false)
+                tablaarticulo.ajax.reload()
+            }
+        })
+        LimpiarCampos()
+}
 
 IniciarArticulos()
