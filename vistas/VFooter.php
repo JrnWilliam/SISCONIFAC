@@ -1,7 +1,8 @@
 <footer class="main-footer">
         <div class="pull-right hidden-xs">
-          <b>Version</b> 2.3.0
+          <b>Version</b> 1.0.0
         </div>
+        <strong>Copyright &copy; 2024 SISTEMA DE CONTROL DE INVENTARIO Y FACTURACIÓN</strong> 
     </footer>    
     <!-- jQuery 2.1.4 -->
     <script src="../public/js/jquery-3.1.1.min.js"></script>
