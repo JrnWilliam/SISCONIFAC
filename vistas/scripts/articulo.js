@@ -113,5 +113,20 @@ function SeleccionarRegistroArticulo(idarticulo)
     })
 }
 
+//Funcion para desactivar determinado articulo
+function DesactivarArticulo(idarticulo)
+{
+    bootbox.confirm("¿Esta Seguro que Desea Desactivar el Articulo?", function(result){
+    if(result)
+    {
+        $.post("../ajax/Articulo.php?operacion=Desactivar",{idarticulo:idarticulo},function(e)
+        {
+            bootbox.alert(e)
+            tablaarticulo.ajax.reload()
+        })
+    }    
+})
+}
+
 
 IniciarArticulos()
