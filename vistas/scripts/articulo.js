@@ -128,5 +128,19 @@ function DesactivarArticulo(idarticulo)
 })
 }
 
-
+//Funcion para activar determinado articulo
+function ActivarArticulo(idarticulo)
+{
+    bootbox.confirm("¿Esta Seguro de Activar el Articulo?", function(result)
+    {
+        if(result)
+            {
+                $.post("../ajax/Articulo.php?operacion=Activar", {idarticulo:idarticulo}, function(e)
+                {
+                    bootbox.alert(e)
+                    tablaarticulo.ajax.reload()
+                })
+            }
+    })
+}
 IniciarArticulos()
