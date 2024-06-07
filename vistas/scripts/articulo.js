@@ -1,5 +1,6 @@
 var tablaarticulo
 
+//Funcion Inicial
 function IniciarArticulos()
 {
     MostrarFormulario(false)
