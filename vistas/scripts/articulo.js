@@ -5,6 +5,10 @@ function IniciarArticulos()
     MostrarFormulario(false)
     ListarRegistros()
 
+    $("#Formulario").on("submit", function(e)
+    {
+        GuardarRegistroArticulo(e)
+    })
 }
 
 //Funcion que se encargara de limpiar los campos
