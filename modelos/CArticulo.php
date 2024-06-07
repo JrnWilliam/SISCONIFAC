@@ -44,7 +44,7 @@ class CArticulo
         return EjecutarConsultaSimpleFila($sql);
     }
 
-    //Metodo para listar todas las categorias almacenadas
+    //Metodo para listar todos los articulos almacenadas
     public function MostrarArticulo()
     {
         $sql = "SELECT a.idarticulo, a.idcategoria, c.nombre as categoria, a.codigo, a.nombre, a.stock, a.descripcion, a.imagen, a.condicion FROM articulo a INNER JOIN categoria c ON a.idcategoria=c.idcategoria";

@@ -97,4 +97,21 @@ function GuardarRegistroArticulo(e)
         LimpiarCampos()
 }
 
+//Funcion encargada de seleccionar un registro de la tabla de articulos para su edicion
+function SeleccionarRegistroArticulo(idarticulo)
+{
+    $.post("../ajax/Articulo.php?operacion=Seleccionar",{idarticulo : idarticulo},function(data,status){
+        data = JSON.parse(data)
+        MostrarFormulario(true)
+
+        $("#idcategoria").val(data.idcategoria)
+        $("#codigo").val(data.codigo)
+        $("#nombre").val(data.nombre)
+        $("#stock").val(data.stock)
+        $("#descripcion").val(data.descripcion)
+        $("#idarticulo").val(data.idarticulo)
+    })
+}
+
+
 IniciarArticulos()
