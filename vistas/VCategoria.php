@@ -1,5 +1,5 @@
 <?php
-require 'header.php'
+require 'VHeader.php'
 ?>
 <div class="content-wrapper">
   <section class="content">
@@ -71,7 +71,7 @@ require 'header.php'
 </div>
 
 <?php
-require 'footer.php'
+require 'VFooter.php'
 ?>
 
 <script src="scripts/categoria.js"></script>
