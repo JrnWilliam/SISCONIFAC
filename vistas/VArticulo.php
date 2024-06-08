@@ -46,12 +46,28 @@ require 'VHeader.php'
         <form name="Formulario" id="Formulario" method="POST">
           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <label>Nombre: </label>
-            <input type="hidden" name="idcategoria" id="idcategoria">
-            <input type="text" class="form-control" name="nombre" id="nombre" maxlength="50" placeholder="Nombre" required>
+            <input type="hidden" name="idarticulo" id="idarticulo">
+            <input type="text" class="form-control" name="nombre" id="nombre" maxlength="100" placeholder="Nombre" required>
+          </div>
+          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <label>Categoria: </label>
+            <select name="idcategoria" id="idcategoria" class="form-control" required></select>
+          </div>
+          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <label>Stock: </label>
+            <input type="number" class="form-control" name="stock" id="stock" placeholder="Stock" required>
           </div>
           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <label>Descripción: </label>
             <input type="text" class="form-control" name="descripcion" id="descripcion" maxlength="256" placeholder="Descripción">
+          </div>
+          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <label>Imagen: </label>
+            <input type="file" class="form-control" name="imagen" id="imagen">
+          </div>
+          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <label>Código: </label>
+            <input type="text" class="form-control" name="codigo" id="codigo" placeholder="Codigo de Barras" required>
           </div>
           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <button class="btn btn-primary" type="submit" id="BtnGuardar">
