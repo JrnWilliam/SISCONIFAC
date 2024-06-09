@@ -49,5 +49,12 @@ class CCategoria
         $sql = "SELECT *FROM categoria";
         return Ejecutar_Consulta($sql);
     }
+
+    //Metodo para seleccionar las categorias activas y mostrarlas en el select de la vista articulos
+    public function SeleccionarCategoriasArticulo()
+    {
+        $sql = "SELECT *FROM categoria WHERE condicion = 1";
+        return Ejecutar_Consulta($sql);
+    }
 }
 ?>
