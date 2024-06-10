@@ -10,6 +10,9 @@ $descripcion=isset($_POST["descripcion"])?LimpiarCadena($_POST["descripcion"]):"
 $codigo=isset($_POST["codigo"])?LimpiarCadena($_POST["codigo"]):"";
 $stock=isset($_POST["stock"])?LimpiarCadena($_POST["stock"]):"";
 $imagen=isset($_POST["imagen"])?LimpiarCadena($_POST["imagen"]):"";
+$imagen_actual = isset($_POST["imagen_actual"])?LimpiarCadena($_POST["imagen_actual"]):"";
+$imagen = $_FILES['imagen']['name'];
+$imagen = $imagen ? $imagen : $imagen_actual;
 
 switch ($_GET["operacion"])
 {
