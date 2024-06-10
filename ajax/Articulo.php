@@ -49,7 +49,7 @@ switch ($_GET["operacion"])
         while ($registro = $respuesta -> fetch_object())
         {
             $data[] = array(
-                "0"=>($registro->condicion)?'<button class="btn btn-warning" onclick="SeleccionarArticuloEditar('.$registro->idarticulo.')"><i class="fa fa-pencil"></i></button>'.' <button class="btn btn-danger" onclick="DesactivarArticulo('.$registro->idarticulo.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="SeleccionarArticuloEditar('.$registro->idarticulo.')"><i class="fa fa-pencil"></i></button>'.' <button class="btn btn-primary" onclick="ActivarArticulo('.$registro->idarticulo.')"><i class="fa fa-check"></i></button>',
+                "0"=>($registro->condicion)?'<button class="btn btn-warning" onclick="SeleccionarRegistroArticulo('.$registro->idarticulo.')"><i class="fa fa-pencil"></i></button>'.' <button class="btn btn-danger" onclick="DesactivarArticulo('.$registro->idarticulo.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="SeleccionarRegistroArticulo('.$registro->idarticulo.')"><i class="fa fa-pencil"></i></button>'.' <button class="btn btn-primary" onclick="ActivarArticulo('.$registro->idarticulo.')"><i class="fa fa-check"></i></button>',
                 "1"=>$registro->nombre,
                 "2"=>$registro->categoria,
                 "3"=>$registro->codigo,
