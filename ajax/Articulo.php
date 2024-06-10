@@ -74,5 +74,15 @@ switch ($_GET["operacion"])
         $respuesta = $articulo -> ActivarArticulo($idarticulo);
         echo $respuesta ? "Articulo Activado Correctamente" : "Error, No Se Logro Desactivar el Articulo";
     break;
+    case 'SeleccionarCategoria':
+        require_once "../modelos/CCategoria.php";
+        $ObjCategoria = new CCategoria();
+
+        $respuesta = $ObjCategoria->SeleccionarCategoriasArticulo();
+        while($registro = $respuesta->fetch_object())
+        {
+            echo 'option value='.$registro->idcategoria.'>'.$registro->nombre.'</option>';
+        }
+    break;
 }
 ?>
