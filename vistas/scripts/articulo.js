@@ -119,6 +119,7 @@ function SeleccionarRegistroArticulo(idarticulo)
         $("#stock").val(data.stock)
         $("#descripcion").val(data.descripcion)
         $("#idarticulo").val(data.idarticulo)
+        $("#imagen_actual").val(data.imagen)
     })
 }
 
