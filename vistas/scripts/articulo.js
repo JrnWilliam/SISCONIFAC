@@ -12,10 +12,9 @@ function IniciarArticulos()
     })
 
     //Cargamos los items al select Categoria
-    $.post("../ajax/Articulo.php?operacion=SeleccionarCategoria", function(r)
-    {
+    $.post("../ajax/Articulo.php?operacion=SeleccionarCatArticulo", function(r){
         $("#idcategoria").html(r);
-        $("#idcategoria").selectpicker('refresh');
+        $('#idcategoria').selectpicker('refresh');
     })
 }
 
