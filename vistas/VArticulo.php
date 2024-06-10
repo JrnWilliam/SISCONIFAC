@@ -65,6 +65,7 @@ require 'VHeader.php'
           </div>
           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <label>Imagen: </label>
+            <input type="hidden" name="imagen_actual" id="imagen_actual">
             <input type="file" class="form-control" name="imagen" id="imagen">
           </div>
           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
