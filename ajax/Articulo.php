@@ -54,8 +54,9 @@ switch ($_GET["operacion"])
                 "2"=>$registro->categoria,
                 "3"=>$registro->codigo,
                 "4"=>$registro->stock,
-                "5"=>"<img src='../files/articulos/".$registro->imagen."' height='50px' width='50px'>",
-                "6"=>($registro->condicion)?'<span class="label bg-green">Activado</span>':'<span class="label bg-red">Desactivado</span>'
+                "5"=>$registro->descripcion,
+                "6"=>"<img src='../files/articulos/".$registro->imagen."' height='50px' width='50px'>",
+                "7"=>($registro->condicion)?'<span class="label bg-green">Activado</span>':'<span class="label bg-red">Desactivado</span>'
             );
         }
         $resultado = array(

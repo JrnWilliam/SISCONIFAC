@@ -113,7 +113,7 @@ function SeleccionarRegistroArticulo(idarticulo)
         data = JSON.parse(data)
         MostrarFormulario(true)
 
-        $("#idcategoria").val(data.idcategoria)
+        $("#idcategoria").val(data.idcategoria).selectpicker('refresh')
         $("#codigo").val(data.codigo)
         $("#nombre").val(data.nombre)
         $("#stock").val(data.stock)

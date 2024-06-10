@@ -25,6 +25,7 @@ require 'VHeader.php'
                 <th>Categoria</th>
                 <th>Codigo</th>
                 <th>Stock</th>
+                <th>Descripción</th>
                 <th>Imagen</th>
                 <th>Estado</th>
               </thead>
@@ -37,6 +38,7 @@ require 'VHeader.php'
                 <th>Categoria</th>
                 <th>Codigo</th>
                 <th>Stock</th>
+                <th>Descripción</th>
                 <th>Imagen</th>
                 <th>Estado</th>
               </tfoot>
