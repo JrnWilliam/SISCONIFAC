@@ -10,6 +10,13 @@ function IniciarArticulos()
     {
         GuardarRegistroArticulo(e)
     })
+
+    //Cargamos los items al select Categoria
+    $.post("../ajax/Articulo.php?operacion=SeleccionarCategoria", function(r)
+    {
+        $("#idcategoria").html(r);
+        $("#idcategoria").selectpicker('refresh');
+    })
 }
 
 //Funcion que se encargara de limpiar los campos
