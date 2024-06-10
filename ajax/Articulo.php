@@ -24,7 +24,7 @@ switch ($_GET["operacion"])
             if ($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" || $_FILES['imagen']['type'] == "image/png")
             {
                 $imagen = round(microtime(true)).'.'.end($extension);
-                move_uploaded_file($_FILES["imagen"]["tmp_name"], "../files/articulos".$imagen);
+                move_uploaded_file($_FILES["imagen"]["tmp_name"], "../files/articulos/".$imagen);
             }
         }
         if(empty($idarticulo))
@@ -35,7 +35,7 @@ switch ($_GET["operacion"])
         else
         {
             $respuesta = $articulo -> ActualizarArticulo($idarticulo,$idcategoria,$codigo,$nombre,$stock,$descripcion,$imagen);
-            echo $respuesta ? "Se Actualiso Correctamente el Articulo":"Error, No Se Pudo Actualizar el Articulo";
+            echo $respuesta ? "Se Actualizo Correctamente el Articulo":"Error, No Se Pudo Actualizar el Articulo";
         }
     break;
     case 'Seleccionar':

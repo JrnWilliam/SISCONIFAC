@@ -88,17 +88,15 @@ function GuardarRegistroArticulo(e)
 {
     e.preventDefault()
     $("#BtnGuardar").prop("disabled",true)
-    var formData = new FormData($("#formulario")[0])
+    var formData = new FormData($("#Formulario")[0])
 
-    $.ajax(
-        {
-            url: "../ajax/Articulo.php?operacion=EditaryGuardar",
-            type: "POST",
-            data: formData,
-            contentType: false,
-            proccessData: false,
-
-            success: function(datos)
+    $.ajax({
+        url: "../ajax/Articulo.php?operacion=EditaryGuardar",
+        type: "POST",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(datos)
             {
                 bootbox.alert(datos)
                 MostrarFormulario(false)
