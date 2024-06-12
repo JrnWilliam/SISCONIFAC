@@ -16,7 +16,6 @@ switch ($_GET["operacion"])
     case 'EditaryGuardar':
         if (!file_exists($_FILES['imagen']['tmp_name']) || !is_uploaded_file($_FILES['imagen']['tmp_name']))
         {
-            //$imagen = $_POST["imagen_actual"];
             $imagen = isset($_POST["imagen_actual"]) ? $_POST["imagen_actual"] : "";
         }
         else
