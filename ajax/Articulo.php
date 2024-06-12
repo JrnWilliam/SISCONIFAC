@@ -10,24 +10,22 @@ $descripcion=isset($_POST["descripcion"])?LimpiarCadena($_POST["descripcion"]):"
 $codigo=isset($_POST["codigo"])?LimpiarCadena($_POST["codigo"]):"";
 $stock=isset($_POST["stock"])?LimpiarCadena($_POST["stock"]):"";
 $imagen=isset($_POST["imagen"])?LimpiarCadena($_POST["imagen"]):"";
-$imagen_actual = isset($_POST["imagen_actual"])?LimpiarCadena($_POST["imagen_actual"]):"";
-$imagen = $_FILES['imagen']['name'];
-$imagen = $imagen ? $imagen : $imagen_actual;
 
 switch ($_GET["operacion"])
 {
     case 'EditaryGuardar':
         if (!file_exists($_FILES['imagen']['tmp_name']) || !is_uploaded_file($_FILES['imagen']['tmp_name']))
         {
-            $imagen="";
+            //$imagen = $_POST["imagen_actual"];
+            $imagen = isset($_POST["imagen_actual"]) ? $_POST["imagen_actual"] : "";
         }
         else
         {
-            $extension = explode(".",$_FILES["imagen"]["name"]);
+            $extension = explode(".", $_FILES["imagen"]["name"]);
             if ($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" || $_FILES['imagen']['type'] == "image/png")
             {
-                $imagen = round(microtime(true)).'.'.end($extension);
-                move_uploaded_file($_FILES["imagen"]["tmp_name"], "../files/articulos/".$imagen);
+                $imagen = round(microtime(true)) . '.' . end($extension);
+                move_uploaded_file($_FILES["imagen"]["tmp_name"], "../files/articulos/" . $imagen);
             }
         }
         if(empty($idarticulo))

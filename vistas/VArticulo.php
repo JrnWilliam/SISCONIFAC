@@ -45,7 +45,7 @@ require 'VHeader.php'
             </table>
           </div>
         <div class="panel-body" style="height: 400px" id="formulario_registros">
-        <form name="Formulario" id="Formulario" method="POST">
+        <form name="Formulario" id="Formulario" method="POST" >
           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <label>Nombre: </label>
             <input type="hidden" name="idarticulo" id="idarticulo">
@@ -65,8 +65,9 @@ require 'VHeader.php'
           </div>
           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <label>Imagen: </label>
-            <input type="hidden" name="imagen_actual" id="imagen_actual">
             <input type="file" class="form-control" name="imagen" id="imagen">
+            <input type="hidden" name="imagen_actual" id="imagen_actual">
+            <img src="" id="img_actual" alt="Imagen actual" style="max-width: 100px; max-height: 100px;">
           </div>
           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <label>Código: </label>

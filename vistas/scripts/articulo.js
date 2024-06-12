@@ -25,6 +25,8 @@ function LimpiarCampos()
     $("#nombre").val("")
     $("#descripcion").val("")
     $("#stock").val("")
+    $("#imagen_actual").val("")
+    $("#img_actual").attr("src", "")
 }
 //Funcion que nos mostrara el formulario al momento que vallamos a ingresar un articulo o se requiera editar
 function MostrarFormulario(valor)
@@ -35,7 +37,8 @@ function MostrarFormulario(valor)
         $("#listado_registros").hide()
         $("#formulario_registros").show()
         $("#BtnGuardar").prop("disabled",false)
-        $("BtnAgregar").hide()
+        $("#BtnAgregar").hide()
+        $("#img_actual").hide()
     }
     else
     {
@@ -112,6 +115,7 @@ function SeleccionarRegistroArticulo(idarticulo)
     $.post("../ajax/Articulo.php?operacion=Seleccionar",{idarticulo : idarticulo},function(data,status){
         data = JSON.parse(data)
         MostrarFormulario(true)
+        $("#img_actual").show()
 
         $("#idcategoria").val(data.idcategoria).selectpicker('refresh')
         $("#codigo").val(data.codigo)
@@ -120,6 +124,7 @@ function SeleccionarRegistroArticulo(idarticulo)
         $("#descripcion").val(data.descripcion)
         $("#idarticulo").val(data.idarticulo)
         $("#imagen_actual").val(data.imagen)
+        $("#img_actual").attr("src", "../files/articulos/" + data.imagen)
     })
 }
 
