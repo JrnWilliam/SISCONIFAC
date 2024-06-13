@@ -9,6 +9,7 @@ function IniciarArticulos()
     $("#Formulario").on("submit", function(e)
     {
         GuardarRegistroArticulo(e)
+        LimpiarCampos()
     })
 
     //Cargamos los items al select Categoria
@@ -21,10 +22,15 @@ function IniciarArticulos()
 //Funcion que se encargara de limpiar los campos
 function LimpiarCampos()
 {
+    $("#idarticulo").val("")
     $("#codigo").val("")
     $("#nombre").val("")
     $("#descripcion").val("")
     $("#stock").val("")
+    //$("imagen").val(null)
+    $("#imagen").wrap('<form>').closest('form').get(0).reset()
+    $("#imagen").unwrap()
+    $("#idcategoria").val('').selectpicker('refresh')
     $("#imagen_actual").val("")
     $("#img_actual").attr("src", "")
 }
