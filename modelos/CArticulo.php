@@ -12,7 +12,7 @@ class CArticulo
     //Metodo para insertar un articulo en la base de datos
     public function InsertarArticulo($idcategoria, $codigo, $nombre, $stock, $descripcion, $imagen)
     {
-        $sql = "INSERT INTO articulo (idcategoria,codigo,nombre,stock,descripcion,imagen,condicion) VALUES ('$idcategoria','$codigo','$nombre','$stock','$descripcion','$imagen','1'))";
+        $sql = "INSERT INTO articulo (idcategoria, codigo, nombre, stock, descripcion, imagen, condicion) VALUES ('$idcategoria', '$codigo', '$nombre', '$stock', '$descripcion', '$imagen', '1')";
         return Ejecutar_Consulta($sql);
     }
 
