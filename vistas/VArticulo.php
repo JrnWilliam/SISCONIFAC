@@ -7,8 +7,8 @@ require 'VHeader.php'
       <div class="col-md-12">
         <div class="box">
           <div class="box-header with-border">
-            <h1 class="box-title">
-              Gestion de Articulos
+            <h1 class="box-title">  
+            Gestion de Articulos
               <button class="btn btn-success" onclick="MostrarFormulario(true)" id="BtnAgregar">
                 <i class="fa fa-plus-circle"></i> Agregar
               </button>
