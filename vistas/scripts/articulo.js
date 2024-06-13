@@ -27,7 +27,6 @@ function LimpiarCampos()
     $("#nombre").val("")
     $("#descripcion").val("")
     $("#stock").val("")
-    //$("imagen").val(null)
     $("#imagen").wrap('<form>').closest('form').get(0).reset()
     $("#imagen").unwrap()
     $("#idcategoria").val('').selectpicker('refresh')
@@ -131,6 +130,7 @@ function SeleccionarRegistroArticulo(idarticulo)
         $("#idarticulo").val(data.idarticulo)
         $("#imagen_actual").val(data.imagen)
         $("#img_actual").attr("src", "../files/articulos/" + data.imagen)
+        GenerarCodBarra()
     })
 }
 
@@ -164,4 +164,11 @@ function ActivarArticulo(idarticulo)
             }
     })
 }
+
+function GenerarCodBarra()
+{
+    codigo = $("#codigo").val()
+    JsBarcode("#barcode", codigo)
+}
+
 IniciarArticulos()
