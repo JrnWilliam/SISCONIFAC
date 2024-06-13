@@ -100,5 +100,5 @@ require 'VHeader.php'
 require 'VFooter.php'
 ?>
 
-<script src="scripts/articulo.js"></script>
 <script src="../public/js/JsBarcode.all.min.js"></script>
+<script src="scripts/articulo.js"></script>
