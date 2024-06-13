@@ -49,7 +49,7 @@ require 'VHeader.php'
           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <label>Nombre: </label>
             <input type="hidden" name="idarticulo" id="idarticulo">
-            <input type="text" class="form-control" name="nombre" id="nombre" maxlength="100" placeholder="Nombre" required>
+            <input type="text" class="form-control" name="nombre" id="nombre" maxlength="100" placeholder="Nombre" autocomplete="off" required>
           </div>
           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <label>Categoria: </label>
@@ -61,7 +61,7 @@ require 'VHeader.php'
           </div>
           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <label>Descripción: </label>
-            <input type="text" class="form-control" name="descripcion" id="descripcion" maxlength="256" placeholder="Descripción">
+            <input type="text" class="form-control" name="descripcion" id="descripcion" maxlength="256" autocomplete="off" placeholder="Descripción">
           </div>
           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <label>Imagen: </label>
@@ -71,13 +71,13 @@ require 'VHeader.php'
           </div>
           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <label>Código: </label>
-            <input type="text" class="form-control" name="codigo" id="codigo" placeholder="Codigo de Barras" required>
+            <input type="text" class="form-control" name="codigo" id="codigo" placeholder="Codigo de Barras" autocomplete="off" required>
           </div>
           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <button class="btn btn-primary" type="submit" id="BtnGuardar">
+            <button class="btn btn-primary" type="submit" id="BtnGuardar" title="Guardar Registros">
               <i class="fa fa-save"> Guardar</i>
             </button>
-            <button class="btn btn-danger" onclick="CerrarFormulario()" type="button">
+            <button class="btn btn-danger" onclick="CerrarFormulario()" type="button" title="Cerrar Formulario">
             <i class="fa fa-arrow-circle-left">
               Cancelar
             </i>
