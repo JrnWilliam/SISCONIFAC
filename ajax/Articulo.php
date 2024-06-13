@@ -5,10 +5,10 @@ $articulo = new CArticulo();
 
 $idarticulo = isset($_POST["idarticulo"])?LimpiarCadena($_POST["idarticulo"]):"";
 $idcategoria = isset($_POST["idcategoria"])?LimpiarCadena($_POST["idcategoria"]):"";
-$nombre=isset($_POST["nombre"])?LimpiarCadena($_POST["nombre"]):"";
-$descripcion=isset($_POST["descripcion"])?LimpiarCadena($_POST["descripcion"]):"";
 $codigo=isset($_POST["codigo"])?LimpiarCadena($_POST["codigo"]):"";
+$nombre=isset($_POST["nombre"])?LimpiarCadena($_POST["nombre"]):"";
 $stock=isset($_POST["stock"])?LimpiarCadena($_POST["stock"]):"";
+$descripcion=isset($_POST["descripcion"])?LimpiarCadena($_POST["descripcion"]):"";
 $imagen=isset($_POST["imagen"])?LimpiarCadena($_POST["imagen"]):"";
 
 switch ($_GET["operacion"])
@@ -25,11 +25,12 @@ switch ($_GET["operacion"])
             {
                 $imagen = round(microtime(true)) . '.' . end($extension);
                 move_uploaded_file($_FILES["imagen"]["tmp_name"], "../files/articulos/" . $imagen);
+                
             }
         }
         if(empty($idarticulo))
         {
-            $respuesta = $articulo -> InsertarArticulo($idcategoria,$codigo,$nombre,$stock,$descripcion,$imagen);
+            $respuesta = $articulo->InsertarArticulo($idcategoria, $codigo, $nombre, $stock, $descripcion, $imagen);
             echo $respuesta ? "Articulo Guardado Correctamente":"Error, No Se Pudo Guardar El Articulo";
         }
         else
