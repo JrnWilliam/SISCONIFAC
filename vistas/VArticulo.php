@@ -75,7 +75,7 @@ require 'VHeader.php'
             <br>
             <button class="btn btn-success" onclick="GenerarCodBarra()" type="button">Generar Codigo de Barras</button>
             <button type="button" class="btn btn-info" onclick="Imprimir()">Imprimir</button>
-            <div>
+            <div id="Imprimir">
               <svg id="barcode"></svg>
             </div>
           </div>

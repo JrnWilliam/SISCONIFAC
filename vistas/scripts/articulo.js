@@ -171,4 +171,8 @@ function GenerarCodBarra()
     JsBarcode("#barcode", codigo)
 }
 
+function Imprimir()
+{
+    $("#Imprimir").printArea()
+}
 IniciarArticulos()
