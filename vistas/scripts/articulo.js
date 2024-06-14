@@ -32,6 +32,7 @@ function LimpiarCampos()
     $("#idcategoria").val('').selectpicker('refresh')
     $("#imagen_actual").val("")
     $("#img_actual").attr("src", "")
+    $("#Imprimir").hide()   
 }
 //Funcion que nos mostrara el formulario al momento que vallamos a ingresar un articulo o se requiera editar
 function MostrarFormulario(valor)
@@ -167,6 +168,7 @@ function ActivarArticulo(idarticulo)
 
 function GenerarCodBarra()
 {
+    $("#Imprimir").show()
     codigo = $("#codigo").val()
     JsBarcode("#barcode", codigo)
 }
