@@ -10,7 +10,7 @@
     <script src="../public/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../public/js/app.min.js"></script>
-    <script src="../public//datatables/jquery.dataTables.min.js"></script>
+    <script src="../public/datatables/jquery.dataTables.min.js"></script>
     <script src="../public/datatables/dataTables.buttons.min.js"></script>
     <script src="../public/datatables/buttons.colVis.min.js"></script>
     <script src="../public/datatables/jszip.min.js"></script>

@@ -43,6 +43,7 @@
                 "uriFormat": "http://localhost:%s",
                 "action": "openExternally"
             }
-        }
-    ]
+        },
+        
+    ],
 }
