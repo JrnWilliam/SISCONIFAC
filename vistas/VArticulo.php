@@ -72,7 +72,9 @@ require 'VHeader.php'
           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <label>Código: </label>
             <input type="text" class="form-control" name="codigo" id="codigo" autocomplete="off" placeholder="Codigo de Barras" required>
+            <br>
             <button class="btn btn-success" onclick="GenerarCodBarra()" type="button">Generar Codigo de Barras</button>
+            <button type="button" class="btn btn-info" onclick="Imprimir()">Imprimir</button>
             <div>
               <svg id="barcode"></svg>
             </div>
