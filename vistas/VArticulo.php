@@ -44,7 +44,7 @@ require 'VHeader.php'
               </tfoot>
             </table>
           </div>
-        <div class="panel-body" style="height: 400px" id="formulario_registros">
+        <div class="panel-body" id="formulario_registros">
         <form name="Formulario" id="Formulario" method="POST" >
           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <label>Nombre: </label>
@@ -73,8 +73,8 @@ require 'VHeader.php'
             <label>Código: </label>
             <input type="text" class="form-control" name="codigo" id="codigo" autocomplete="off" placeholder="Codigo de Barras" required>
             <br>
-            <button class="btn btn-success" onclick="GenerarCodBarra()" type="button">Generar Codigo de Barras</button>
-            <button type="button" class="btn btn-info" onclick="Imprimir()">Imprimir</button>
+            <button class="btn btn-success" onclick="GenerarCodBarra()" type="button"><li class="fa fa-barcode"> Generar Codigo de Barras</li></button>
+            <button type="button" class="btn btn-info" onclick="Imprimir()"><li class="fa fa-print"> Imprimir</li></button>
             <div id="Imprimir">
               <svg id="barcode"></svg>
             </div>
