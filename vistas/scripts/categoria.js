@@ -28,7 +28,7 @@ function MostrarFormulario(valor)
         $("#listado_registros").hide()
         $("#formulario_registros").show()
         $("#BtnGuardar").prop("disabled",false)
-        $("BtnAgregar").hide()  
+        $("#BtnAgregar").hide()  
     }
     else
     {
