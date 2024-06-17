@@ -108,7 +108,6 @@ function SeleccionarRegistro(idcategoria)
         $("#nombre").val(data.nombre)
         $("#descripcion").val(data.descripcion)
         $("#idcategoria").val(data.idcategoria)
-        $
     })
 }
 
