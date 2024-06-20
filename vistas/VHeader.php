@@ -114,7 +114,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="venta.php"><i class="fa fa-circle-o"></i> Ventas</a></li>
-                <li><a href="cliente.php"><i class="fa fa-circle-o"></i> Clientes</a></li>
+                <li><a href="VCliente.php"><i class="fa fa-circle-o"></i> Clientes</a></li>
               </ul>
             </li>                       
             <li class="treeview">
