@@ -41,10 +41,10 @@ switch ($_GET["operacion"])
         while($registro = $respuesta->fetch_object())
         {
             $data[] = array(
-                "0"=>'<button class="btn btn-warning" onclick="SeleccionarRegistroProveedor('.$registro->idpersona.')" title="Editar Registro Persona"><li class="fa fa-pencil"></li></button>'.'<button class="btn btn-danger" title="Eliminar Registro Persona" onclick="EliminarRegistroProveedor('.$registro->idpersona.')"><li class="fa fa-trash"></li></button>',
+                "0"=>'<button class="btn btn-warning" onclick="SeleccionarRegistroProveedor('.$registro->idpersona.')" title="Editar Registro Persona"><li class="fa fa-pencil"></li></button>'.' <button class="btn btn-danger" title="Eliminar Registro Persona" onclick="EliminarRegistroProveedor('.$registro->idpersona.')"><li class="fa fa-trash"></li></button>',
                 "1"=>$registro->nombre,
-                "2"=>$registro->tipodocumento,
-                "3"=>$registro->numdocumento,
+                "2"=>$registro->tipo_documento,
+                "3"=>$registro->num_documento,
                 "4"=>$registro->telefono,
                 "5"=>$registro->email
             );
@@ -66,8 +66,8 @@ switch ($_GET["operacion"])
             $data[] = array(
                 "0"=>'<button class="btn btn-warning" onclick="SeleccionarRegistroArticulo('.$registro->idpersona.')" title="Editar Registro Persona"><li class="fa fa-pencil"></li></button>'.'<button class="btn btn-danger" title="Eliminar Registro Persona" onclick="'.$registro->idpersona.'"><li class="fa fa-trash"></li></button>',
                 "1"=>$registro->nombre,
-                "2"=>$registro->tipodocumento,
-                "3"=>$registro->numdocumento,
+                "2"=>$registro->tipo_documento,
+                "3"=>$registro->num_documento,
                 "4"=>$registro->telefono,
                 "5"=>$registro->email
             );
