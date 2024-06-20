@@ -103,7 +103,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="ingreso.php"><i class="fa fa-circle-o"></i> Ingresos</a></li>
-                <li><a href="proveedor.php"><i class="fa fa-circle-o"></i> Proveedores</a></li>
+                <li><a href="VProveedor.php"><i class="fa fa-circle-o"></i> Proveedores</a></li>
               </ul>
             </li>
             <li class="treeview">
