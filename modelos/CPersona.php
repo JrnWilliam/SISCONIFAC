@@ -17,14 +17,14 @@ class CPersona
     //Funcion Encargada de Editar un registro de la tabla persona
     public function ActualizarRegistroPersona($idpersona,$tipopersona,$nombre,$tipodocumento,$numdocumento,$direccion,$telefono,$email)
     {
-        $sql = "UPDATE persona set tipopersona='$tipopersona',nombre='$nombre',tipo_documento='$tipodocumento',num_documento='$numdocumento',direccion='$direccion',telefono='$telefono',email='$email' WHERE idpersona='$idpersona'";
+        $sql = "UPDATE persona set tipo_persona='$tipopersona',nombre='$nombre',tipo_documento='$tipodocumento',num_documento='$numdocumento',direccion='$direccion',telefono='$telefono',email='$email' WHERE idpersona='$idpersona'";
         return Ejecutar_Consulta($sql);
     }
 
     //Funcion encargada de eliminar el registro de una persona
     public function EliminarRegistroPersona($idpersona)
     {
-        $sql = "DELETE *FROM persona where idpersona='$idpersona'";
+        $sql = "DELETE FROM persona WHERE idpersona='$idpersona'";
         return Ejecutar_Consulta($sql);
     }
 
