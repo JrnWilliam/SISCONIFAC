@@ -15,6 +15,7 @@ function LimpiarCampos()
 {
     $("#idpersona").val("")
     $("#nombre").val("")
+    $("#tipodocumento").val("").selectpicker("refresh")
     $("#numdocumento").val("")
     $("#direccion").val("")
     $("#telefono").val("")
@@ -26,14 +27,14 @@ function MostrarFormularioProveedores(valor)
     LimpiarCampos()
     if(valor)
     {
-        $("#TablaListadoProveedores").hide()
+        $("#TablaProveedores").hide()
         $("#FormularioRegistroProveedores").show()
         $("#BtnGuardar").prop("disabled", false)
         $("#BtnAgregar").hide()
     }
     else
     {
-        $("#TablaListadoProveedores").show()
+        $("#TablaProveedores").show()
         $("#FormularioRegistroProveedores").hide()
         $("#BtnAgregar").show()
     }
@@ -49,7 +50,7 @@ function CerrarFormularioProveedores()
 //solamente de los proveedores
 function ListarRegistrosProveedores()
 {
-    tablaprovedor = $('#TablaListadoProveedores').dataTable(
+    tablaproveedor = $('#TablaListadoProveedores').dataTable(
         {
             "aProcessing": true,
             "aServerSide": true,
@@ -108,9 +109,9 @@ function SeleccionarRegistroProveedor(idpersona)
 
         $("#idpersona").val(data.idpersona)
         $("#nombre").val(data.nombre)
-        $("#tipodocumento").val(data.tipodocumento)
+        $("#tipodocumento").val(data.tipo_documento)
         $("#tipodocumento").selectpicker('refresh')
-        $("#numdocumento").val(data.numdocumento)
+        $("#numdocumento").val(data.num_documento)
         $("#direccion").val(data.direccion)
         $("#telefono").val(data.telefono)
         $("#email").val(data.email)
