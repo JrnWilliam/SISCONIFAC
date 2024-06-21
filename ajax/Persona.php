@@ -64,7 +64,7 @@ switch ($_GET["operacion"])
         while($registro=$respuesta->fetch_object())
         {
             $data[] = array(
-                "0"=>'<button class="btn btn-warning" onclick="SeleccionarRegistrocliente('.$registro->idpersona.')" title="Editar Registro Cliente"><li class="fa fa-pencil"></li></button>'.'<button class="btn btn-danger" title="Eliminar Registro Cliente" onclick="EliminarRegistroCliente('.$registro->idpersona.')"><li class="fa fa-trash"></li></button>',
+                "0"=>'<button class="btn btn-warning" onclick="SeleccionarRegistroCliente('.$registro->idpersona.')" title="Editar Registro Cliente"><li class="fa fa-pencil"></li></button>'.' <button class="btn btn-danger" title="Eliminar Registro Cliente" onclick="EliminarRegistroCliente('.$registro->idpersona.')"><li class="fa fa-trash"></li></button>',
                 "1"=>$registro->nombre,
                 "2"=>$registro->tipo_documento,
                 "3"=>$registro->num_documento,
