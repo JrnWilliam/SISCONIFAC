@@ -99,7 +99,7 @@ function GuardaryEditarRegistrosProveedores(e)
     })
     LimpiarCampos()
 }
-
+//Funcion que se encarga de seleccionar los registros de un articulo en especifico y llenar el formulario con estos datos para su edicion
 function SeleccionarRegistroProveedor(idpersona)
 {
     $.post("../ajax/Persona.php?operacion=Seleccionar", {idpersona : idpersona}, function(data,status){
@@ -117,7 +117,7 @@ function SeleccionarRegistroProveedor(idpersona)
         $("#email").val(data.email)
     })
 }
-
+//Funcion encargada de eliminar un proveedor en especifico
 function EliminarRegistroProveedor(idpersona)
 {
     bootbox.confirm("¿Esta Seguro Que Desea Eliminar Este Proveedor", function(result){
@@ -130,5 +130,5 @@ function EliminarRegistroProveedor(idpersona)
         }
     })
 }
-
+//Se invoca a la funcion inicial para que esta oculte al formulario y este al pendiente del siguiente envio de datos a travez del formulario
 IniciarProveedores()
