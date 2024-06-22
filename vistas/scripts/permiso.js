@@ -1,0 +1,6 @@
+var tablapermiso
+
+function IniciarPermisos()
+{
+    
+}
