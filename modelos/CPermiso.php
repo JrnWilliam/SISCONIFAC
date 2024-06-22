@@ -8,7 +8,7 @@ class CPermiso
         
     }
 
-    public function ListarPermisos()
+    public function MostrarPermisos()
     {
         $sql = "SELECT *FROM permiso";
         return Ejecutar_Consulta($sql);
