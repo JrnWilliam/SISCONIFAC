@@ -11,7 +11,7 @@ switch($_GET["operacion"])
 
         while($registro = $respuesta->fetch_object())
         {
-            $data = array(
+            $data[] = array(
                 "0" => $registro->nombre
             );
         }
