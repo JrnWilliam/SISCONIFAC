@@ -20,10 +20,13 @@ require 'VHeader.php'
                             <thead>
                                 <th>Opciones</th>
                                 <th>Nombre</th>
-                                <th>Tipo de Documento</th>
                                 <th>Número de Documento</th>
                                 <th>Telefono</th>
                                 <th>E-mail</th>
+                                <th>Cargo</th>
+                                <th>Login</th>
+                                <th>Imagen</th>
+                                <th>Estado</th>
                             </thead>
                             <tbody>
 
@@ -31,10 +34,13 @@ require 'VHeader.php'
                             <tfoot>
                                 <th>Opciones</th>
                                 <th>Nombre</th>
-                                <th>Tipo de Documento</th>
                                 <th>Número de Documento</th>
                                 <th>Telefono</th>
                                 <th>E-mail</th>
+                                <th>Cargo</th>
+                                <th>Login</th>
+                                <th>Imagen</th>
+                                <th>Estado</th>
                             </tfoot>
                         </table>
                     </div>
