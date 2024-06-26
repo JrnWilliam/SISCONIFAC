@@ -74,6 +74,12 @@ require 'VHeader.php'
                                 <label>Email: </label>
                                 <input type="text" class="form-control" name="email" id="email" autocomplete="off" placeholder="Email" maxlength="50" required>
                             </div>
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label>Imagen: </label>
+                                <input type="file" class="form-control" name="imagen" id="imagen">
+                                <input type="hidden" name="imagenactual" id="imagenactual">
+                                <img src="" id="imgactual" alt="Imagen actual" style="max-width: 100px; max-height: 100px;">
+                            </div>
                             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <button class="btn btn-primary" type="submit" id="BtnGuardar" title="Guardar Registros">
                                     <i class="fa fa-save"> Guardar</i>
