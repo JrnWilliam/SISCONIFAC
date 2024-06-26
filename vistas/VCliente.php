@@ -1,5 +1,5 @@
 <?php
-require "VHeader.php"  
+require 'VHeader.php'  
 ?>
 <div class="content-wrapper">
   <section class="content">
@@ -95,6 +95,6 @@ require "VHeader.php"
   <!-- /.content -->
 </div>
 <?php
-require "VFooter.php"  
+require 'VFooter.php'
 ?>
 <script src="../vistas/scripts/cliente.js"></script>
