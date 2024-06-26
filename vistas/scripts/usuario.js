@@ -4,6 +4,10 @@ function IniciarUsuarios()
 {
     MostrarFormularioUsuario(false)
     ListarRegistrosUsuarios()
+
+    $("#FormularioRegistroUsuario").on("submit", function(e){
+        GuardaryEditarUsuarios(e)
+    })
 }
 
 function LimpiarCamposUsuarios()
