@@ -2,7 +2,7 @@ var tablausuario
 
 function IniciarUsuarios()
 {
-
+    MostrarFormularioUsuario(false)
 }
 
 function LimpiarCamposUsuarios()
@@ -24,6 +24,19 @@ function LimpiarCamposUsuarios()
 function MostrarFormularioUsuario(valor)
 {
     LimpiarCamposUsuarios()
+    if(valor)
+    {
+        $("#TablaUsuario").hide()
+        $("#FormularioUsuario").show()
+        $("#BtnGuardar").prop("disabled",false)
+        $("#BtnAgregar").hide()
+    }
+    else
+    {
+        $("#TablaUsuario").show()
+        $("#FormularioUsuario").hide()
+        $("#BtnAgregar").show()
+    }
 }
 
 IniciarUsuarios()
