@@ -123,7 +123,7 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="usuario.php"><i class="fa fa-circle-o"></i> Usuarios</a></li>
+                <li><a href="VUsuario.php"><i class="fa fa-circle-o"></i> Usuarios</a></li>
                 <li><a href="VPermiso.php"><i class="fa fa-circle-o"></i> Permisos</a></li>
                 
               </ul>
