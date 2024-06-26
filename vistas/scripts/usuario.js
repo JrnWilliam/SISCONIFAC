@@ -3,6 +3,7 @@ var tablausuario
 function IniciarUsuarios()
 {
     MostrarFormularioUsuario(false)
+    ListarRegistrosUsuarios()
 }
 
 function LimpiarCamposUsuarios()
@@ -43,6 +44,34 @@ function CerrarFormularioUsuario()
 {
     LimpiarCamposUsuarios()
     MostrarFormularioUsuario(false)
+}
+
+function ListarRegistrosUsuarios()
+{
+    tablausuario = $("#TablaListadoUsuario").dataTable({
+        "aProcessing": true,
+        "aServerSide": true,
+        dom: 'Bfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdf'
+        ],
+        "ajax":
+        {
+            url: "../ajax/Usuario.php?operacion=MostrarUsuarios",
+            type: "get",
+            dataType: "json",
+            error: function(e)
+            {
+                console.log(e.responseText)
+            }
+        },
+        "bDestroy": true,
+        "iDisplayLenght": 10,
+        "order": [[0,"asc"]]
+    }).dataTable()
 }
 
 IniciarUsuarios()

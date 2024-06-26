@@ -47,7 +47,7 @@ switch($_GET["operacion"])
         $respuesta = $usuario->SeleccionarUsuarioEditar($idusuario);
         echo json_encode($respuesta);
     break;
-    case 'Mostrar':
+    case 'MostrarUsuarios':
         $respuesta = $usuario->MostrarUsuarios();
         
         $data =  Array();
