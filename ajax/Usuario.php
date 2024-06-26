@@ -1,7 +1,7 @@
 <?php
 require_once "../modelos/CUsuario.php";
 
-$usuario = new Cusuario();
+$usuario = new CUsuario();
 
 $idusuario = isset($_POST["idusuario"])?LimpiarCadena($_POST["idusuario"]):"";
 $nombre = isset($_POST["nombre"])?LimpiarCadena($_POST["nombre"]):"";
