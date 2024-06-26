@@ -74,4 +74,26 @@ function ListarRegistrosUsuarios()
     }).dataTable()
 }
 
+function GuardaryEditarUsuarios(e)
+{
+    e.preventDefault()
+    $("#BtnGuardar").prop("disabled",true)
+    var formData = new FormData($("#FormularioRegistroUsuario")[0])
+
+    $.ajax({
+        url: "../ajax/Usuario.php?operacion=EditaryGuardar",
+        type: "POST",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(datos)
+        {
+            bootbox.alert(datos)
+            MostrarFormularioUsuario(false)
+            tablausuario.ajax.reload()
+        }
+    })
+    LimpiarCamposUsuarios()
+}
+
 IniciarUsuarios()
