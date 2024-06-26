@@ -39,4 +39,10 @@ function MostrarFormularioUsuario(valor)
     }
 }
 
+function CerrarFormularioUsuario()
+{
+    LimpiarCamposUsuarios()
+    MostrarFormularioUsuario(false)
+}
+
 IniciarUsuarios()
