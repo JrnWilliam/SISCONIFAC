@@ -1,4 +1,4 @@
-var tableusers
+var tablausuario
 
 function IniciarUsuarios()
 {
@@ -75,9 +75,9 @@ function ListarRegistrosUsuarios()
             }
         },
         "bDestroy": true,
-        "iDisplayLenght": 10,
+        "iDisplayLength": 10,
         "order": [[0,"asc"]]
-    }).dataTable()
+    }).DataTable()
 }
 
 function GuardaryEditarUsuarios(e)
@@ -96,7 +96,7 @@ function GuardaryEditarUsuarios(e)
         {
             bootbox.alert(datos)
             MostrarFormularioUsuario(false)
-            tableusers.ajax.reload()
+            tablausuario.ajax.reload()
         }
     })
     LimpiarCamposUsuarios()
@@ -143,7 +143,7 @@ function DesactivarUsuario(idusuario)
                     function(e)
                     {
                         bootbox.alert(e)
-                        tableusers.ajax.reload()
+                        tablausuario.ajax.reload()
                     })
             }
         })
@@ -163,7 +163,7 @@ function ActivarUsuario(idusuario)
                     function(e)
                     {
                         bootbox.alert(e)
-                        tableusers.ajax.reload()
+                        tablausuario.ajax.reload()
                     })
             }
         })
