@@ -130,4 +130,24 @@ function SeleccionarRegistroUsuario(idusuario)
         })
 }
 
+function DesactivarUsuario(idusuario)
+{
+    bootbox.confirm("¿Esta Seguro que Desea Desactivar Este Usuario?",
+        function(result)
+        {
+            if(result)
+            {
+                $.post("../ajax/Usuario.php?operacion=DesactivarUsuario",
+                    {
+                        idusuario : idusuario
+                    },
+                    function(e)
+                    {
+                        bootbox.alert(e)
+                        tablausuario.ajax.reload()
+                    })
+            }
+        })
+}
+
 IniciarUsuarios()
