@@ -43,7 +43,7 @@ switch($_GET["operacion"])
             echo $respuesta ? "Se Edito Correctamente el usuario" : "Error, No se Logro Guardar El Usuario Actualizado";
         }
     break;
-    case 'Seleccionar':
+    case 'SeleccionarUsuario':
         $respuesta = $usuario->SeleccionarUsuarioEditar($idusuario);
         echo json_encode($respuesta);
     break;
