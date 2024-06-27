@@ -74,11 +74,11 @@ switch($_GET["operacion"])
         );
         echo json_encode($resultado);
     break;
-    case 'Desactivar':
+    case 'DesactivarUsuario':
         $resultado = $usuario->DesactivarUsuario($idusuario);
         echo $resultado ? "Usuario Desactivado Correctamente" : "Error, No Se Pudo Desactivar el Usuario";
     break;
-    case 'Activar':
+    case 'ActivarUsuario':
         $resultado = $usuario->ActivarUsuario($usuario);
         echo $resultado ? "Usuario Activado Correctamente" : "Error, No se Pudo Desactivar el Usuario";
     break;

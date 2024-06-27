@@ -150,4 +150,24 @@ function DesactivarUsuario(idusuario)
         })
 }
 
+function ActivarUsuario(idusuario)
+{
+    bootbox.confirm("¿Esta Seguro que Desea Activar Este Usuario?",
+        function(result)
+        {
+            if(result)
+            {
+                $.post("../ajax/Usuario.php?operacion=ActivarUsuario",
+                    {
+                        idusuario : idusuario
+                    },
+                    function(e)
+                    {
+                        bootbox.alert(e)
+                        tablausuario.ajax.reload()
+                    })
+            }
+        })
+}
+
 IniciarUsuarios()
