@@ -1,4 +1,4 @@
-var tablausuario
+var tableusers
 
 function IniciarUsuarios()
 {
@@ -7,6 +7,7 @@ function IniciarUsuarios()
 
     $("#FormularioRegistroUsuario").on("submit", function(e){
         GuardaryEditarUsuarios(e)
+        LimpiarCamposUsuarios()
     })
 }
 
@@ -24,8 +25,6 @@ function LimpiarCamposUsuarios()
     $("#imagen").wrap('<form>').closest('form').get(0).reset()
     $("#imagen").unwrap()
     $("#imagenactual").val("")
-    // $
-    // $
 }
 
 function MostrarFormularioUsuario(valor)
@@ -97,7 +96,7 @@ function GuardaryEditarUsuarios(e)
         {
             bootbox.alert(datos)
             MostrarFormularioUsuario(false)
-            tablausuario.ajax.reload()
+            tableusers.ajax.reload()
         }
     })
     LimpiarCamposUsuarios()
@@ -144,7 +143,7 @@ function DesactivarUsuario(idusuario)
                     function(e)
                     {
                         bootbox.alert(e)
-                        tablausuario.ajax.reload()
+                        tableusers.ajax.reload()
                     })
             }
         })
@@ -164,7 +163,7 @@ function ActivarUsuario(idusuario)
                     function(e)
                     {
                         bootbox.alert(e)
-                        tablausuario.ajax.reload()
+                        tableusers.ajax.reload()
                     })
             }
         })
