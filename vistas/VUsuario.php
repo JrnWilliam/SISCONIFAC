@@ -75,6 +75,18 @@ require 'VHeader.php'
                                 <input type="text" class="form-control" name="email" id="email" autocomplete="off" placeholder="Email" maxlength="50" required>
                             </div>
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label>Cargo: </label>
+                                <input type="text" class="form-control" name="cargo" id="cargo" autocomplete="off" placeholder="Cargo" maxlength="20" required>
+                            </div>
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label>Login: </label>
+                                <input type="text" class="form-control" name="login" id="login" autocomplete="off" placeholder="Login" maxlength="20" required>
+                            </div>
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label>Clave: </label>
+                                <input type="password" class="form-control" name="clave" id="clave" autocomplete="off" placeholder="Clave" maxlength="50" required>
+                            </div>
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <label>Imagen: </label>
                                 <input type="file" class="form-control" name="imagen" id="imagen">
                                 <input type="hidden" name="imagenactual" id="imagenactual">
