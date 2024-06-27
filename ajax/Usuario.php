@@ -24,12 +24,12 @@ switch($_GET["operacion"])
         }
         else
         {
-            $extension = explode(".", $_FILES['imagen']['name']);
+            $extension = explode(".", $_FILES["imagen"]["name"]);
 
             if($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" || $_FILES['imagen']['type'] == "image/png")
             {
                 $imagen = round(microtime(true)). '.' . end($extension);
-                move_uploaded_file($_FILES["imagen"]["tmp_name"], "../files/usuarios/".$imagen);
+                move_uploaded_file($_FILES["imagen"]["tmp_name"], "../files/usuarios/" . $imagen);
             }
         }
         if(empty($idusuario))
@@ -55,14 +55,14 @@ switch($_GET["operacion"])
         while($registro = $respuesta -> fetch_object())
         {
             $data[] = array(
-                "0"=>($registro->condicion)?'<button class="btn btn-warning" onclick="SeleccionarRegistroUsuario('.$registro->idusuario.')" title="Editar Usuario"><i class="fa fa-pencil"></i></button>'.' <button class="btn btn-danger" onclick="DesactivarUsuario('.$registro->idusuario.')" title="Editar Usuario"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="SeleccionarRegistroUsuario('.$registro->idusuario.')" title="Editar Usuario"><i class="fa fa-pencil"></i></button>'.' <button class="btn btn-primary" onclick="ActivarUsuario('.$registro->idusuario.')" title="Activar Usuario"><i class="fa fa-check"></i></button>',
+                "0"=>($registro->condicion)?'<button class="btn btn-warning" onclick="SeleccionarRegistroUsuario('.$registro->idusuario.')" title="Editar Usuario"><i class="fa fa-pencil"></i></button>'.' <button class="btn btn-danger" onclick="DesactivarUsuario('.$registro->idusuario.')" title="Desactivar Usuario"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="SeleccionarRegistroUsuario('.$registro->idusuario.')" title="Editar Usuario"><i class="fa fa-pencil"></i></button>'.' <button class="btn btn-primary" onclick="ActivarUsuario('.$registro->idusuario.')" title="Activar Usuario"><i class="fa fa-check"></i></button>',
                 "1"=>$registro->nombre,
                 "2"=>$registro->num_documento,
                 "3"=>$registro->telefono,
                 "4"=>$registro->email,
                 "5"=>$registro->cargo,
-                "7"=>$registro->login,
-                "6"=>"<img src='../files/usuarios/".$registro->imagen."' height='50px' width='50px'>",
+                "6"=>$registro->login,
+                "7"=>"<img src='../files/usuarios/".$registro->imagen."' height='50px' width='50px'>",
                 "8"=>($registro->condicion)?'<span class="label bg-green">Activado</span>':'<span class="label br-red">'
             );
         }
