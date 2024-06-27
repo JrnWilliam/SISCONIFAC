@@ -19,9 +19,11 @@ function LimpiarCamposUsuarios()
     $("#direccion").val("")
     $("#telefono").val("")
     $("#email").val("")
-    // $
-    // $
-    // $
+    $("#cargo").val("")
+    $("#login").val("")
+    $("#imagen").wrap('<form>').closest('form').get(0).reset()
+    $("#imagen").unwrap()
+    $("#imagenactual").val("")
     // $
     // $
 }
