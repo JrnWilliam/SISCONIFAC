@@ -85,5 +85,10 @@ switch($_GET["operacion"])
         $resultado = $usuario->ActivarUsuario($usuario);
         echo $resultado ? "Usuario Activado Correctamente" : "Error, No se Pudo Desactivar el Usuario";
     break;
+    case 'Permisos':
+        require_once '../modelos/CPermiso.php';
+        $permiso = new CPermiso();
+        $respuesta = $permiso ->MostrarPermisos();
+    break;
 }
 ?>
