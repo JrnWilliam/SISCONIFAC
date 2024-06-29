@@ -89,6 +89,11 @@ switch($_GET["operacion"])
         require_once '../modelos/CPermiso.php';
         $permiso = new CPermiso();
         $respuesta = $permiso ->MostrarPermisos();
+
+        while($registro = $respuesta->fetch_object())
+        {
+            echo '<li><input type="checkbox" name="permiso[]" value="'.$registro->idpermiso.'">'.$registro->$nombre.'</li>';
+        }
     break;
 }
 ?>
