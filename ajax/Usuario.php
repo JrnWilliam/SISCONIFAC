@@ -37,7 +37,7 @@ switch($_GET["operacion"])
 
         if(empty($idusuario))
         {
-            $respuesta = $usuario->InsertarUsuario($nombre,$tipodocumento,$numdocumento,$direccion,$telefono,$email,$cargo,$login,$pass,$imagen);
+            $respuesta = $usuario->InsertarUsuario($nombre,$tipodocumento,$numdocumento,$direccion,$telefono,$email,$cargo,$login,$pass,$imagen,$_POST['permiso']);
             echo $respuesta ? "Se Guardo Correctamente el Nuevo Usuario" : "Error, No se Pudo Crear el Nuevo Usuario";
         }
         else
