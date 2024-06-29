@@ -118,7 +118,14 @@ function SeleccionarRegistroUsuario(idusuario)
         {
             data = JSON.parse(data)
             MostrarFormularioUsuario(true)
-            $("#imgactual").show()
+            if(data.imagen.trim() !== "")
+            {
+                $("#imgactual").show()
+            }
+            else
+            {
+                $("#imgactual").hide()
+            }
             $("#idusuario").val(data.idusuario)
             $("#nombre").val(data.nombre)
             $("#tipodocumento").val(data.tipo_documento)
