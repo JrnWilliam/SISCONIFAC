@@ -8,7 +8,7 @@ class CUsuario
         
     }
 
-    public function InsertarUsuario($nombre,$tipodocumento,$numdocumento,$direccion,$telefono,$email,$cargo,$login,$clave,$imagen)
+    public function InsertarUsuario($nombre,$tipodocumento,$numdocumento,$direccion,$telefono,$email,$cargo,$login,$clave,$imagen,$permisos)
     {
         $sql = "INSERT INTO usuario(idusuario,nombre,tipo_documento,num_documento,direccion,telefono,email,cargo,login,clave,imagen,condicion) VALUES ('$nombre','$tipodocumento','$numdocumento','$direccion','$telefono','$email','$cargo','$login','$clave','$imagen','1')";
         Ejecutar_Consulta($sql);
