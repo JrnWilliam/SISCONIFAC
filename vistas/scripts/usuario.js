@@ -30,6 +30,7 @@ function LimpiarCamposUsuarios()
     $("#imagen").wrap('<form>').closest('form').get(0).reset()
     $("#imagen").unwrap()
     $("#imagenactual").val("")
+    $("#imgactual").attr("src","")
 }
 
 function MostrarFormularioUsuario(valor)
