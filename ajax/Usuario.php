@@ -66,7 +66,7 @@ switch($_GET["operacion"])
                 "5"=>$registro->cargo,
                 "6"=>$registro->login,
                 "7"=>"<img src='../files/usuarios/".$registro->imagen."' height='50px' width='50px'>",
-                "8"=>($registro->condicion)?'<span class="label bg-green">Activado</span>':'<span class="label br-red">'
+                "8"=>($registro->condicion)?'<span class="label bg-green">Activado</span>':'<span class="label br-red">Desactivado</span>'
             );
         }
         $resultado = array(
@@ -92,7 +92,7 @@ switch($_GET["operacion"])
 
         while($registro = $respuesta->fetch_object())
         {
-            echo '<li><input type="checkbox" name="permiso[]" value="'.$registro->idpermiso.'">'.$registro->$nombre.'</li>';
+            echo '<li><input type="checkbox" name="permiso[]" value="'.$registro->idpermiso.'">'.$registro->nombre.'</li>';
         }
     break;
 }
