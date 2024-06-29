@@ -9,6 +9,10 @@ function IniciarUsuarios()
         GuardaryEditarUsuarios(e)
         LimpiarCamposUsuarios()
     })
+
+    $.post("../ajax/Usuario.php?operacion=Permisos",function(r){
+        $("#permisos").html(r)
+    })
 }
 
 function LimpiarCamposUsuarios()
