@@ -90,9 +90,20 @@ switch($_GET["operacion"])
         $permiso = new CPermiso();
         $respuesta = $permiso ->MostrarPermisos();
 
+        $iduser = $_GET['iduser'];
+        $permisosmarcados = $usuario -> ListarPermisosMarcados($iduser);
+
+        $valores = array();
+
+        while($permarc = $permisosmarcados->fetch_object())
+        {
+            array_push($valores, $permarc->idpermiso);
+        }
+
         while($registro = $respuesta->fetch_object())
         {
-            echo '<li><input type="checkbox" name="permiso[]" value="'.$registro->idpermiso.'">'.$registro->nombre.'</li>';
+            $chk = in_array($registro->idpermiso,$valores)?'checked':'';
+            echo '<li><input type="checkbox" '.$chk.' name="permiso[]" value="'.$registro->idpermiso.'">'.$registro->nombre.'</li>';
         }
     break;
 }
