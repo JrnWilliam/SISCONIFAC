@@ -10,7 +10,7 @@ function IniciarUsuarios()
         LimpiarCamposUsuarios()
     })
 
-    $.post("../ajax/Usuario.php?operacion=Permisos",function(r){
+    $.post("../ajax/Usuario.php?operacion=Permisos&iduser=",function(r){
         $("#permisos").html(r)
     })
 }
@@ -139,6 +139,9 @@ function SeleccionarRegistroUsuario(idusuario)
             $("#clave").val(data.clave)
             $("#imagenactual").val(data.imagen)
             $("#imgactual").attr("src","../files/usuarios/" + data.imagen)
+        })
+        $.post("../ajax/Usuario.php?operacion=Permisos&iduser="+idusuario,function(r){
+            $("#permisos").html(r)
         })
 }
 
