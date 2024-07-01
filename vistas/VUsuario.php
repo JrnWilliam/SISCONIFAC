@@ -60,7 +60,7 @@ require 'VHeader.php'
                             </div>
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <label>Número de Documento: </label>
-                                <input type="text" class="form-control" name="numdocumento" id="numdocumento" placeholder="Documento" maxlength="20" required>
+                                <input type="text" class="form-control" name="numdocumento" id="numdocumento" placeholder="Documento" maxlength="20" autocomplete="off" required>
                             </div>
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <label>Dirección: </label>
