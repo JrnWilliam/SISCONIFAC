@@ -54,5 +54,11 @@ class CUsuario
         $sql = "SELECT *FROM usuario";
         return Ejecutar_Consulta($sql);
     }
+
+    public function ListarPermisosMarcados($idusuario)
+    {
+        $sql = "SELECT *FROM usuario_permiso WHERE idusuario='$idusuario'";
+        return Ejecutar_Consulta($sql);
+    }
 }
 ?>
