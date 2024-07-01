@@ -10,8 +10,19 @@ class CUsuario
 
     public function InsertarUsuario($nombre,$tipodocumento,$numdocumento,$direccion,$telefono,$email,$cargo,$login,$clave,$imagen,$permisos)
     {
-        $sql = "INSERT INTO usuario(idusuario,nombre,tipo_documento,num_documento,direccion,telefono,email,cargo,login,clave,imagen,condicion) VALUES ('$nombre','$tipodocumento','$numdocumento','$direccion','$telefono','$email','$cargo','$login','$clave','$imagen','1')";
-        Ejecutar_Consulta($sql);
+        $sql = "INSERT INTO usuario(nombre,tipo_documento,num_documento,direccion,telefono,email,cargo,login,clave,imagen,condicion) VALUES ('$nombre','$tipodocumento','$numdocumento','$direccion','$telefono','$email','$cargo','$login','$clave','$imagen','1')";
+        $idusuarionuevo = EjecutarConsultaRetornarID($sql);
+        $numpermisos = 0;
+        $centinela = true;
+
+        while($numpermisos<count($permisos))
+        {
+            $consulta = "INSERT INTO usuario_permiso(idusuario,idpermiso) VALUES ('$idusuarionuevo','$permisos[$numpermisos]')";
+            Ejecutar_Consulta($consulta) or $centinela = false; 
+            $numpermisos = $numpermisos + 1;
+        }
+
+        return $centinela;
     }
 
     public function EditarUsuario($idusuario,$nombre,$tipodocumento,$numdocumento,$direccion,$telefono,$email,$cargo,$login,$clave,$imagen)
