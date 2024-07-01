@@ -42,7 +42,7 @@ switch($_GET["operacion"])
         }
         else
         {
-            $respuesta = $usuario->EditarUsuario($idusuario,$nombre,$tipodocumento,$numdocumento,$direccion,$telefono,$email,$cargo,$login,$pass,$imagen);
+            $respuesta = $usuario->EditarUsuario($idusuario,$nombre,$tipodocumento,$numdocumento,$direccion,$telefono,$email,$cargo,$login,$pass,$imagen,$_POST['permiso']);
             echo $respuesta ? "Se Edito Correctamente el usuario" : "Error, No se Logro Guardar El Usuario Actualizado";
         }
     break;
