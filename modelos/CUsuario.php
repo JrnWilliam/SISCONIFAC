@@ -25,10 +25,25 @@ class CUsuario
         return $centinela;
     }
 
-    public function EditarUsuario($idusuario,$nombre,$tipodocumento,$numdocumento,$direccion,$telefono,$email,$cargo,$login,$clave,$imagen)
+    public function EditarUsuario($idusuario,$nombre,$tipodocumento,$numdocumento,$direccion,$telefono,$email,$cargo,$login,$clave,$imagen,$permisos)
     {
         $sql = "UPDATE usuario SET nombre='$nombre',tipo_documento='$tipodocumento',num_documento='$numdocumento',direccion='$direccion',telefono='$telefono',email='$email',cargo='$cargo',login='$login',clave='$clave',imagen='$imagen' WHERE idusuario='$idusuario'";
-        return Ejecutar_Consulta($sql);
+        Ejecutar_Consulta($sql);
+
+        $permisoeliminado = "DELETE FROM usuario_permiso WHERE idusuario='$idusuario'";
+        Ejecutar_Consulta($permisoeliminado);
+
+        $numpermisos = 0;
+        $centinela = true;
+
+        while($numpermisos<count($permisos))
+        {
+            $consulta = "INSERT INTO usuario_permiso(idusuario,idpermiso) VALUES ('$idusuario','$permisos[$numpermisos]')";
+            Ejecutar_Consulta($consulta) or $centinela = false; 
+            $numpermisos = $numpermisos + 1;
+        }
+
+        return $centinela;
     }
 
     Public function DesactivarUsuario($idusuario)
