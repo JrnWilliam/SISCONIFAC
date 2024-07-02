@@ -1,0 +1,23 @@
+$("#FrmLogin").on('submit', function(e)
+{
+    e.preventDefault();
+    login = $("#login").val()
+    clave = $("#clave").val()
+
+    $.post("../ajax/Usuario.php?operacion=VerificarEstado",
+    {
+        "loginacceso":login,
+        "claveacceso":clave
+    },
+    function(data)
+    {
+        if(data != "null")
+        {
+            $(location).attr("href","VCategoria.php");
+        }
+        else
+        {
+            bootbox.alert("Usuario y/o Contraseña Incorrectos, Por favor Verifique")
+        }
+    })
+})
