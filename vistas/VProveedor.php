@@ -1,4 +1,13 @@
 <?php
+ob_start();
+session_start();
+
+if(!isset($_SESSION["nombre"]))
+{
+  header("Location: login.html");
+}
+else
+{
 require "VHeader.php"  
 ?>
 <div class="content-wrapper">
@@ -101,3 +110,7 @@ require "VFooter.php"
 ?>
 
 <script src="../vistas/scripts/proveedor.js"></script>
+<?php
+}
+ob_end_flush();
+?>
