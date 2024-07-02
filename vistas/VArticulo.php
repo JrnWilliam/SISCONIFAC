@@ -1,5 +1,14 @@
 <?php
-require 'VHeader.php'
+ob_start();
+session_start();
+
+if(!isset($_SESSION["nombre"]))
+{
+  header("Location: login.html");
+}
+else
+{
+  require 'VHeader.php'
 ?>
 <div class="content-wrapper">
   <section class="content">
@@ -109,3 +118,6 @@ require 'VFooter.php'
 <script src="../public/js/JsBarcode.all.min.js"></script>
 <script src="../public/js/jquery.PrintArea.js"></script>
 <script src="scripts/articulo.js"></script>
+<?php
+}
+?>
