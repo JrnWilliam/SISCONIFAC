@@ -1,5 +1,14 @@
 <?php
-require 'VHeader.php'
+ob_start();
+session_start();
+
+if(!isset($_SESSION["nombre"]))
+{
+  header("Location: login.html");
+}
+else
+{
+  require 'VHeader.php'
 ?>
 <div class="content-wrapper">
   <section class="content">
@@ -74,4 +83,8 @@ require 'VHeader.php'
 require 'VFooter.php'
 ?>
 
-<script src="scripts/categoria.js"></script>
+<script src="scripts/categoria.js"></script>  
+<?php
+}
+ob_end_flush();
+?>
