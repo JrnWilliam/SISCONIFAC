@@ -4,7 +4,7 @@ $("#FrmLogin").on('submit', function(e)
     login = $("#login").val()
     clave = $("#clave").val()
 
-    $.post("../ajax/Usuario.php?operacion=VerificarEstado",
+    $.post("../ajax/Usuario.php?operacion=VerificarSesion",
     {
         "loginacceso":login,
         "claveacceso":clave
