@@ -3677,12 +3677,12 @@ table.text-center th {
 
 .login-logo a,
 .register-logo a {
-    color: #444
+    color: #F9F1F0;
 }
 
 .login-page,
 .register-page {
-    background: #d2d6de
+    background: #333A44;
 }
 
 .login-box,
@@ -3704,6 +3704,7 @@ table.text-center th {
 .register-box-body {
     background: #fff;
     padding: 20px;
+    border-radius: 4px;
     border-top: 0;
     color: #666
 }
