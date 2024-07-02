@@ -106,5 +106,25 @@ switch($_GET["operacion"])
             echo '<li><input type="checkbox" '.$chk.' name="permiso[]" value="'.$registro->idpermiso.'">'.$registro->nombre.'</li>';
         }
     break;
+    case 'VerificarSesion':
+        $loginacceso=$_POST['loginacceso'];
+        $claveacceso=$_POST['claveacceso'];
+
+        $passwd = hash("SHA256",$claveacceso);
+
+        $respuesta = $usuario->VerificarSesion($loginacceso,$claveacceso);
+
+        $extraer = $respuesta->fetch_object();
+
+        if(isset($extraer))
+        {
+            $_SESSION['idusuario']=$extraer->idusuario;
+            $_SESSION['nombre']=$extraer->nombre;
+            $_SESSION['imagen']=$extraer->imagen;
+            $_SESSION['login']=$extraer->login;
+        }
+
+        echo json_encode($extraer);
+    break;
 }
 ?>
