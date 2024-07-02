@@ -120,4 +120,5 @@ require 'VFooter.php'
 <script src="scripts/articulo.js"></script>
 <?php
 }
+ob_end_flush();
 ?>
