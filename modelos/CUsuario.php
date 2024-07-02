@@ -75,5 +75,11 @@ class CUsuario
         $sql = "SELECT *FROM usuario_permiso WHERE idusuario='$idusuario'";
         return Ejecutar_Consulta($sql);
     }
+
+    public function VerificarSesion($login,$clave)
+    {
+        $sql = "SELECT idusuario,nombre,tipo_documento,num_documento,telefono,email,cargo,imagen,login FROM usuario WHERE login ='$login' && clave='$clave' && condicion='1'";
+        return Ejecutar_Consulta($sql);
+    }
 }
 ?>
