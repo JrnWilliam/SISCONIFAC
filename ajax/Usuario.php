@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "../modelos/CUsuario.php";
 
 $usuario = new CUsuario();
