@@ -112,7 +112,7 @@ switch($_GET["operacion"])
 
         $passwd = hash("SHA256",$claveacceso);
 
-        $respuesta = $usuario->VerificarSesion($loginacceso,$claveacceso);
+        $respuesta = $usuario->VerificarSesion($loginacceso,$passwd);
 
         $extraer = $respuesta->fetch_object();
 
