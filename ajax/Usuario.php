@@ -123,6 +123,23 @@ switch($_GET["operacion"])
             $_SESSION['nombre']=$extraer->nombre;
             $_SESSION['imagen']=$extraer->imagen;
             $_SESSION['login']=$extraer->login;
+
+            $marcados = $usuario->ListarPermisosMarcados($fetch->idusuario);
+
+            $value = array();
+
+            while($permisos = $marcados->fetch_object())
+            {
+                array_push($value,$permisos->idpermiso);
+            }
+
+            in_array(1,$value)?$_SESSION['escritorio']=1:$_SESSION['escritorio']=0;
+            in_array(2,$value)?$_SESSION['almacen']=1:$_SESSION['almacen']=0;
+            in_array(3,$value)?$_SESSION['compras']=1:$_SESSION['compras']=0;
+            in_array(4,$value)?$_SESSION['ventas']=1:$_SESSION['ventas']=0;
+            in_array(5,$value)?$_SESSION['acceso']=1:$_SESSION['acceso']=0;
+            in_array(6,$value)?$_SESSION['consultacompras']=1:$_SESSION['consultacompras']=0;
+            in_array(7,$value)?$_SESSION['consultaventas']=1:$_SESSION['consultaventas']=0;
         }
 
         echo json_encode($extraer);
