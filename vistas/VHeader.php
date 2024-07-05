@@ -55,7 +55,7 @@
                   <img src="../files/usuarios/<?php echo $_SESSION['imagen'];?>" class="img-circle" alt="User Image">
                   <p>
                     <?php
-                      echo $_SESSION['cargo'];
+                      echo $_SESSION['cargo']; 
                     ?>
                     <small>www.youtube.com/jcarlosad7</small>
                   </p>
