@@ -54,7 +54,9 @@
                 <li class="user-header">
                   <img src="../files/usuarios/<?php echo $_SESSION['imagen'];?>" class="img-circle" alt="User Image">
                   <p>
-                    www.incanatoit.com - Desarrollando Software
+                    <?php
+                      echo $_SESSION['cargo'];
+                    ?>
                     <small>www.youtube.com/jcarlosad7</small>
                   </p>
                 </li>
