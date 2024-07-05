@@ -7,7 +7,9 @@ if(!isset($_SESSION["nombre"]))
 }
 else
 {
-  require 'VHeader.php'  
+  require 'VHeader.php';
+  if($_SESSION['ventas']==1)
+  {
 ?>
 <div class="content-wrapper">
   <section class="content">
@@ -103,6 +105,11 @@ else
   <!-- /.content -->
 </div>
 <?php
+  }
+  else
+  {
+    require 'noacceso.php';
+  }
 require 'VFooter.php'
 ?>
 <script src="../vistas/scripts/cliente.js"></script>
