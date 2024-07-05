@@ -8,7 +8,9 @@ if(!isset($_SESSION["nombre"]))
 }
 else
 {
-  require "VHeader.php"  
+  require "VHeader.php" 
+  if($_SESSION['acceso']==1)
+  { 
 ?>
 <div class="content-wrapper">
   <section class="content">
@@ -48,7 +50,12 @@ else
   <!-- /.content -->
 </div>
 <?php
-require "VFooter.php"  
+  }
+  else
+  {
+    require 'noacceso.php';
+  }
+require "VFooter.php";
 ?>
 
 <script src="../vistas/scripts/permiso.js"></script>
