@@ -8,7 +8,9 @@ if(!isset($_SESSION["nombre"]))
 }
 else
 {
-require "VHeader.php"  
+require "VHeader.php";
+if($_SESSION['compras']==1)
+{ 
 ?>
 <div class="content-wrapper">
   <section class="content">
@@ -106,6 +108,11 @@ require "VHeader.php"
 </div>
 
 <?php
+}
+else
+{
+  require 'noacceso.php';
+}
 require "VFooter.php"  
 ?>
 
