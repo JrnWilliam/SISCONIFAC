@@ -83,7 +83,7 @@ switch($_GET["operacion"])
         echo $resultado ? "Usuario Desactivado Correctamente" : "Error, No Se Pudo Desactivar el Usuario";
     break;
     case 'ActivarUsuario':
-        $resultado = $usuario->ActivarUsuario($usuario);
+        $resultado = $usuario->ActivarUsuario($idusuario);
         echo $resultado ? "Usuario Activado Correctamente" : "Error, No se Pudo Desactivar el Usuario";
     break;
     case 'Permisos':
@@ -124,22 +124,22 @@ switch($_GET["operacion"])
             $_SESSION['imagen']=$extraer->imagen;
             $_SESSION['login']=$extraer->login;
 
-            $marcados = $usuario->ListarPermisosMarcados($fetch->idusuario);
+            $marcados = $usuario->ListarPermisosMarcados($extraer->idusuario);
 
-            $value = array();
+            $valor = array();
 
             while($permisos = $marcados->fetch_object())
             {
-                array_push($value,$permisos->idpermiso);
+                array_push($valor,$permisos->idpermiso);
             }
 
-            in_array(1,$value)?$_SESSION['escritorio']=1:$_SESSION['escritorio']=0;
-            in_array(2,$value)?$_SESSION['almacen']=1:$_SESSION['almacen']=0;
-            in_array(3,$value)?$_SESSION['compras']=1:$_SESSION['compras']=0;
-            in_array(4,$value)?$_SESSION['ventas']=1:$_SESSION['ventas']=0;
-            in_array(5,$value)?$_SESSION['acceso']=1:$_SESSION['acceso']=0;
-            in_array(6,$value)?$_SESSION['consultacompras']=1:$_SESSION['consultacompras']=0;
-            in_array(7,$value)?$_SESSION['consultaventas']=1:$_SESSION['consultaventas']=0;
+            in_array(1,$valor)?$_SESSION['escritorio']=1:$_SESSION['escritorio']=0;
+            in_array(2,$valor)?$_SESSION['almacen']=1:$_SESSION['almacen']=0;
+            in_array(3,$valor)?$_SESSION['compras']=1:$_SESSION['compras']=0;
+            in_array(4,$valor)?$_SESSION['ventas']=1:$_SESSION['ventas']=0;
+            in_array(5,$valor)?$_SESSION['acceso']=1:$_SESSION['acceso']=0;
+            in_array(6,$valor)?$_SESSION['consultacompras']=1:$_SESSION['consultacompras']=0;
+            in_array(7,$valor)?$_SESSION['consultaventas']=1:$_SESSION['consultaventas']=0;
         }
 
         echo json_encode($extraer);
