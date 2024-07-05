@@ -1,3 +1,9 @@
+<?php
+  if(strlen(session_id())<1)
+  {
+    session_start();
+  }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,7 +77,8 @@
         <ul class="sidebar-menu">
           <li class="header"></li>
           <?php
-          if ($_SESSION['escritorio'] == 1) {
+          if ($_SESSION['escritorio'] == 1)
+          {
             echo '<li>
               <a href="#">
                 <i class="fa fa-tasks"></i> <span>Escritorio</span>
