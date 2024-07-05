@@ -8,7 +8,7 @@ if(!isset($_SESSION["nombre"]))
 }
 else
 {
-  require "VHeader.php" 
+  require "VHeader.php";
   if($_SESSION['acceso']==1)
   { 
 ?>
