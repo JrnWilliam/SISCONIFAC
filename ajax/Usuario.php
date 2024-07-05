@@ -145,5 +145,12 @@ switch($_GET["operacion"])
 
         echo json_encode($extraer);
     break;
+    case 'CerrarSesion':
+        session_unset();
+
+        session_destroy();
+
+        header('Location: ../index.php');
+    break;
 }
 ?>
