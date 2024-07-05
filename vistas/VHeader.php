@@ -47,12 +47,12 @@
           <ul class="nav navbar-nav">
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="../public/img/usuario.png" class="user-image" alt="User Image">
-                <span class="hidden-xs">Vendedor</span>
+                <img src="../files/usuarios/<?php echo $_SESSION['imagen'];?>" class="user-image" alt="User Image">
+                <span class="hidden-xs"><?php echo $_SESSION['nombre'];?></span>
               </a>
               <ul class="dropdown-menu">
                 <li class="user-header">
-                  <img src="../public/img/usuario.png" class="img-circle" alt="User Image">
+                  <img src="../files/usuarios/<?php echo $_SESSION['imagen'];?>" class="img-circle" alt="User Image">
                   <p>
                     www.incanatoit.com - Desarrollando Software
                     <small>www.youtube.com/jcarlosad7</small>
