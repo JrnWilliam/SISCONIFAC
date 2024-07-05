@@ -123,6 +123,7 @@ switch($_GET["operacion"])
             $_SESSION['nombre']=$extraer->nombre;
             $_SESSION['imagen']=$extraer->imagen;
             $_SESSION['login']=$extraer->login;
+            $_SESSION['cargo']=$extraer->cargo;
 
             $marcados = $usuario->ListarPermisosMarcados($extraer->idusuario);
 
