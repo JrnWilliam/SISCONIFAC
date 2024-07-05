@@ -57,13 +57,13 @@
                     <?php
                       echo $_SESSION['cargo']; 
                     ?>
-                    <small>www.youtube.com/jcarlosad7</small>
+                    <small></small>
                   </p>
                 </li>
                 <li class="user-footer">
 
                   <div class="pull-right">
-                    <a href="#" class="btn btn-default btn-flat">Cerrar</a>
+                    <a href="../ajax/Usuario.php?operacion=CerrarSesion" class="btn btn-default btn-flat">Cerrar</a>
                   </div>
                 </li>
               </ul>
