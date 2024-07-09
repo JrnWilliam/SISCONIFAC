@@ -31,6 +31,7 @@ function LimpiarCamposUsuarios()
     $("#imagen").unwrap()
     $("#imagenactual").val("")
     $("#imgactual").attr("src","")
+    $("#permisos input[type=checkbox]").prop("checked", false);
 }
 
 function MostrarFormularioUsuario(valor)
