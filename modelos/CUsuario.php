@@ -54,7 +54,7 @@ class CUsuario
 
     public function ActivarUsuario($idusuario)
     {
-        $sql = "UPDATE usuario SET condicion='0' WHERE idusuario='$idusuario'";
+        $sql = "UPDATE usuario SET condicion='1' WHERE idusuario='$idusuario'";
         return Ejecutar_Consulta($sql);
     }
 
