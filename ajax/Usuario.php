@@ -67,7 +67,7 @@ switch($_GET["operacion"])
                 "5"=>$registro->cargo,
                 "6"=>$registro->login,
                 "7"=>"<img src='../files/usuarios/".$registro->imagen."' height='50px' width='50px'>",
-                "8"=>($registro->condicion)?'<span class="label bg-green">Activado</span>':'<span class="label br-red">Desactivado</span>'
+                "8"=>($registro->condicion)?'<span class="label bg-green">Activado</span>':'<span class="label bg-red">Desactivado</span>'
             );
         }
         $resultado = array(
