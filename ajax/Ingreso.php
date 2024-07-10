@@ -28,5 +28,9 @@ switch($_GET["Operacion"])
         $respuesta = $ingreso->AnularIngreso($idingreso);
         echo $respuesta ? "Ingreso Anulado Correctamente" : "Error, No Se Logro Anular el Ingreso";
     break;
+    case 'SeleccionarRegistro':
+        $respuesta = $ingreso->SeleccionarRegistroIngresos($idingreso);
+        echo json_encode($respuesta);
+    break;
 }
 ?>
