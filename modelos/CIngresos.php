@@ -30,5 +30,11 @@ Class CIngresos
         $sql = "UPDATE ingreso SET estado='Anulado' WHERE idingreso='$idingreso'";
         return Ejecutar_Consulta($sql);
     }
+
+    public function SeleccionarRegistroIngresos($idingreso)
+    {
+        $sql = "SELECT i.idingreso, DATE(i.fecha_hora) AS fecha,i.idproveedor,p.nombre AS nombre,u.idusuario,u.nombre AS usuario,i.tipo_comprobante,i.serie_comprobante,i.num_comprobante,i.total_compra,i.impuesto,i.estado FROM ingreso i INNER JOIN  persona p ON i.idproveedor=p.idpersona INNER JOIN usuario u ON i.idusuario=u.idusuario WHERE i.idingreso='$idingreso'";
+        return EjecutarConsultaSimpleFila($sql);
+    }
 }
 ?>
