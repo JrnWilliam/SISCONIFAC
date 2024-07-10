@@ -24,5 +24,9 @@ switch($_GET["Operacion"])
             echo $respuesta ? "Se Registro Un Ingreso Correctamente" : "Error, No Se Logro Registrar el Ingreso";
         }
     break;
+    case 'AnularIngreso':
+        $respuesta = $ingreso->AnularIngreso($idingreso);
+        echo $respuesta ? "Ingreso Anulado Correctamente" : "Error, No Se Logro Anular el Ingreso";
+    break;
 }
 ?>
