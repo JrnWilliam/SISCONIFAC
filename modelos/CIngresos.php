@@ -24,5 +24,11 @@ Class CIngresos
             $numingresos+=1;
         }
     }
+
+    public function AnularIngreso($idingreso)
+    {
+        $sql = "UPDATE ingreso SET estado='Anulado' WHERE idingreso='$idingreso'";
+        return Ejecutar_Consulta($sql);
+    }
 }
 ?>
