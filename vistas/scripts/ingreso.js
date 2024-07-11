@@ -108,4 +108,24 @@ function SeleccionarRegistroIngreso(idingreso)
     })
 }
 
+function AnularIngreso(idingreso)
+{
+    bootbox.confirm("Desea Anular Este Ingreso",
+        function(result)
+    {
+        if(result)
+        {
+            $.post("..post/ajax/Ingreso.php?Operacion=AnularIngreso",
+                {
+                    idingreso:idingreso
+                },
+                function(e)
+                {
+                    bootbox.alert(e)
+                    tablaingresos.ajax.reload()
+                })
+        }
+    })
+}
+
 IniciarIngresos()
