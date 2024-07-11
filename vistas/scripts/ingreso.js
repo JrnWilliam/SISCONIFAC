@@ -11,6 +11,16 @@ function IniciarIngresos()
     })
 }
 
+function LimpiarCampos()
+{
+    $("#idproveedor").val("")
+    $("#proveedor").val("")
+    $("#seriecomprobante").val("")
+    $("#numcomprobante").val("")
+    $("#fechahora").val("")
+    $("#impuesto").val("")
+}
+
 function MostrarFormularioIngreso(valor)
 {
 
