@@ -28,9 +28,34 @@ switch($_GET["Operacion"])
         $respuesta = $ingreso->AnularIngreso($idingreso);
         echo $respuesta ? "Ingreso Anulado Correctamente" : "Error, No Se Logro Anular el Ingreso";
     break;
-    case 'SeleccionarRegistro':
+    case 'SeleccionarRegistroIngreso':
         $respuesta = $ingreso->SeleccionarRegistroIngresos($idingreso);
         echo json_encode($respuesta);
+    break;
+    case 'MostrarIngresos':
+        $respuesta = $ingreso -> MostrarIngresos();
+
+        $data = Array();
+
+        while($registro = $respuesta->fetch_object())
+        {
+            $data[] = array(
+                "0"=>($registro->estado=='Aceptado')?'<button class="btn btn-warning" onclick="MostrarRegistroIngreso('.$registro->idingreso.')"><i class="fa fa-pencil"></i></button>'.'<button class= "btn btn-danger" onclick="AnularIngreso('.$registro->idingreso.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="MostrarRegistroIngreso('.$registro->idingreso.')"><i class="fa fa-pencil"></i></button>',
+                "1"=>$registro->fecha,
+                "2"=>$registro->proveedor,
+                "3"=>$registro->usuario,
+                "4"=>$registro->tipo_comprobante,
+                "5"=>$registro->serie_comprobante,
+                "6"=>$registro->total_compra,
+                "7"=>($registro->estado=='Aceptado')?'<span class="label bg-green">Aceptado</span>':'<span class="label bg-red">Cerrada</span>'
+            );
+        }
+        $resultado = array(
+            "sEcho"=>1,
+            "iTotalRecords"=>count($data),
+            "iTotalDisplayRecords"=>count($data),
+            "aaData"=>$data);
+            echo json_encode($resultado);
     break;
 }
 ?>
