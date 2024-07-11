@@ -39,6 +39,12 @@ function MostrarFormularioIngreso(valor)
     }
 }
 
+function CerrarFormularioIngreso()
+{
+    LimpiarCampos()
+    MostrarFormularioIngreso(false)
+}
+
 function ListarRegistrosIngreso()
 {
 
