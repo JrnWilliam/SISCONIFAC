@@ -93,6 +93,19 @@ function GuardaryEditarIngresos(e)
             }
         }
     )
+    LimpiarCampos()
+}
+
+function SeleccionarRegistroIngreso(idingreso)
+{
+    $.post("../ajax/Ingreso.php?Operacion=SeleccionarRegistroIngreso", {idingreso:idingreso}, function(data,status){
+        data = JSON.parse(data)
+        MostrarFormularioIngreso()
+
+        $("#idingreso").val(data.idcategoria)
+        $("#idproveedor").val(data.idproveedor)
+        $("#idusuario").val(data.idusuario)
+    })
 }
 
 IniciarIngresos()
