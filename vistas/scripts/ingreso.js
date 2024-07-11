@@ -5,7 +5,7 @@ function IniciarIngresos()
     MostrarFormularioIngreso(false)
     ListarRegistrosIngreso()
 
-    $("#FormularioRegistroIngresos").on("submit",function(e)
+    $("#FormularioRegistroIngreso").on("submit",function(e)
     {
         GuardarRegistroIngreso(e)
     })
@@ -70,6 +70,29 @@ function ListarRegistrosIngreso()
             "order": [[0, "desc"]],
         }
     ).DataTable();
+}
+
+function GuardaryEditarIngresos(e)
+{
+    e.prevenDefault()
+    $("#BtnGuardar").prop("disabled",true)
+    var formData = new FormData($("#FormularioRegistroIngreso")[0])
+
+    $.ajax(
+        {
+            url: "../ajax/Ingreso.php?Operacion=GuardaryEditar",
+            type: "POST",
+            data: formData,
+            ContentType: false,
+            processData: false,
+            success: function(datos)
+            {
+                bootbox.alert(datos)
+                MostrarFormularioIngreso(false)
+                tablaingresos.ajax.reload()
+            }
+        }
+    )
 }
 
 IniciarIngresos()
