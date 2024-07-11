@@ -23,7 +23,20 @@ function LimpiarCampos()
 
 function MostrarFormularioIngreso(valor)
 {
-
+    LimpiarCampos()
+    if(valor)
+    {
+        $("#TablaListadoIngresos").hide()
+        $("#FormularioIngreso").show()
+        $("#BtnGuardar").prop("disabled",false)
+        $("#BtnAgregar").hide()
+    }
+    else
+    {
+        $("#TablaListadoIngresos").show()
+        $("#FormularioIngreso").hide()
+        $("#BtnAgregar").show()
+    }
 }
 
 function ListarRegistrosIngreso()
