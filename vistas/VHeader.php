@@ -31,9 +31,9 @@
 
       <a href="#" class="logo">
 
-        <span class="logo-mini"><img src="../public/img/ferreteria.png"></span>
+        <span class="logo-mini"><img src="../public/img/ferreteria.png" alt="Ferreteria Logo"></span>
 
-        <span class="logo-lg"><img src="../public/img/ferreteria.png"><b>SISCONIFAC</b></span>
+        <span class="logo-lg"><img src="../public/img/ferreteria.png" alt="Ferreteria Logo"><b>SISCONIFAC</b></span>
       </a>
 
 
