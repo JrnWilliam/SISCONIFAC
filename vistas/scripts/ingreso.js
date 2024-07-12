@@ -39,6 +39,7 @@ function MostrarFormularioIngreso(valor)
         $("#FormularioIngreso").show()
         $("#BtnGuardar").prop("disabled",false)
         $("#BtnAgregar").hide()
+        ListarRegistrosArticulos()
     }
     else
     {
