@@ -1,9 +1,13 @@
 var tablaingresos
+var impuesto = 18
+var contador= 0
+var detalle = 0
 
 function IniciarIngresos()
 {
     MostrarFormularioIngreso(false)
     ListarRegistrosIngreso()
+    $("#BtnAuxiliar").hide()
 
     $("#FormularioRegistroIngreso").on("submit",function(e)
     {
@@ -163,6 +167,5 @@ function ListarRegistrosArticulos()
         }
     )
 }
-
 
 IniciarIngresos()
