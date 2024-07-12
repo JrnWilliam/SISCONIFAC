@@ -116,7 +116,7 @@ else
                     <button class="btn btn-primary" type="submit" id="BtnGuardar" title="Guardar Registros">
                       <i class="fa fa-save"> Guardar</i>
                     </button>
-                    <button class="btn btn-danger" onclick="CerrarFormularioIngreso()" type="button" title="Cerrar Formulario">
+                    <button id="BtnCancelar" class="btn btn-danger" onclick="CerrarFormularioIngreso()" type="button" title="Cerrar Formulario">
                       <i class="fa fa-arrow-circle-left">
                         Cancelar
                       </i>
