@@ -7,7 +7,7 @@ $ingreso = new CIngresos();
 
 $idingreso = isset($_POST['idingreso'])?LimpiarCadena($_POST['idingreso']):"";
 $idproveedor= isset($_POST['idproveedor'])?LimpiarCadena($_POST['idproveedor']):"";
-$idusuario= isset($_POST['idusuario'])?LimpiarCadena($_POST['idusuario']):"";
+$idusuario= $_SESSION["idusuario"];
 $tipocomprobante= isset($_POST['tipocomprobante'])?LimpiarCadena($_POST['tipocomprobante']):"";
 $seriecomprobante= isset($_POST['seriecomprobante'])?LimpiarCadena($_POST['seriecomprobante']):"";
 $numcomprobante= isset($_POST['numcomprobante'])?LimpiarCadena($_POST['numcomprobante']):"";
