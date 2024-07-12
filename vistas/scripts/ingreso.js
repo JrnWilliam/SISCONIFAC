@@ -60,7 +60,8 @@ function ListarRegistrosIngreso()
             {
                 url: "../ajax/Ingreso.php?Operacion=MostrarIngresos",
                 type: "get",
-                dataType: function(e)
+                dataType: "json",
+                error: function(e)
                 {
                     console.log(e.responseText);
                 }
