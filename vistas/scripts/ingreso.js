@@ -163,4 +163,6 @@ function ListarRegistrosArticulos()
         }
     )
 }
+
+
 IniciarIngresos()
