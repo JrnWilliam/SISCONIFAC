@@ -50,5 +50,11 @@ class CArticulo
         $sql = "SELECT a.idarticulo, a.idcategoria, c.nombre as categoria, a.codigo, a.nombre, a.stock, a.descripcion, a.imagen, a.condicion FROM articulo a INNER JOIN categoria c ON a.idcategoria=c.idcategoria";
         return Ejecutar_Consulta($sql);
     }
+
+    public function MostrarArticuloActivo()
+    {
+        $sql = "SELECT a.idarticulo, a.idcategoria, c.nombre as categoria, a.codigo, a.nombre, a.stock, a.descripcion, a.imagen, a.condicion FROM articulo a INNER JOIN categoria c ON a.idcategoria=c.idcategoria WHERE a.condicion='1'";
+        return Ejecutar_Consulta($sql);
+    }
 }
 ?>
