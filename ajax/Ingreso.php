@@ -57,5 +57,16 @@ switch($_GET["Operacion"])
             "aaData"=>$data);
             echo json_encode($resultado);
     break;
+    case 'SeleccionarProveedor':
+        require_once '../modelos/CPersona.php';
+        $ObjPersona = new CPersona();
+
+        $respuesta = $ObjPersona->MostrarRegistrosProveedores();
+
+        while($registro = $respuesta->fetch_object())
+        {
+            echo '<option value='.$registro->idpersona.'>'.$registro->nombre.'</option>';
+        }
+    break;
 }
 ?>
