@@ -9,6 +9,14 @@ function IniciarIngresos()
     {
         GuardarRegistroIngreso(e)
     })
+
+    $.post("../ajax/Ingreso.php?Operacion=SeleccionarProveedor",
+        function(r)
+        {
+            $("#idproveedor").html(r)
+            $("#idproveedor").selectpicker('refresh');
+        }
+    )
 }
 
 function LimpiarCampos()
