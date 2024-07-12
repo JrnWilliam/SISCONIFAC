@@ -27,6 +27,7 @@ function LimpiarCampos()
     $("#numcomprobante").val("")
     $("#fechahora").val("")
     $("#impuesto").val("")
+    $("#idproveedor").val('').selectpicker('refresh')
 }
 
 function MostrarFormularioIngreso(valor)
