@@ -77,7 +77,7 @@ function ListarRegistrosIngreso()
             },
             "bDestroy": true,
             "iDisplayLength": 10,
-            "order": [[0, "desc"]],
+            "order": [[0, "desc"]]
         }
     ).DataTable();
 }
@@ -138,4 +138,28 @@ function AnularIngreso(idingreso)
     })
 }
 
+function ListarRegistrosArticulos()
+{
+    tablaingresos = $("#TablaListadoArticulos").dataTable(
+        {
+            "aProcessing":true,
+            "aServerSide":true,
+            dom: 'Bfrtip',
+            buttons:['copyHtml5','excelHtml5','csvHtml5','pdf'],
+            "ajax":
+            {
+                url: "../ajax/Ingreso.php?Operacion=MostrarArticulos",
+                type:"get",
+                dataType:"json",
+                error: function(e)
+                {
+                    console.log(e.responseText);
+                }
+            },
+            "bDestroy":true,
+            "iDisplayLength":10,
+            "order":[[0,"desc"]]
+        }
+    )
+}
 IniciarIngresos()
