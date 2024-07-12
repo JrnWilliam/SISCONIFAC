@@ -54,44 +54,65 @@ else
               </div>
               <div class="panel-body" id="FormularioIngreso">
                 <form name="FormularioRegistroIngreso" id="Formulario" method="POST">
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Nombre: </label>
-                    <input type="hidden" name="idarticulo" id="idarticulo">
-                    <input type="text" class="form-control" name="nombre" id="nombre" maxlength="100" placeholder="Nombre" autocomplete="off" required>
+                  <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <label>Proveedor: </label>
+                    <input type="hidden" name="idingreso" id="idingreso">
+                    <select name="idproveedor" id="idproveedor" class="form-control selectpicker" data-live-search="true" required></select>
+                  </div>
+                  <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <label>Fecha: </label>
+                    <input type="date" name="fechahora" id="fechahora" class="form-control" required>
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Categoria: </label>
-                    <select name="idcategoria" id="idcategoria" class="form-control selectpicker" data-live-search="true" required></select>
+                    <label>Tipo de Comprobante: </label>
+                    <select name="tipocomprobante" id="tipocomprobante" class="form-control selectpicker" required>
+                      <option value="Boleta">Boleta</option>
+                      <option value="Factura">Factura</option>
+                      <option value="Ticket">Ticket</option>
+                    </select>
                   </div>
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Stock: </label>
-                    <input type="number" class="form-control" name="stock" id="stock" placeholder="Stock" required>
+                  <div class="form-group col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                    <label>Serie: </label>
+                    <input type="text" class="form-control" name="seriecomprobante" id="seriecomprobante" maxlength="7" autocomplete="off" placeholder="Número de Serie">
                   </div>
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Descripción: </label>
-                    <input type="text" class="form-control" name="descripcion" id="descripcion" maxlength="256" autocomplete="off" placeholder="Descripción">
+                  <div class="form-group col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                    <label>Número: </label>
+                    <input type="text" name="numcomprobante" id="numcomprobante" class="form-control" maxlength="10" placeholder="Número de Comprobante" autocomplete="off" required>
                   </div>
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Imagen: </label>
-                    <input type="file" class="form-control" name="imagen" id="imagen">
-                    <input type="hidden" name="imagen_actual" id="imagen_actual">
-                    <img src="" id="img_actual" alt="Imagen actual" style="max-width: 100px; max-height: 100px;">
-                  </div>
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Código: </label>
-                    <input type="text" class="form-control" name="codigo" id="codigo" autocomplete="off" placeholder="Codigo de Barras" required>
+                  <div class="form-group col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                    <label>Impuesto: </label>
+                    <input type="text" class="form-control" name="impuesto" id="impuesto" placeholder="Impuesto" required>
                     <br>
-                    <button class="btn btn-success" onclick="GenerarCodBarra()" type="button">
-                      <li class="fa fa-barcode"> Generar Codigo de Barras</li>
-                    </button>
-                    <button type="button" class="btn btn-info" onclick="Imprimir()">
-                      <li class="fa fa-print"> Imprimir</li>
-                    </button>
-                    <div id="Imprimir">
-                      <svg id="barcode"></svg>
-                    </div>
                   </div>
-                  <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="form-group col-lg-3 col-md-2 col-sm-6 col-xs-12">
+                    <a data-toggle="modal" href="VentanaModal">
+                      <button id="AgregarArticulo" type="button" class="btn btn-primary"><span class="fa fa-plus">Agregar Articulos</span></button>
+                    </a>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <table id="TablaDetales" class="table table-striped table-bordered table-condensed table-hover">
+                      <thead style="background-color:#B4F8C8">
+                        <th>Opciones</th>
+                        <th>Artículo</th>
+                        <th>Cantidad</th>
+                        <th>Precio Compra</th>
+                        <th>Precio Venta</th>
+                        <th>Sub Total</th>
+                      </thead>
+                      <tfoot>
+                        <th>TOTAL</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th><h4 id="total">C$ 0.00</h4><input type="hidden" name="totalcompra" id="totalcompra"></th>
+                      </tfoot>
+                      <tbody>
+
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" id="BtnAuxiliar">
                     <button class="btn btn-primary" type="submit" id="BtnGuardar" title="Guardar Registros">
                       <i class="fa fa-save"> Guardar</i>
                     </button>
