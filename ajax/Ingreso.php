@@ -68,5 +68,32 @@ switch($_GET["Operacion"])
             echo '<option value='.$registro->idpersona.'>'.$registro->nombre.'</option>';
         }
     break;
+    case 'MostrarArticulos':
+        require_once '../modelos/CArticulo.php';
+        $ObjArticulo = new CArticulo();
+
+        $respuesta = $ObjArticulo->MostrarArticuloActivo();
+
+        $data = Array();
+
+        while($registro = $respuesta->fetch_object())
+        {
+            $data[] = array(
+                "0"=>'<button class="btn btn-warning" onclick="AgregarDetalleCompra('.$registro->idarticulo.',\''.$registro->nombre.'\')"><span class="fa fa-plus"></span></button>',
+                "1"=>$registro->nombre,
+                "2"=>$registro->categoria,
+                "3"=>$registro->codigo,
+                "4"=>$registro->stock,
+                "5"=>"<img src='../files/articulos/".$registro->imagen."' height='50px' width='50px'>"
+            );
+        }
+        $resultado = array(
+            "sEcho"=> 1,
+            "iTotalRecords"=>count($data),
+            "iTotalDisplayRecords"=>count($data),
+            "aaData"=>$data
+        );
+        echo json_encode($resultado);
+    break;
 }
 ?>
