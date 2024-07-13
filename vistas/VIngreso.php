@@ -90,7 +90,7 @@ else
                     </a>
                   </div>
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <table id="TablaDetales" class="table table-striped table-bordered table-condensed table-hover">
+                    <table id="TablaDetalles" class="table table-striped table-bordered table-condensed table-hover">
                       <thead style="background-color:#B4F8C8">
                         <th>Opciones</th>
                         <th>Artículo</th>
