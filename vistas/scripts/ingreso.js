@@ -8,6 +8,7 @@ function IniciarIngresos()
     MostrarFormularioIngreso(false)
     ListarRegistrosIngreso()
     $("#BtnAuxiliar").hide()
+    $("#tipocomprobante").change(AgregarImpuesto)
 
     $("#FormularioRegistroIngreso").on("submit",function(e)
     {
@@ -166,6 +167,19 @@ function ListarRegistrosArticulos()
             "order":[[0,"desc"]]
         }
     )
+}
+
+function AgregarImpuesto()
+{
+    var tcomprobante=$("tipocomprobante option:selected").text()
+    if(tcomprobante=='Factura')
+    {
+        $("#impuesto").val(impuesto)
+    }
+    else
+    {
+        $("#impuesto").val(0)
+    }
 }
 
 IniciarIngresos()
