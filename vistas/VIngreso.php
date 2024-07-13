@@ -55,16 +55,16 @@ else
               <div class="panel-body" id="FormularioIngreso">
                 <form name="FormularioRegistroIngreso" id="Formulario" method="POST">
                   <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                    <label>Proveedor: </label>
+                    <label for="idproveedor">Proveedor: </label>
                     <input type="hidden" name="idingreso" id="idingreso">
                     <select name="idproveedor" id="idproveedor" class="form-control selectpicker" data-live-search="true" required></select>
                   </div>
                   <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <label>Fecha: </label>
-                    <input type="date" name="fechahora" id="fechahora" class="form-control" required>
+                    <label for="fechahora">Fecha: </label>
+                    <input type="date" name="fechahora" id="fechahora" class="form-control" placeholder="Selecciona la Fecha y Hora" title="Selecciona la Fecha y Hora" required>
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label>Tipo de Comprobante: </label>
+                    <label for="tipocomprobante">Tipo de Comprobante: </label>
                     <select name="tipocomprobante" id="tipocomprobante" class="form-control selectpicker" required>
                       <option value="Boleta">Boleta</option>
                       <option value="Factura">Factura</option>
@@ -72,15 +72,15 @@ else
                     </select>
                   </div>
                   <div class="form-group col-lg-2 col-md-2 col-sm-6 col-xs-12">
-                    <label>Serie: </label>
+                    <label for="seriecomprobante">Serie: </label>
                     <input type="text" class="form-control" name="seriecomprobante" id="seriecomprobante" maxlength="7" autocomplete="off" placeholder="Número de Serie">
                   </div>
                   <div class="form-group col-lg-2 col-md-2 col-sm-6 col-xs-12">
-                    <label>Número: </label>
+                    <label for="numcomprobante">Número: </label>
                     <input type="text" name="numcomprobante" id="numcomprobante" class="form-control" maxlength="10" placeholder="Número de Comprobante" autocomplete="off" required>
                   </div>
                   <div class="form-group col-lg-2 col-md-2 col-sm-6 col-xs-12">
-                    <label>Impuesto: </label>
+                    <label for="impuesto">Impuesto: </label>
                     <input type="text" class="form-control" name="impuesto" id="impuesto" placeholder="Impuesto" required>
                     <br>
                   </div>
