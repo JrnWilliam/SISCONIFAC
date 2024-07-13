@@ -57,7 +57,9 @@ else
                   <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
                     <label for="idproveedor">Proveedor: </label>
                     <input type="hidden" name="idingreso" id="idingreso">
+                    <div role="listbox">
                     <select name="idproveedor" id="idproveedor" class="form-control selectpicker" data-live-search="true" required></select>
+                    </div>
                   </div>
                   <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <label for="fechahora">Fecha: </label>
@@ -65,11 +67,13 @@ else
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <label for="tipocomprobante">Tipo de Comprobante: </label>
+                    <div role="listbox">
                     <select name="tipocomprobante" id="tipocomprobante" class="form-control selectpicker" required>
                       <option value="Boleta">Boleta</option>
                       <option value="Factura">Factura</option>
                       <option value="Ticket">Ticket</option>
                     </select>
+                    </div>
                   </div>
                   <div class="form-group col-lg-2 col-md-2 col-sm-6 col-xs-12">
                     <label for="seriecomprobante">Serie: </label>
@@ -139,6 +143,7 @@ else
             <h4 class="modal-title">Selecciona Un Artículo</h4>
           </div>
           <div class="modal-body">
+            <div role="listbox">
             <table class="table table-striped table-bordered table-condensed table-hover" id="TablaListadoArticulos">
               <thead>
                 <th>Opciones</th>
@@ -160,6 +165,7 @@ else
                 <th>Imagen</th>
               </tfoot>
             </table>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
