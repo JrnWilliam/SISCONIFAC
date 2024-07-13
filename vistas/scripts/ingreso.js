@@ -1,185 +1,185 @@
-var tablaingresos
-var impuesto = 18
-var contador= 0
-var detalle = 0
-
-function IniciarIngresos()
-{
-    MostrarFormularioIngreso(false)
-    ListarRegistrosIngreso()
-    $("#BtnAuxiliar").hide()
+    var tablaingresos;
+    var impuesto = 15   
+    var contador= 0
+    var detalle = 0
     $("#tipocomprobante").change(AgregarImpuesto)
 
-    $("#FormularioRegistroIngreso").on("submit",function(e)
+    function IniciarIngresos()
     {
-        GuardarRegistroIngreso(e)
-    })
+        MostrarFormularioIngreso(false)
+        ListarRegistrosIngreso()
+        $("#BtnAuxiliar").hide()
 
-    $.post("../ajax/Ingreso.php?Operacion=SeleccionarProveedor",
-        function(r)
+        $("#FormularioRegistroIngreso").on("submit",function(e)
         {
-            $("#idproveedor").html(r)
-            $("#idproveedor").selectpicker('refresh');
-        }
-    )
-}
+            GuardarRegistroIngreso(e)
+        })
 
-function LimpiarCampos()
-{
-    $("#idproveedor").val("")
-    $("#proveedor").val("")
-    $("#seriecomprobante").val("")
-    $("#numcomprobante").val("")
-    $("#fechahora").val("")
-    $("#impuesto").val("")
-    $("#idproveedor").val('').selectpicker('refresh')
-}
-
-function MostrarFormularioIngreso(valor)
-{
-    LimpiarCampos()
-    if(valor)
-    {
-        $("#TablaIngresos").hide()
-        $("#FormularioIngreso").show()
-        $("#BtnGuardar").prop("disabled",false)
-        $("#BtnAgregar").hide()
-        ListarRegistrosArticulos()
-    }
-    else
-    {
-        $("#TablaIngresos").show()
-        $("#FormularioIngreso").hide()
-        $("#BtnAgregar").show()
-    }
-}
-
-function CerrarFormularioIngreso()
-{
-    LimpiarCampos()
-    MostrarFormularioIngreso(false)
-}
-
-function ListarRegistrosIngreso()
-{
-    tablaingresos = $("#TablaListadoIngreso").dataTable(
-        {
-            "aProcessing": true,
-            "aServerSide": true,
-            dom: 'Bfrtip',
-            buttons:
-            [
-                'copyHtml5','excelHtml5','csvHtml5','pdf'
-            ],
-            "ajax":
+        $.post("../ajax/Ingreso.php?Operacion=SeleccionarProveedor",
+            function(r)
             {
-                url: "../ajax/Ingreso.php?Operacion=MostrarIngresos",
-                type: "get",
-                dataType: "json",
-                error: function(e)
-                {
-                    console.log(e.responseText);
-                }
-            },
-            "bDestroy": true,
-            "iDisplayLength": 10,
-            "order": [[0, "desc"]]
-        }
-    ).DataTable();
-}
-
-function GuardaryEditarIngresos(e)
-{
-    e.prevenDefault()
-    $("#BtnGuardar").prop("disabled",true)
-    var formData = new FormData($("#FormularioRegistroIngreso")[0])
-
-    $.ajax(
-        {
-            url: "../ajax/Ingreso.php?Operacion=GuardaryEditar",
-            type: "POST",
-            data: formData,
-            ContentType: false,
-            processData: false,
-            success: function(datos)
-            {
-                bootbox.alert(datos)
-                MostrarFormularioIngreso(false)
-                tablaingresos.ajax.reload()
+                $("#idproveedor").html(r)
+                $("#idproveedor").selectpicker('refresh');
             }
-        }
-    )
-    LimpiarCampos()
-}
+        )
+    }
 
-function SeleccionarRegistroIngreso(idingreso)
-{
-    $.post("../ajax/Ingreso.php?Operacion=SeleccionarRegistroIngreso", {idingreso:idingreso}, function(data,status){
-        data = JSON.parse(data)
-        MostrarFormularioIngreso()
-
-        $("#idingreso").val(data.idcategoria)
-        $("#idproveedor").val(data.idproveedor)
-        $("#idusuario").val(data.idusuario)
-    })
-}
-
-function AnularIngreso(idingreso)
-{
-    bootbox.confirm("Desea Anular Este Ingreso",
-        function(result)
+    function LimpiarCampos()
     {
-        if(result)
-        {
-            $.post("..post/ajax/Ingreso.php?Operacion=AnularIngreso",
-                {
-                    idingreso:idingreso
-                },
-                function(e)
-                {
-                    bootbox.alert(e)
-                    tablaingresos.ajax.reload()
-                })
-        }
-    })
-}
+        $("#idproveedor").val("")
+        $("#proveedor").val("")
+        $("#seriecomprobante").val("")
+        $("#numcomprobante").val("")
+        $("#fechahora").val("")
+        $("#impuesto").val("")
+        $("#idproveedor").val('').selectpicker('refresh')
+    }
 
-function ListarRegistrosArticulos()
-{
-    tablaingresos = $("#TablaListadoArticulos").dataTable(
+    function MostrarFormularioIngreso(valor)
+    {
+        LimpiarCampos()
+        if(valor)
         {
-            "aProcessing":true,
-            "aServerSide":true,
-            dom: 'Bfrtip',
-            buttons:['copyHtml5','excelHtml5','csvHtml5','pdf'],
-            "ajax":
+            $("#TablaIngresos").hide()
+            $("#FormularioIngreso").show()
+            $("#BtnGuardar").prop("disabled",false)
+            $("#BtnAgregar").hide()
+            ListarRegistrosArticulos()
+        }
+        else
+        {
+            $("#TablaIngresos").show()
+            $("#FormularioIngreso").hide()
+            $("#BtnAgregar").show()
+        }
+    }
+
+    function CerrarFormularioIngreso()
+    {
+        LimpiarCampos()
+        MostrarFormularioIngreso(false)
+    }
+
+    function ListarRegistrosIngreso()
+    {
+        tablaingresos = $("#TablaListadoIngreso").dataTable(
             {
-                url: "../ajax/Ingreso.php?Operacion=MostrarArticulos",
-                type:"get",
-                dataType:"json",
-                error: function(e)
+                "aProcessing": true,
+                "aServerSide": true,
+                dom: 'Bfrtip',
+                buttons:
+                [
+                    'copyHtml5','excelHtml5','csvHtml5','pdf'
+                ],
+                "ajax":
                 {
-                    console.log(e.responseText);
+                    url: "../ajax/Ingreso.php?Operacion=MostrarIngresos",
+                    type: "get",
+                    dataType: "json",
+                    error: function(e)
+                    {
+                        console.log(e.responseText)
+                    }
+                },
+                "bDestroy": true,
+                "iDisplayLength": 10,
+                "order": [[0, "desc"]]
+            }
+        ).DataTable();
+    }
+
+    function GuardaryEditarIngresos(e)
+    {
+        e.preventDefault()
+        $("#BtnGuardar").prop("disabled",true)
+        var formData = new FormData($("#FormularioRegistroIngreso")[0])
+
+        $.ajax(
+            {
+                url: "../ajax/Ingreso.php?Operacion=GuardaryEditar",
+                type: "POST",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(datos)
+                {
+                    bootbox.alert(datos)
+                    MostrarFormularioIngreso(false)
+                    tablaingresos.ajax.reload()
                 }
-            },
-            "bDestroy":true,
-            "iDisplayLength":10,
-            "order":[[0,"desc"]]
+            }
+        )
+        LimpiarCampos()
+    }
+
+    function SeleccionarRegistroIngreso(idingreso)
+    {
+        $.post("../ajax/Ingreso.php?Operacion=SeleccionarRegistroIngreso", {idingreso:idingreso}, function(data,status){
+            data = JSON.parse(data)
+            MostrarFormularioIngreso(true)
+
+            $("#idingreso").val(data.idcategoria)
+            $("#idproveedor").val(data.idproveedor)
+            $("#idusuario").val(data.idusuario)
+        })
+    }
+
+    function AnularIngreso(idingreso)
+    {
+        bootbox.confirm("Desea Anular Este Ingreso",
+            function(result)
+        {
+            if(result)
+            {
+                $.post("../ajax/Ingreso.php?Operacion=AnularIngreso",
+                    {
+                        idingreso:idingreso
+                    },
+                    function(e)
+                    {
+                        bootbox.alert(e)
+                        tablaingresos.ajax.reload()
+                    })
+            }
+        })
+    }
+
+    function ListarRegistrosArticulos()
+    {
+        tablaingresos = $("#TablaListadoArticulos").dataTable(
+            {
+                "aProcessing":true,
+                "aServerSide":true,
+                dom: 'Bfrtip',
+                buttons:['copyHtml5','excelHtml5','csvHtml5','pdf'],
+                "ajax":
+                {
+                    url: "../ajax/Ingreso.php?Operacion=MostrarArticulos",
+                    type:"get",
+                    dataType:"json",
+                    error: function(e)
+                    {
+                        console.log(e.responseText);
+                    }
+                },
+                "bDestroy":true,
+                "iDisplayLength":10,
+                "order":[[0,"desc"]]
+            }
+        )
+    }
+
+    function AgregarImpuesto()
+    {
+        var tcomprobante=$("tipocomprobante option:selected").text()
+        if(tcomprobante==='Factura')
+        {
+            $("#impuesto").val(impuesto)
         }
-    )
-}
-
-function AgregarImpuesto()
-{
-    var tcomprobante=$("tipocomprobante option:selected").text()
-    if(tcomprobante=='Factura')
-    {
-        $("#impuesto").val(impuesto)
+        else
+        {
+            $("#impuesto").val(0)
+        }
     }
-    else
-    {
-        $("#impuesto").val(0)
-    }
-}
 
-IniciarIngresos()
+    IniciarIngresos()
