@@ -182,4 +182,33 @@
         }
     }
 
+    function AgregarDetalleCompra(idarticulo,articulo)
+    {
+        var cantidad = 1
+        var preciocompra = 1
+        var precioventa = 1
+
+        if(idarticulo!="")
+        {
+            var subtotal = cantidad*preciocompra
+            var fila = '<tr class="filas" id="fila'+contador+'">'+
+            '<td><button type="button" class="btn btn-danger" onclick="EmilinarCompra('+contador+')">X</button></td>'+
+            '<td><input type="hidden" name="idarticulo[]" value="'+idarticulo+'">'+articulo+'</td>'+
+            '<td><input type="number" name="cantidad[]" id="cantidad[]" value="'+cantidad+'"></td>'+
+            '<td><input type="number" name="preciocompra[]" id="preciocompra[]" value="'+preciocompra+'"></td>'+
+            '<td><input type="number" name="precioventa[]" value="'+precioventa+'"></td>'+
+            '<td><span name="subtotal" id="subtotal'+contador+'">'+subtotal+'</span></td>'+
+            '<td><button class="btn btn-info" type="button" onclick="ModificarSubtotales()"><i class="fa fa-refresh"></i></button></td>'+
+            '</tr>'
+            contador++
+            detalle++
+            $('#TablaDetalles').append(fila)
+            ModificarSubtotales()
+        }
+        else
+        {
+            bootbox.alert("Error al Ingresar el Detalle, Revisar los Datos del Artículo")
+        }
+    }
+
     IniciarIngresos()
