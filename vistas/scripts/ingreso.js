@@ -171,7 +171,7 @@
 
     function AgregarImpuesto()
     {
-        var tcomprobante=$("tipocomprobante option:selected").text()
+        var tcomprobante=$("#tipocomprobante option:selected").text()
         if(tcomprobante==='Factura')
         {
             $("#impuesto").val(impuesto)
