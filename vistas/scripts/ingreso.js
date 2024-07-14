@@ -211,4 +211,22 @@
         }
     }
 
+    function ModificarSubtotales()
+    {
+        var cant = document.getElementsByName("cantidad[]")
+        var price = document.getElementsByName("preciocompra[]")
+        var sub = document.getElementsByName("subtotal")
+
+        for(var i = 0; i < cant.length; i++)
+        {
+            var inpcantidad = cant[i]
+            var inpprecio = price[i]
+            var inpsubtotal = sub[i]
+
+            inpsubtotal.value=inpcantidad.value * inpprecio.value
+            document.getElementsByName("subtotal")[i].innerHTML = inpsubtotal.value
+        }
+        CalcularTotales()
+    }
+
     IniciarIngresos()
