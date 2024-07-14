@@ -33,6 +33,9 @@
         $("#fechahora").val("")
         $("#impuesto").val("")
         $("#idproveedor").val('').selectpicker('refresh')
+        $("#totalcompra").val("")
+        $(".filas").remove()
+        $("#total"),html("0")
     }
 
     function MostrarFormularioIngreso(valor)
