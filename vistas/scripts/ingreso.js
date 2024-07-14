@@ -229,4 +229,18 @@
         CalcularTotales()
     }
 
+    function CalcularTotales()
+    {
+        var sub = document.getElementsByName("subtotal")
+        var total = 0.0
+
+        for(var i = 0; i < sub.length; i++)
+        {
+            total += document.getElementsByName("subtotal")[i].value
+        }
+
+        $("#total").html("C$ " + total)
+        $("#totalcompra").val(total)
+        EvaluarCompra()
+    }
     IniciarIngresos()
