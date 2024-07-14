@@ -256,4 +256,11 @@
             contador=0
         }
     }
+
+    function EliminarDetalle(indice)
+    {
+        $("#fila"+indice).remove()
+        CalcularTotales()
+        detalle = detalle-1
+    }
     IniciarIngresos()
