@@ -243,4 +243,17 @@
         $("#totalcompra").val(total)
         EvaluarCompra()
     }
+
+    function EvaluarCompra()
+    {
+        if(detalle>0)
+        {
+            $("#BtnAuxiliar").show()
+        }
+        else
+        {
+            $("#BtnAuxiliar").hide()
+            contador=0
+        }
+    }
     IniciarIngresos()
