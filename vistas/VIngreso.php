@@ -53,7 +53,7 @@ else
                 </table>
               </div>
               <div class="panel-body" id="FormularioIngreso">
-                <form name="FormularioRegistroIngreso" id="Formulario" method="POST">
+                <form name="FormularioRegistroIngreso" id="FormularioRegistroIngreso" method="POST">
                   <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
                     <label for="idproveedor">Proveedor: </label>
                     <input type="hidden" name="idingreso" id="idingreso">
