@@ -40,7 +40,7 @@ switch($_GET["Operacion"])
         while($registro = $respuesta->fetch_object())
         {
             $data[] = array(
-                "0"=>($registro->estado=='Aceptado')?'<button class="btn btn-warning" onclick="MostrarRegistroIngreso('.$registro->idingreso.')"><i class="fa fa-eye"></i></button>'.'<button class= "btn btn-danger" onclick="AnularIngreso('.$registro->idingreso.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="MostrarRegistroIngreso('.$registro->idingreso.')"><i class="fa fa-eye"></i></button>',
+                "0"=>($registro->estado=='Aceptado')?'<button class="btn btn-warning" onclick="MostrarRegistroIngreso('.$registro->idingreso.')"><i class="fa fa-eye"></i></button>'.' <button class= "btn btn-danger" onclick="AnularIngreso('.$registro->idingreso.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="MostrarRegistroIngreso('.$registro->idingreso.')"><i class="fa fa-eye"></i></button>',
                 "1"=>$registro->fecha,
                 "2"=>$registro->proveedor,
                 "3"=>$registro->usuario,
