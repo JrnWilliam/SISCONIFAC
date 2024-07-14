@@ -88,10 +88,10 @@
         ).DataTable();
     }
 
-    function GuardaryEditarIngresos(e)
+    function GuardarRegistroIngreso(e)
     {
         e.preventDefault()
-        $("#BtnGuardar").prop("disabled",true)
+        //$("#BtnGuardar").prop("disabled",true)
         var formData = new FormData($("#FormularioRegistroIngreso")[0])
 
         $.ajax(
@@ -105,22 +105,28 @@
                 {
                     bootbox.alert(datos)
                     MostrarFormularioIngreso(false)
-                    tablaingresos.ajax.reload()
+                    ListarRegistrosIngreso()
                 }
             }
         )
         LimpiarCampos()
     }
 
-    function SeleccionarRegistroIngreso(idingreso)
+    function MostrarRegistroIngreso(idingreso)
     {
         $.post("../ajax/Ingreso.php?Operacion=SeleccionarRegistroIngreso", {idingreso:idingreso}, function(data,status){
             data = JSON.parse(data)
             MostrarFormularioIngreso(true)
 
-            $("#idingreso").val(data.idcategoria)
+            $("#idingreso").val(data.idingreso)
             $("#idproveedor").val(data.idproveedor)
-            $("#idusuario").val(data.idusuario)
+            $("#idproveedor").selectpicker('refresh')
+            $("#fechahora").val(data.fecha)
+            $("#tipocomprobante").val(data.tipo_comprobante)
+            $("#tipocomprobante").selectpicker('refresh')
+            $("#seriecomprobante").val(data.serie_comprobante)
+            $("#numcomprobante").val(data.num_comprobante)
+            $("#impuesto").val(data.impuesto)
         })
     }
 
@@ -146,7 +152,7 @@
 
     function ListarRegistrosArticulos()
     {
-        tablaingresos = $("#TablaListadoArticulos").dataTable(
+        tablaingresosarticulos = $("#TablaListadoArticulos").dataTable(
             {
                 "aProcessing":true,
                 "aServerSide":true,
@@ -192,7 +198,7 @@
         {
             var subtotal = cantidad*preciocompra
             var fila = '<tr class="filas" id="fila'+contador+'">'+
-            '<td><button type="button" class="btn btn-danger" onclick="EmilinarCompra('+contador+')">X</button></td>'+
+            '<td><button type="button" class="btn btn-danger" onclick="EliminarCompra('+contador+')">X</button></td>'+
             '<td><input type="hidden" name="idarticulo[]" value="'+idarticulo+'">'+articulo+'</td>'+
             '<td><input type="number" name="cantidad[]" id="cantidad[]" value="'+cantidad+'"></td>'+
             '<td><input type="number" name="preciocompra[]" id="preciocompra[]" value="'+preciocompra+'"></td>'+
@@ -257,7 +263,7 @@
         }
     }
 
-    function EliminarDetalle(indice)
+    function EliminarCompra(indice)
     {
         $("#fila"+indice).remove()
         CalcularTotales()
