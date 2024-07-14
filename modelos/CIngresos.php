@@ -23,6 +23,7 @@ Class CIngresos
             Ejecutar_Consulta($consulta) || $centinela = false;
             $numingresos+=1;
         }
+        return $centinela;
     }
 
     public function AnularIngreso($idingreso)
