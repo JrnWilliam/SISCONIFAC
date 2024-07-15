@@ -130,6 +130,13 @@
             $("#seriecomprobante").val(data.serie_comprobante)
             $("#numcomprobante").val(data.num_comprobante)
             $("#impuesto").val(data.impuesto)
+            
+            $.post("../ajax/Ingreso.php?Operacion=SeleccionarDetallesIngresos&id="+idingreso,
+                function(r)
+                {
+                    $("#TablaDetalles").html(r)
+                }
+            )
         })
     }
 
