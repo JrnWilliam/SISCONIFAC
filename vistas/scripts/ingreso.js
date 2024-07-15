@@ -35,7 +35,7 @@
         $("#idproveedor").val('').selectpicker('refresh')
         $("#totalcompra").val("")
         $(".filas").remove()
-        $("#total"),html("0")
+        $("#total").html("0")
     }
 
     function MostrarFormularioIngreso(valor)
