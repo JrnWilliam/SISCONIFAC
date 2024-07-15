@@ -60,18 +60,39 @@ switch($_GET["Operacion"])
     case 'SeleccionarDetallesIngresos':
         $id = $_GET['id'];
         $respuesta = $ingreso->SeleccionarRegistroDetalleIngreso($id);
+        $total = 0;
 
+        echo '<thead style="background-color:#B4F8C8">
+                        <th>Opciones</th>
+                        <th>Artículo</th>
+                        <th>Cantidad</th>
+                        <th>Precio Compra</th>
+                        <th>Precio Venta</th>
+                        <th>Sub Total</th>
+                        <th>Opciones</th>
+                </thead>';
         while($registro = $respuesta->fetch_object())
         {
-            echo '<tr>'.
+            echo '<tr class="filas">'.
             '<td></td>'.
             '<td>'.$registro->nombre.'</td>'.
             '<td>'.$registro->cantidad.'</td>'.
             '<td>'.$registro->precio_compra.'</td>'.
             '<td>'.$registro->precio_venta.'</td>'.
             '<td>'.$registro->precio_compra*$registro->cantidad.'</td>'.
+            '<td></td>'.
             '</tr>';
+            $total = $total + ($registro->precio_compra*$registro->cantidad);
         }
+        echo '<tfoot>
+                <th>TOTAL</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>Opciones</th>
+                    <th><h4 id="total">C$ '.$total.'</h4><input type="hidden" name="totalcompra" id="totalcompra"></th>
+            </tfoot>';
     break;
     case 'SeleccionarProveedor':
         require_once '../modelos/CPersona.php';
