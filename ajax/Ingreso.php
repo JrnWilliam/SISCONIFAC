@@ -57,6 +57,22 @@ switch($_GET["Operacion"])
             "aaData"=>$data);
             echo json_encode($resultado);
     break;
+    case 'SeleccionarDetallesIngresos':
+        $id = $_GET['id'];
+        $respuesta = $ingreso->SeleccionarRegistroDetalleIngreso($id);
+
+        while($registro = $respuesta->fetch_object())
+        {
+            echo '<tr>'.
+            '<td></td>'.
+            '<td>'.$registro->nombre.'</td>'.
+            '<td>'.$registro->cantidad.'</td>'.
+            '<td>'.$registro->precio_compra.'</td>'.
+            '<td>'.$registro->precio_venta.'</td>'.
+            '<td>'.$registro->precio_compra*$registro->cantidad.'</td>'.
+            '</tr>';
+        }
+    break;
     case 'SeleccionarProveedor':
         require_once '../modelos/CPersona.php';
         $ObjPersona = new CPersona();
