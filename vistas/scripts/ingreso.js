@@ -131,6 +131,8 @@
             $("#numcomprobante").val(data.num_comprobante)
             $("#impuesto").val(data.impuesto)
             
+            $("#BtnAuxiliar").show()
+
             $.post("../ajax/Ingreso.php?Operacion=SeleccionarDetallesIngresos&id="+idingreso,
                 function(r)
                 {
