@@ -28,14 +28,20 @@
     {
         $("#idproveedor").val("")
         $("#proveedor").val("")
+        $("#tipocomprobante").val('').selectpicker('refresh')
         $("#seriecomprobante").val("")
         $("#numcomprobante").val("")
-        $("#fechahora").val("")
         $("#impuesto").val("")
         $("#idproveedor").val('').selectpicker('refresh')
         $("#totalcompra").val("")
         $(".filas").remove()
         $("#total").html("0")
+
+        var ahora = new Date()
+        var dia = ("0" + ahora.getDate()).slice(-2)
+        var mes = ("0" + (ahora.getMonth()+1)).slice(-2)
+        var hoy = ahora.getFullYear() + "-" + (mes) + "-" + (dia)
+        $('#fechahora').val(hoy)
     }
 
     function MostrarFormularioIngreso(valor)
@@ -43,6 +49,7 @@
         LimpiarCampos()
         if(valor)
         {
+            $("#impuesto").val("0")
             $("#TablaIngresos").hide()
             $("#FormularioIngreso").show()
             //$("#BtnGuardar").prop("disabled",false)
