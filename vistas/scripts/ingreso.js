@@ -8,7 +8,7 @@
     {
         MostrarFormularioIngreso(false)
         ListarRegistrosIngreso()
-        $("#BtnAuxiliar").hide()
+        $("#BtnGuardar").hide()
 
         $("#FormularioRegistroIngreso").on("submit",function(e)
         {
@@ -45,7 +45,7 @@
         {
             $("#TablaIngresos").hide()
             $("#FormularioIngreso").show()
-            $("#BtnGuardar").prop("disabled",false)
+            //$("#BtnGuardar").prop("disabled",false)
             $("#BtnAgregar").hide()
             ListarRegistrosArticulos()
         }
@@ -130,8 +130,6 @@
             $("#seriecomprobante").val(data.serie_comprobante)
             $("#numcomprobante").val(data.num_comprobante)
             $("#impuesto").val(data.impuesto)
-            
-            $("#BtnAuxiliar").show()
 
             $.post("../ajax/Ingreso.php?Operacion=SeleccionarDetallesIngresos&id="+idingreso,
                 function(r)
@@ -266,11 +264,11 @@
     {
         if(detalle>0)
         {
-            $("#BtnAuxiliar").show()
+            $("#BtnGuardar").show()
         }
         else
         {
-            $("#BtnAuxiliar").hide()
+            $("#BtnGuardar").hide()
             contador=0
         }
     }
