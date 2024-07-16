@@ -23,6 +23,11 @@ switch($_GET["Operacion"])
             $respuesta = $ingreso->RegistrarIngreso($idproveedor,$idusuario,$tipocomprobante,$seriecomprobante,$numcomprobante,$fechahora,$impuesto,$totalcompra,$_POST["idarticulo"],$_POST["cantidad"],$_POST["preciocompra"],$_POST["precioventa"]);
             echo $respuesta ? "Se Registro Un Ingreso Correctamente" : "Error, No Se Logro Registrar el Ingreso";
         }
+        else
+        {
+            $respuesta = $ingreso->EditarIngreso($idingreso,$idproveedor,$tipocomprobante,$tipocomprobante,$seriecomprobante,$numcomprobante,$fechahora,$impuesto,$totalcompra,$_POST["idarticulo"],$_POST["cantidad"],$_POST["preciocompra"],$_POST["precioventa"]);
+            echo $respuesta ? "Se Actualizo Correctamente el Ingreso" : "Error, No se Logro Actualizar el Ingreso";
+        }
     break;
     case 'AnularIngreso':
         $respuesta = $ingreso->AnularIngreso($idingreso);
