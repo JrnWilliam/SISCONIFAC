@@ -26,6 +26,26 @@ Class CIngresos
         return $centinela;
     }
 
+    public function EditarIngreso($idingreso,$idproveedor,$tipocomprobante,$seriecomprobante,$numcomprobante,$fechahora,$impuesto,$totalcompra,$idarticulo,$cantidad,$preciocompra,$precioventa)
+    {
+        $sql = "UPDATE ingreso SET idproveedor='$idproveedor', tipo_comprobante='$tipocomprobante',serie_comprobante='$seriecomprobante',num_comprobante='$numcomprobante',fecha_hora='$fechahora',impuesto='$impuesto',total_compra='$totalcompra' WHERE idingreso='$idingreso'";
+        Ejecutar_Consulta($sql);
+
+        $deleteingreso = "DELETE FROM detalle_ingreso WHERE idingreso='$idingreso'";
+        Ejecutar_Consulta($deleteingreso);
+
+        $numingresos = 0;
+        $centinela = true;
+
+        while($numingresos < count($idarticulo))
+        {
+            $consulta = "INSERT INTO detalle_ingreso(idingreso,idarticulo,cantidad,precio_compra,precio_venta) VALUES ('$idingreso','$idarticulo[$numingresos]','$cantidad[$numingresos]','$preciocompra[$numingresos]','$precioventa[$numingresos]')";
+            Ejecutar_Consulta($consulta) or $centinela = false;
+            $numingresos+=1;
+        }
+        return $centinela;
+    }
+
     public function AnularIngreso($idingreso)
     {
         $sql = "UPDATE ingreso SET estado='Anulado' WHERE idingreso='$idingreso'";
