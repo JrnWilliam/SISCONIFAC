@@ -102,7 +102,6 @@ else
                         <th>Precio Compra</th>
                         <th>Precio Venta</th>
                         <th>Sub Total</th>
-                        <th>Opciones</th>
                       </thead>
                       <tfoot>
                         <th>TOTAL</th>
@@ -110,7 +109,6 @@ else
                         <th></th>
                         <th></th>
                         <th></th>
-                        <th>Opciones</th>
                         <th><h4 id="total">C$ 0.00</h4><input type="hidden" name="totalcompra" id="totalcompra"></th>
                       </tfoot>
                       <tbody>
