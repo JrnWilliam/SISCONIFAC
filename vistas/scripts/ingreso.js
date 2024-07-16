@@ -142,6 +142,7 @@
                 function(r)
                 {
                     $("#TablaDetalles").html(r)
+                    ModificarSubtotales()
                 }
             )
         })
@@ -161,7 +162,6 @@
                     function(e)
                     {
                         bootbox.alert(e)
-                        //tablaingresos.ajax.reload()
                         ListarRegistrosIngreso()
                     })
             }
