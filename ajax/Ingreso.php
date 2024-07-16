@@ -74,7 +74,6 @@ switch($_GET["Operacion"])
                         <th>Precio Compra</th>
                         <th>Precio Venta</th>
                         <th>Sub Total</th>
-                        <th>Opciones</th>
                 </thead>';
         while($registro = $respuesta->fetch_object())
         {
@@ -95,7 +94,6 @@ switch($_GET["Operacion"])
                 <th></th>
                 <th></th>
                 <th></th>
-                <th>Opciones</th>
                     <th><h4 id="total">C$ '.$total.'</h4><input type="hidden" name="totalcompra" id="totalcompra"></th>
             </tfoot>';
     break;
