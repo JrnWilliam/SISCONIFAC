@@ -84,7 +84,6 @@ switch($_GET["Operacion"])
             '<td>'.$registro->precio_compra.'</td>'.
             '<td>'.$registro->precio_venta.'</td>'.
             '<td>'.$registro->precio_compra*$registro->cantidad.'</td>'.
-            '<td></td>'.
             '</tr>';
             $total = $total + ($registro->precio_compra*$registro->cantidad);
         }
@@ -94,7 +93,7 @@ switch($_GET["Operacion"])
                 <th></th>
                 <th></th>
                 <th></th>
-                    <th><h4 id="total">C$ '.$total.'</h4><input type="hidden" name="totalcompra" id="totalcompra"></th>
+                <th><h4 id="total">C$ '.$total.'</h4><input type="hidden" name="totalcompra" id="totalcompra"></th>
             </tfoot>';
     break;
     case 'SeleccionarProveedor':
