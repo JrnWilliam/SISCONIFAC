@@ -169,7 +169,7 @@
 
     function ListarRegistrosArticulos()
     {
-        tablaingresosarticulos = $("#TablaListadoArticulos").dataTable(
+        tablaingresos = $("#TablaListadoArticulos").dataTable(
             {
                 "aProcessing":true,
                 "aServerSide":true,
