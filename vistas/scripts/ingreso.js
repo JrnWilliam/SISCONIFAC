@@ -161,7 +161,8 @@
                     function(e)
                     {
                         bootbox.alert(e)
-                        tablaingresos.ajax.reload()
+                        //tablaingresos.ajax.reload()
+                        ListarRegistrosIngreso()
                     })
             }
         })
@@ -217,8 +218,8 @@
             var fila = '<tr class="filas" id="fila'+contador+'">'+
             '<td><button type="button" class="btn btn-danger" onclick="EliminarCompra('+contador+')">X</button></td>'+
             '<td><input type="hidden" name="idarticulo[]" value="'+idarticulo+'">'+articulo+'</td>'+
-            '<td><input type="number" name="cantidad[]" id="cantidad[]" value="'+cantidad+'"></td>'+
-            '<td><input type="number" name="preciocompra[]" id="preciocompra[]" value="'+preciocompra+'"></td>'+
+            '<td><input type="number" name="cantidad[]" id="cantidad'+contador+'" value="'+cantidad+'"></td>'+
+            '<td><input type="number" name="preciocompra[]" id="preciocompra'+contador+'" value="'+preciocompra+'"></td>'+
             '<td><input type="number" name="precioventa[]" value="'+precioventa+'"></td>'+
             '<td><span name="subtotal" id="subtotal'+contador+'">'+subtotal+'</span></td>'+
             '<td><button class="btn btn-info" type="button" onclick="ModificarSubtotales()" title="Modificar Subtotales"><i class="fa fa-refresh"></i></button></td>'+
@@ -226,6 +227,8 @@
             contador++
             detalle++
             $('#TablaDetalles').append(fila)
+            $("#cantidad" +(contador-1)).on('input',ModificarSubtotales)
+            $("#preciocompra"+(contador-1)).on('input',ModificarSubtotales)
             ModificarSubtotales()
         }
         else
