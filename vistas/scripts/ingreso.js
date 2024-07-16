@@ -222,7 +222,6 @@
             '<td><input type="number" name="preciocompra[]" id="preciocompra'+contador+'" value="'+preciocompra+'"></td>'+
             '<td><input type="number" name="precioventa[]" value="'+precioventa+'"></td>'+
             '<td><span name="subtotal" id="subtotal'+contador+'">'+subtotal+'</span></td>'+
-            '<td><button class="btn btn-info" type="button" onclick="ModificarSubtotales()" title="Modificar Subtotales"><i class="fa fa-refresh"></i></button></td>'+
             '</tr>'
             contador++
             detalle++
