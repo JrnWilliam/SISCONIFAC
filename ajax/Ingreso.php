@@ -25,7 +25,7 @@ switch($_GET["Operacion"])
         }
         else
         {
-            $respuesta = $ingreso->EditarIngreso($idingreso,$idproveedor,$tipocomprobante,$tipocomprobante,$seriecomprobante,$numcomprobante,$fechahora,$impuesto,$totalcompra,$_POST["idarticulo"],$_POST["cantidad"],$_POST["preciocompra"],$_POST["precioventa"]);
+            $respuesta = $ingreso->EditarIngreso($idingreso,$idproveedor,$tipocomprobante,$seriecomprobante,$numcomprobante,$fechahora,$impuesto,$totalcompra,isset($_POST['idarticulo']) ? $_POST['idarticulo'] : [],isset($_POST['cantidad']) ? $_POST['cantidad'] : [],isset($_POST['preciocompra']) ? $_POST['preciocompra'] : [],isset($_POST['precioventa']) ? $_POST['precioventa'] : []);
             echo $respuesta ? "Se Actualizo Correctamente el Ingreso" : "Error, No se Logro Actualizar el Ingreso";
         }
     break;
@@ -80,8 +80,8 @@ switch($_GET["Operacion"])
             echo '<tr class="filas" id="fila'.$registro->idarticulo.'">'.
             '<td> <button type="button" class="btn btn-danger" onclick="EliminarCompra('.$registro->idarticulo.')"><i class="fa fa-close"></i></button></td>'.
             '<td><input type="hidden" name="idarticulo[]" value="'.$registro->idarticulo.'">'.$registro->nombre.'</td>'.
-            '<td><input type="number" name="cantidad[]" id="cantidad'.$registro->idarticulo.'" value="'.$registro->cantidad.'" oninput="ModificarSubtotales()"></td>'.
-            '<td><input type="number" name="preciocompra[]" id="preciocompra'.$registro->idarticulo.'" value="'.$registro->precio_compra.'" oninput="ModificarSubtotales()"></td>'.
+            '<td><input type="number" name="cantidad[]" id="cantidad'.$registro->idarticulo.'" value="'.$registro->cantidad.'" oninput="ModificarSubtotales(); EvaluarCompra();"></td>'.
+            '<td><input type="number" name="preciocompra[]" id="preciocompra'.$registro->idarticulo.'" value="'.$registro->precio_compra.'" oninput="ModificarSubtotales(); EvaluarCompra();"></td>'.
             '<td><input type="number" name="precioventa[]" value="'.$registro->precio_venta.'"></td>'.
             '<td><span name="subtotal" id="subtotal'.$registro->idarticulo.'">'.($registro->precio_compra*$registro->cantidad).'</span></td>'.
             '</tr>';
