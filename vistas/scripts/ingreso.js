@@ -143,6 +143,7 @@
                 {
                     $("#TablaDetalles").html(r)
                     ModificarSubtotales()
+                    detalle = document.getElementsByClassName("filas").length
                 }
             )
         })
@@ -252,6 +253,7 @@
             document.getElementsByName("subtotal")[i].innerHTML = inpsubtotal.value
         }
         CalcularTotales()
+        EvaluarCompra()
     }
 
     function CalcularTotales()
