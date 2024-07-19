@@ -25,6 +25,26 @@ Class CVentas
         return $centinela;
     }
 
+    public function EditarVentas($idventa,$idcliente,$idusuario,$tipocomprobante,$seriecomprobante,$numcomprobante,$fechahora,$impuesto,$totalventa,$idarticulo,$cantidad,$precioventa,$descuento)
+    {
+        $sql = "UPDATE ventas SET idcliente='$idcliente',idusuario='$idusuario',tipo_comprobante='$tipocomprobante',serie_comprobante='$seriecomprobante',num_comprobante='$numcomprobante',fecha_hora='$fechahora',impuesto='$impuesto',total_venta='$totalventa' WHERE idventa='$idventa'";
+        Ejecutar_Consulta($sql);
+
+        $deleteventas = "DELETE FROM detalle_venta WHERE idventa='$idventa'";
+        Ejecutar_Consulta($deleteventas);
+
+        $numventas = 0;
+        $centinela = false;
+
+        while($numventas < count($idarticulo))
+        {
+            $consulta = "INSERT INTO detalle_venta(idventa,idarticulo,cantidad,precio_venta,descuento) VALUES ('$idventa','$idarticulo[$numventas]','$cantidad[$numventas]','$precioventa[$numventas]','$descuento[$numventas]')";
+            Ejecutar_Consulta($consulta) or $centinela = false;
+            $numventas+=1;
+        }
+        return $centinela;
+    }
+
     public function AnularVentas($idventa)
     {
         $sql = "UPDATE venta SET estado='Anulado' WHERE idventa='$idventa'";
