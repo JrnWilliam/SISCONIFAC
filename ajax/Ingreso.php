@@ -45,7 +45,7 @@ switch($_GET["Operacion"])
         while($registro = $respuesta->fetch_object())
         {
             $data[] = array(
-                "0"=>($registro->estado=='Aceptado')?'<button class="btn btn-warning" onclick="MostrarRegistroIngreso('.$registro->idingreso.')"><i class="fa fa-eye"></i></button>'.' <button class= "btn btn-danger" onclick="AnularIngreso('.$registro->idingreso.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="MostrarRegistroIngreso('.$registro->idingreso.')"><i class="fa fa-eye"></i></button>',
+                "0"=>($registro->estado=='Aceptado')?'<button class="btn btn-warning" onclick="MostrarRegistroIngreso('.$registro->idingreso.')"><i class="fa fa-eye"></i></button>'.' <button class= "btn btn-danger" onclick="AnularIngreso('.$registro->idingreso.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="MostrarRegistroIngresoAnulado('.$registro->idingreso.')"><i class="fa fa-eye"></i></button>',
                 "1"=>$registro->fecha,
                 "2"=>$registro->proveedor,
                 "3"=>$registro->usuario,
@@ -84,6 +84,40 @@ switch($_GET["Operacion"])
             '<td><input type="number" name="preciocompra[]" id="preciocompra'.$registro->idarticulo.'" value="'.$registro->precio_compra.'" oninput="ModificarSubtotales(); EvaluarCompra();"></td>'.
             '<td><input type="number" name="precioventa[]" value="'.$registro->precio_venta.'"></td>'.
             '<td><span name="subtotal" id="subtotal'.$registro->idarticulo.'">'.($registro->precio_compra*$registro->cantidad).'</span></td>'.
+            '</tr>';
+            $total = $total + ($registro->precio_compra*$registro->cantidad);
+        }
+        echo '<tfoot>
+                <th>TOTAL</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th><h4 id="total">C$ '.$total.'</h4><input type="hidden" name="totalcompra" id="totalcompra"></th>
+            </tfoot>';
+    break;
+    case 'SeleccionarDetallesIngresoAnulado':
+        $id = $_GET['id'];
+        $respuesta = $ingreso->SeleccionarRegistroDetalleIngreso($id);
+        $total = 0;
+
+        echo '<thead style="background-color:#B4F8C8">
+                        <th>Opciones</th>
+                        <th>Artículo</th>
+                        <th>Cantidad</th>
+                        <th>Precio Compra</th>
+                        <th>Precio Venta</th>
+                        <th>Sub Total</th>
+                </thead>';
+        while($registro=$respuesta->fetch_object())
+        {
+            echo '<tr class="filas">'.
+            '<td></td>'.
+            '<td>'.$registro->nombre.'</td>'.
+            '<td>'.$registro->cantidad.'</td>'.
+            '<td>'.$registro->precio_compra.'</td>'.
+            '<td>'.$registro->precio_venta.'</td>'.
+            '<td>'.$registro->precio_compra*$registro->cantidad.'</td>'.
             '</tr>';
             $total = $total + ($registro->precio_compra*$registro->cantidad);
         }
