@@ -36,6 +36,8 @@
         $("#totalcompra").val("")
         $(".filas").remove()
         $("#total").html("0")
+        $("#BtnGuardar").hide()
+        detalle=0;
 
         var ahora = new Date()
         var dia = ("0" + ahora.getDate()).slice(-2)
@@ -44,8 +46,31 @@
         $('#fechahora').val(hoy)
     }
 
+    function DeshabilitarCampos()
+    {
+        $("#idproveedor").prop("disabled",true)
+        $("#fechahora").prop("disabled",true)
+        $("#tipocomprobante").prop("disabled",true)
+        $("#seriecomprobante").prop("disabled",true)
+        $("#numcomprobante").prop("disabled",true)
+        $("#impuesto").prop("disabled",true)
+        $("#AgregarArticulo").hide()
+    }
+
+    function HabilitarCampos()
+    {
+        $("#idproveedor").prop("disabled",false)
+        $("#fechahora").prop("disabled",false)
+        $("#tipocomprobante").prop("disabled",false)
+        $("#seriecomprobante").prop("disabled",false)
+        $("#numcomprobante").prop("disabled",false)
+        $("#impuesto").prop("disabled",false)
+        $("#AgregarArticulo").show()
+    }
+
     function MostrarFormularioIngreso(valor)
     {
+        HabilitarCampos()
         LimpiarCampos()
         if(valor)
         {
@@ -124,8 +149,10 @@
 
     function MostrarRegistroIngreso(idingreso)
     {
-        $.post("../ajax/Ingreso.php?Operacion=SeleccionarRegistroIngreso", {idingreso:idingreso}, function(data,status){
+        $.post("../ajax/Ingreso.php?Operacion=SeleccionarRegistroIngreso", {idingreso:idingreso}, function(data,status)
+        {
             data = JSON.parse(data)
+            HabilitarCampos()
             MostrarFormularioIngreso(true)
 
             $("#idingreso").val(data.idingreso)
@@ -147,6 +174,41 @@
                 }
             )
         })
+        ActBtnGuardarEdit()
+    }
+
+    function MostrarRegistroIngresoAnulado(idingreso)
+    {
+        $.post("../ajax/Ingreso.php?Operacion=SeleccionarRegistroIngreso",
+            {
+                idingreso:idingreso
+            },
+            function(data,status)
+            {
+                data = JSON.parse(data)
+                MostrarFormularioIngreso(true)
+
+            $("#idingreso").val(data.idingreso)
+            $("#idproveedor").val(data.idproveedor)
+            $("#idproveedor").selectpicker('refresh')
+            $("#fechahora").val(data.fecha)
+            $("#tipocomprobante").val(data.tipo_comprobante)
+            $("#tipocomprobante").selectpicker('refresh')
+            $("#seriecomprobante").val(data.serie_comprobante)
+            $("#numcomprobante").val(data.num_comprobante)
+            $("#impuesto").val(data.impuesto)
+
+            DeshabilitarCampos()
+
+            $.post("../ajax/Ingreso.php?Operacion=SeleccionarDetallesIngresoAnulado&id="+idingreso,
+                function(r)
+                {
+                    $("#TablaDetalles").html(r)
+                    // ModificarSubtotales()
+                    // detalle = document.getElementsByClassName("filas").length
+                })
+            }
+        )
     }
 
     function AnularIngreso(idingreso)
@@ -217,7 +279,7 @@
         {
             var subtotal = cantidad*preciocompra
             var fila = '<tr class="filas" id="fila'+contador+'">'+
-            '<td><button type="button" class="btn btn-danger" onclick="EliminarCompra('+contador+')">X</button></td>'+
+            '<td><button type="button" class="btn btn-danger" onclick="EliminarCompra('+contador+')"><i class="fa fa-close"></i></button></td>'+
             '<td><input type="hidden" name="idarticulo[]" value="'+idarticulo+'">'+articulo+'</td>'+
             '<td><input type="number" name="cantidad[]" id="cantidad'+contador+'" value="'+cantidad+'"></td>'+
             '<td><input type="number" name="preciocompra[]" id="preciocompra'+contador+'" value="'+preciocompra+'"></td>'+
@@ -290,4 +352,13 @@
         CalcularTotales()
         detalle = detalle-1
     }
+
+    function ActBtnGuardarEdit()
+    {
+        $("#idproveedor, #tipocomprobante, #fechahora, #seriecomprobante,#numcomprobante,#impuesto").change(function()
+        {
+            $("#BtnGuardar").show()
+        })   
+    }
+
     IniciarIngresos()
