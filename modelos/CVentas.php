@@ -24,5 +24,11 @@ Class CVentas
         }
         return $centinela;
     }
+
+    public function AnularVentas($idventa)
+    {
+        $sql = "UPDATE venta SET estado='Anulado' WHERE idventa='$idventa'";
+        return Ejecutar_Consulta($sql);
+    }
 }
 ?>
