@@ -56,5 +56,11 @@ class CArticulo
         $sql = "SELECT a.idarticulo, a.idcategoria, c.nombre as categoria, a.codigo, a.nombre, a.stock, a.descripcion, a.imagen, a.condicion FROM articulo a INNER JOIN categoria c ON a.idcategoria=c.idcategoria WHERE a.condicion='1'";
         return Ejecutar_Consulta($sql);
     }
+
+    public function MostrarActivosVenta()
+    {
+        $sql = "SELECT a.idarticulo,a.idcategoria,c.nombre AS categoria, a.codigo, a.nombre, a.stock,(SELECT precio_venta FROM detalle_ingreso WHERE idarticulo=a.idarticulo AND precio_venta ORDER BY iddetalle_ingreso DESC LIMIT 0,1) AS precioventa, a.descripcion, a.imagen, a.condicion FROM articulo a INNER JOIN categoria c ON a.idcategoria=c.idcategoria WHERE a.condicion = '1' AND (SELECT precio_venta FROM detalle_ingreso WHERE idarticulo=a.idarticulo ORDER BY iddetalle_ingreso DESC LIMIT 1) IS NOT NULL";
+        return Ejecutar_Consulta($sql);
+    }
 }
 ?>
