@@ -63,6 +63,11 @@ Class CVentas
         return Ejecutar_Consulta($sql);
     }
 
+    public function MostrarVentas()
+    {
+        $sql = "SELECT v.idventa,DATE(v.fecha_hora) AS fecha,v.idcliente,p.nombre AS cliente,u.idusuario,u.nombre AS usuario,v.tipo_comprobante,v.serie_comprobante,v.num_comprobante,v.total_venta,v.impuesto,v.estado FROM ventas v INNER JOIN persona p ON v.idcliente=p.idpersona INNER JOIN usuario u ON v.idusuario=u.idusuario ORDER BY v.idventa DESC";
+        return Ejecutar_Consulta($sql);
+    }
     
 }
 ?>
