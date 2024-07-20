@@ -33,9 +33,33 @@ switch($_GET["Operacion"])
         $respuesta = $ventas->AnularVentas($idventa);
         echo $respuesta ? "Se Anulo Correctamente la Venta" : "Error no se Logro Anular la Venta";
     break;
+    case "SeleccionarRegistroVentas":
+        $respuesta = $ventas->SeleccionarRegistroVentas($idventa);
+        echo json_encode($respuesta);
+    break;
     case "MostrarVentas":
         $respuesta = $ventas->MostrarVentas();
-        echo json_encode($respuesta);
+        $data = Array();
+
+        while($registro = $respuesta->fetch_object())
+        {
+            $data = array(
+                "0"=>(($registro->estado=='Aceptado')?'<button class="btn btn-warning" onclick="MostrarRegistroVenta('.$registro->idventa.')"><i class="fa fa-pencil"></i></button>'.'<button class="btn btn-danger" onclick="AnularVenta('.$registro->idventa.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="MostrarRegistroVentaAnulado('.$registro->idventa.')"><i class="fa fa-eye"></i></button>'),
+                "1"=>$registro->fecha,
+                "2"=>$registro->cliente,
+                "3"=>$registro->usuario,
+                "4"=>$registro->tipo_comprobante,
+                "5"=>$registro->serie_comprobante.'-'.$registro->num,
+                "6"=>$registro->total_venta,
+                "7"=>($registro->estado=="Aceptado")?'<span class="label bg-green">Aceptado</span>':'<span class="label bg-red">Anulado<span>'
+            );
+        }
+        $resultado= array(
+            "sEcho"=>1,
+            "iTotalRecords"=>count($data),
+            "iTotalDisplayRecords"=>count($data),
+            "aaData"=>$data);
+            echo json_encode($resultado);
     break;
 }
 
