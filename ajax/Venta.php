@@ -29,6 +29,10 @@ switch($_GET["Operacion"])
             echo $respuesta ? "Se Edito Correctamente la Venta" : "Error, No se Logro Editar la Venta";
         }
     break;
+    case "AnularVenta":
+        $respuesta = $ventas->AnularVentas($idventa);
+        echo $respuesta ? "Se Anulo Correctamente la Venta" : "Error no se Logro Anular la Venta";
+    break;
 }
 
 ?>
