@@ -34,9 +34,9 @@ switch($_GET["Operacion"])
         echo $respuesta ? "Se Anulo Correctamente la Venta" : "Error no se Logro Anular la Venta";
     break;
     case "MostrarVentas":
-        break;
         $respuesta = $ventas->MostrarVentas();
         echo json_encode($respuesta);
+    break;
 }
 
 ?>
