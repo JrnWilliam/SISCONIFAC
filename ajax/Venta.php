@@ -81,9 +81,18 @@ switch($_GET["Operacion"])
             '<td><input type="number" name="cantidad[]" id="cantidad'.$registro->idarticulo.'" value="'.$registro->cantidad.'" oninput="ModificarSubtotales(); EvaluarVenta();"></td>'.
             '<td><input type="number" name="precioventa[]" id="precioventa'.$registro->idarticulo.'" value="'.$registro->precio_venta.'" oninput="ModificarSubtotales(); EvaluarVenta();"></td>'.
             '<td><input type="number" name="descuento[]" value="'.$registro->descuento.'"></td>'.
-            '<td><></td>'.
+            '<td><span name="subtotal" id="subtotal'.$registro->idarticulo.'">'.(($registro->precio_venta*$registro->cantidad)-$registro->descuento).'</span></td>'.
             '</tr>';
+            $total = $total +(($registro->precio_venta*$registro->cantidad)-$registro->descuento);
         }
+        echo '<tfoot>
+                <th>TOTAL</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th><h4 id="total">C$ '.$total.'</h4><input type="hidden" name="totalcompra" id="totalcompra"></th>
+            </tfoot>';
     break;
 }
 
