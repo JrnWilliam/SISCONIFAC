@@ -34,7 +34,7 @@ Class CVentas
         Ejecutar_Consulta($deleteventas);
 
         $numventas = 0;
-        $centinela = false;
+        $centinela = true;
 
         while($numventas < count($idarticulo))
         {
