@@ -66,9 +66,10 @@ function ListarRegistros()
 {
     tablaarticulo = $('#TablaListadoArticulos').dataTable(
         {
+            "lengthMenu": [ 10, 15, 20, 25, 30],
             "aProcessing": true,
             "aServerSide": true,
-            dom: 'Bfrtip',
+            dom: '<Bl<f>rtip>',
             buttons: [
                 'copyHtml5',
                 'excelHtml5',
@@ -84,6 +85,10 @@ function ListarRegistros()
                 {
                     console.log(e.responseText);
                 }
+            },
+            "language":
+            {
+                "lengthMenu": "Mostrar : _MENU_ Registros"
             },
             "bDestroy": true,
             "iDisplayLength": 10,
