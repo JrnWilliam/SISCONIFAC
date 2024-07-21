@@ -43,7 +43,7 @@ switch($_GET["Operacion"])
 
         while($registro = $respuesta->fetch_object())
         {
-            $data = array(
+            $data[] = array(
                 "0"=>(($registro->estado=='Aceptado')?'<button class="btn btn-warning" onclick="MostrarRegistroVenta('.$registro->idventa.')"><i class="fa fa-pencil"></i></button>'.'<button class="btn btn-danger" onclick="AnularVenta('.$registro->idventa.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="MostrarRegistroVentaAnulado('.$registro->idventa.')"><i class="fa fa-eye"></i></button>'),
                 "1"=>$registro->fecha,
                 "2"=>$registro->cliente,
@@ -84,6 +84,40 @@ switch($_GET["Operacion"])
             '<td><span name="subtotal" id="subtotal'.$registro->idarticulo.'">'.(($registro->precio_venta*$registro->cantidad)-$registro->descuento).'</span></td>'.
             '</tr>';
             $total = $total +(($registro->precio_venta*$registro->cantidad)-$registro->descuento);
+        }
+        echo '<tfoot>
+                <th>TOTAL</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th><h4 id="total">C$ '.$total.'</h4><input type="hidden" name="totalcompra" id="totalcompra"></th>
+            </tfoot>';
+    break;
+    case "SeleccionarDetallesVentaAnulada":
+        $id = $_GET['id'];
+        $respuesta = $ventas->SeleccionarRegistroDetalleVentas($id);
+        $total = 0;
+
+        echo '<thead style="background-color:#B4F8C8">
+                        <th>Opciones</th>
+                        <th>Artículo</th>
+                        <th>Cantidad</th>
+                        <th>Precio Compra</th>
+                        <th>Precio Venta</th>
+                        <th>Sub Total</th>
+                </thead>';
+        while($registro = $respuesta->fetch_object())
+        {
+            echo '<tr class="filas">'.
+            '<td></td>'.
+            '<td>'.$registro->nombre.'</td>'.
+            '<td>'.$registro->cantidad.'</td>'.
+            '<td>'.$registro->precio_venta.'</td>'.
+            '<td>'.$registro->descuento.'</td>'.
+            '<td>'.$registro->subtotal.'</td>'.
+            '</tr>';
+            $total = $total + (($registro->precio_venta*$registro->cantidad)-$registro->descuento);
         }
         echo '<tfoot>
                 <th>TOTAL</th>
