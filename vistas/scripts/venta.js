@@ -1,8 +1,10 @@
 var tablaventas
 
-function InicarVenta()
+function IniciarVenta()
 {
-
+    MostrarFormularioVenta(false)
+    MostrarVentas()
+    
 }
 
 function MostrarFormularioVenta(valor)
@@ -32,4 +34,39 @@ function LimpiarCampos()
     $("#impuesto").val("")
 }
 
-InicarVenta()
+function MostrarVentas()
+{
+    tablaventas = $('#TablaListadoVentas').dataTable(
+        {
+            "lengthMenu": [5,10,15,20,25,30],
+            "aProcessing": true,
+            "aServerSide": true,
+            dom: '<Bl<f>rtip>',
+            buttons: [
+                'copyHtml5',
+		        'excelHtml5',
+		        'csvHtml5',
+		        'pdf'
+            ],
+            "ajax":
+            {
+                url: '../ajax/Venta.php?Operacion=MostrarVentas',
+                type: "get",
+                dataType: "json",
+                error: function(e)
+                {
+                    console.log(e.resposeText)
+                }
+            },
+            "language":
+            {
+                "lengthMenu": "Mostrar : _MENU_ registros"
+            },
+            "bDestroy": true,
+            "iDisplayLength": 5,
+            "order": [[0,"desc"]]
+        }
+    ).DataTable()
+}
+
+IniciarVenta()
