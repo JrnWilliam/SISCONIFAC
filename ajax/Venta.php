@@ -61,6 +61,30 @@ switch($_GET["Operacion"])
             "aaData"=>$data);
             echo json_encode($resultado);
     break;
+    case "SeleccionarDetalleVentas":
+        $id = $_GET['id'];
+        $respuesta = $ventas->SeleccionarRegistroDetalleVentas($id);
+        $total = 0;
+        echo '<thead style="background-color:#B4F8C8">
+                        <th>Opciones</th>
+                        <th>Artículo</th>
+                        <th>Cantidad</th>
+                        <th>Precio Venta</th>
+                        <th>Descuento</th>
+                        <th>Sub Total</th>
+                </thead>';
+        while($registro = $respuesta->fetch_object())
+        {
+            echo '<tr class="filas" id="fila'.$registro->idarticulo.'">'.
+            '<td><button type="button" class="btn btn-danger" onclick="EliminarVenta('.$registro->idarticulo.')"><i class="fa fa-close"></i></button></td>'.
+            '<td><input type="hidden" name="idarticulo[]" value="'.$registro->idarticulo.'">'.$registro->nombre.'</td>'.
+            '<td><input type="number" name="cantidad[]" id="cantidad'.$registro->idarticulo.'" value="'.$registro->cantidad.'" oninput="ModificarSubtotales(); EvaluarVenta();"></td>'.
+            '<td><input type="number" name="precioventa[]" id="precioventa'.$registro->idarticulo.'" value="'.$registro->precio_venta.'" oninput="ModificarSubtotales(); EvaluarVenta();"></td>'.
+            '<td><input type="number" name="descuento[]" value="'.$registro->descuento.'"></td>'.
+            '<td><></td>'.
+            '</tr>';
+        }
+    break;
 }
 
 ?>

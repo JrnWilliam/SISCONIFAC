@@ -18,17 +18,17 @@ switch ($_GET["operacion"])
         if(empty($idpersona))
         {
             $respuesta = $persona->InsertarRegistroPersona($tipopersona,$nombre,$tipodocumento,$numdocumento,$direccion,$telefono,$email);
-            echo $respuesta ? "Se Guardo correctamente el Registro de la Persona" : "Error, No se pudo Guardar el Registro de la Persona";
+            echo $respuesta ? "Se Guardo correctamente el Registro" : "Error, No se pudo Guardar el Registro";
         }
         else
         {
             $respuesta = $persona->ActualizarRegistroPersona($idpersona,$tipopersona,$nombre,$tipodocumento,$numdocumento,$direccion,$telefono,$email);
-            echo $respuesta ? "Se Actualizo Correctamente el Registro de la Persona" : "Error, No se Logro Actualizar el Registro de la Persona";
+            echo $respuesta ? "Se Actualizo Correctamente el Registro" : "Error, No se Logro Actualizar el Registro";
         }
         break;
     case 'Eliminar':
         $respuesta = $persona->EliminarRegistroPersona($idpersona);
-        echo $respuesta ? "Se Elimino Correctamente el Registro de la Persona" : "Error, No se Logro Eliminar el Registro de  la Persona";
+        echo $respuesta ? "Se Elimino Correctamente el Registro" : "Error, No se Logro Eliminar el Registro";
     break;
     case 'Seleccionar':
         $respuesta = $persona->SeleccionarRegistroPersona($idpersona);
