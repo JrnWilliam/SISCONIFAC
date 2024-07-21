@@ -1,4 +1,4 @@
-    var tablaingresos;
+    var tablaingresos
     var impuesto = 15   
     var contador= 0
     var detalle = 0
@@ -76,7 +76,6 @@
             $("#impuesto").val("0")
             $("#TablaIngresos").hide()
             $("#FormularioIngreso").show()
-            //$("#BtnGuardar").prop("disabled",false)
             $("#BtnAgregar").hide()
             ListarRegistrosArticulos()
         }
