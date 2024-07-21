@@ -128,6 +128,17 @@ switch($_GET["Operacion"])
                 <th><h4 id="total">C$ '.$total.'</h4><input type="hidden" name="totalcompra" id="totalcompra"></th>
             </tfoot>';
     break;
+    case "SeleccionarCliente":
+        require_once "../modelos/CPersona.php";
+        $ObjPersona = new CPersona();
+
+        $respuesta = $ObjPersona->MostrarRegistrosClientes();
+
+        while($registro = $respuesta->fetch_object())
+        {
+            echo '<option value='.$registro->idpersona.'>'.$registro->nombre.'</option>';
+        }
+    break;
 }
 
 ?>
