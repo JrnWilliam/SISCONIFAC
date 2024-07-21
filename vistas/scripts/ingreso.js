@@ -26,8 +26,7 @@
 
     function LimpiarCampos()
     {
-        $("#idproveedor").val("")
-        $("#proveedor").val("")
+        $("#idingreso").val("")
         $("#tipocomprobante").val('').selectpicker('refresh')
         $("#seriecomprobante").val("")
         $("#numcomprobante").val("")
