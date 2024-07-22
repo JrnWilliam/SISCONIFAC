@@ -4,7 +4,6 @@ function IniciarVenta()
 {
     MostrarFormularioVenta(false)
     MostrarVentas()
-    
 }
 
 function MostrarFormularioVenta(valor)
@@ -36,7 +35,7 @@ function LimpiarCampos()
 
 function MostrarVentas()
 {
-    tablaventas = $('#TablaListadoVentas').dataTable(
+    tablaventas = $('#TablaListadoVenta').dataTable(
         {
             "lengthMenu": [5,10,15,20,25,30],
             "aProcessing": true,
