@@ -1,4 +1,7 @@
 var tablaventas
+var impuesto = 15
+var contador = 0
+var detalle = 0
 
 function IniciarVenta()
 {
