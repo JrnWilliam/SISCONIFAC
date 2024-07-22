@@ -110,7 +110,7 @@ else
                         <th></th>
                         <th></th>
                         <th></th>
-                        <th><h4 id="total">C$ 0.00</h4><input type="hidden" name="totalcompra" id="totalcompra"></th>
+                        <th><h4 id="total">C$ 0.00</h4><input type="hidden" name="totalventa" id="totalventa"></th>
                       </tfoot>
                       <tbody>
 
