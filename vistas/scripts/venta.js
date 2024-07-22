@@ -4,6 +4,11 @@ function IniciarVenta()
 {
     MostrarFormularioVenta(false)
     MostrarVentas()
+
+    $("#FormularioRegistroVenta").on("submit",function(e)
+    {
+        GuardarEditarVenta(e)
+    })
 }
 
 function MostrarFormularioVenta(valor)
@@ -59,13 +64,36 @@ function MostrarVentas()
             },
             "language":
             {
-                "lengthMenu": "Mostrar : _MENU_ registros"
+                "lengthMenu": "Mostrar : _MENU_ Registros"
             },
             "bDestroy": true,
             "iDisplayLength": 5,
             "order": [[0,"desc"]]
         }
     ).DataTable()
+}
+
+function GuardarEditarVenta(e)
+{
+    e.preventDefault()
+    var formdata = FormData($("#FormularioRegistroVenta")[0]);
+
+    $.ajax(
+        {
+            url: "../ajax/Venta.php?Operacion=GuardarEditar",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(datos)
+            {
+                bootbox.alert(datos)
+                MostrarFormularioVenta(false)
+                MostrarVentas()
+            }
+        }
+    )
+    LimpiarCampos()
 }
 
 IniciarVenta()
