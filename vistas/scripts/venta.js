@@ -9,6 +9,12 @@ function IniciarVenta()
     {
         GuardarEditarVenta(e)
     })
+
+    $.post("../ajax/Venta.php?Operacion=SeleccionarCliente",function (r)
+    {
+        $("#idcliente").html(r)
+        $('#idcliente').selectpicker('refresh')  
+    })
 }
 
 function MostrarFormularioVenta(valor)
