@@ -123,6 +123,7 @@ function GuardarEditarVenta(e)
     LimpiarCampos()
 }
 
+
 function CargarArticulos()
 {
     tablaventas = $("#TablaListadoArticulos").dataTable(
@@ -173,12 +174,12 @@ function SeleccionarRegistroVenta(idventa)
                 function(r)
                 {
                     $("#TablaDetallesVenta").html(r)
-
+                    ModificarSubtotales()
+                    detalle = document.getElementsByClassName("filas")
                 }
             )
-
-        }
-    )
+        })
+        ActBtnGuardarEdit()
 }
 
 IniciarVenta()
