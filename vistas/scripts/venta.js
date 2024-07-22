@@ -123,6 +123,34 @@ function GuardarEditarVenta(e)
     LimpiarCampos()
 }
 
+function AgregarDetalleVenta(idarticulo,articulo,precio_venta)
+{
+    var cantidad = 1
+    var descuento = 0
+
+    if(idarticulo=="")
+    {
+        var subtotal = cantidad * precio_venta
+        var fila = '<tr class="filas" id="fila'+contador+'">'+
+        '<td><button type="button" class="btn btn-danger" onclick="EliminarDetalleVenta('+contador+')"><i class="fa fa-close"></i></button></td>'+
+        '<td><input type="hidden" name="idarticulo[]" value="'+idarticulo+'">'+articulo+'</td>'+
+        '<td><input type="number" name="cantidad[]" id="cantidad[]" value"'+cantidad+'"></td>'+
+        '<td><input type="number" name="precioventa[]" id="precioventa[]" value="'+precio_venta+'"></td>'+
+        '<td><input type="number" name="descuento[]" value="'+descuento+'"></td>'+
+        '<td><span name="subtotal" id="subtotal'+contador+'">'+subtotal+'</span></td>'+
+        '</tr>'
+        contador++
+        detalle++
+        $("#TablaDetallesVenta").append(fila)
+        $("#cantidad"+(contador-1)).on('input',ModificarSubtotales)
+        $("#precioventa"+(contador-1)).on('input',ModificarSubtotales)
+        ModificarSubtotales()
+    }
+    else
+    {
+        bootbox.alert("Error al Ingresar el Detalle, Revisar los Datos del Artículo")
+    }
+}
 
 function CargarArticulos()
 {
