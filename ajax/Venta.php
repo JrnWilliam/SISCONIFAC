@@ -76,7 +76,7 @@ switch($_GET["Operacion"])
         while($registro = $respuesta->fetch_object())
         {
             echo '<tr class="filas" id="fila'.$registro->idarticulo.'">'.
-            '<td><button type="button" class="btn btn-danger" onclick="EliminarVenta('.$registro->idarticulo.')"><i class="fa fa-close"></i></button></td>'.
+            '<td><button type="button" class="btn btn-danger" onclick="EliminarDetalleVenta('.$registro->idarticulo.')"><i class="fa fa-close"></i></button></td>'.
             '<td><input type="hidden" name="idarticulo[]" value="'.$registro->idarticulo.'">'.$registro->nombre.'</td>'.
             '<td><input type="number" name="cantidad[]" id="cantidad'.$registro->idarticulo.'" value="'.$registro->cantidad.'" oninput="ModificarSubtotales(); EvaluarVenta();"></td>'.
             '<td><input type="number" name="precioventa[]" id="precioventa'.$registro->idarticulo.'" value="'.$registro->precio_venta.'" oninput="ModificarSubtotales(); EvaluarVenta();"></td>'.
