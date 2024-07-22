@@ -91,7 +91,7 @@ else
                   </div>
                   <div class="form-group col-lg-3 col-md-2 col-sm-6 col-xs-12">
                     <a data-toggle="modal" href="#VentanaModal">
-                      <button id="AgregarArticulo" type="button" class="btn btn-primary"><span class="fa fa-plus">Agregar Articulos</span></button>
+                      <button id="AgregarArticuloVenta" type="button" class="btn btn-primary"><span class="fa fa-plus">Agregar Articulos</span></button>
                     </a>
                   </div>
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -133,6 +133,44 @@ else
           </div>
         </div>
       </section>
+    </div>
+    <div class="modal fade" id="VentanaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Selecciona Un Artículo</h4>
+          </div>
+          <div class="modal-body">
+            <div role="listbox">
+            <table class="table table-striped table-bordered table-condensed table-hover" id="TablaListadoArticulos">
+              <thead>
+                <th>Opciones</th>
+                <th>Nombre</th>
+                <th>Categoria</th>
+                <th>Código</th>
+                <th>Stock</th>
+                <th>Imagen</th>
+              </thead>
+              <tbody>
+
+              </tbody>
+              <tfoot>
+              <th>Opciones</th>
+              <th>Nombre</th>
+              <th>Categoria</th>
+              <th>Código</th>
+              <th>Stock</th>
+              <th>Imagen</th>
+              </tfoot>
+            </table>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
     </div>
 <?php
     }
