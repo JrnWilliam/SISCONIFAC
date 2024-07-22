@@ -30,10 +30,16 @@ function MostrarFormularioVenta(valor)
     }
     else
     {
-        $("#TableVenta").show()
+        $("#TablaVenta").show()
         $("#FormularioVenta").hide()
         $("#BtnAgregar").show()
     }
+}
+
+function CerrarFormularioVenta()
+{
+    LimpiarCampos()
+    MostrarFormularioVenta(false)
 }
 
 function LimpiarCampos()
@@ -138,4 +144,38 @@ function CargarArticulos()
         }
     )
 }
+
+function SeleccionarRegistroVenta(idventa)
+{
+    $.post("../ajax/Venta.php?Operacion=SeleccionarRegistroVentas",
+        {
+            idventa:idventa
+        },
+        function(data,status)
+        {
+            data = JSON.parse(data)
+            MostrarFormularioVenta(true)
+
+            $("#idventa").val(data.idventa)
+            $("#idcliente").val(data.idcliente)
+            $("#idcliente").selectpicker('refresh')
+            $("#tipocomprobante").val(data.tipo_comprobante)
+            $("#tipocomprobante").selectpicker('refres')
+            $("#fechahora").val(data.fecha)
+            $("#seriecomprobante").val(data.serie_comprobante)
+            $("#numcomprobante").val(data.num_comprobante)
+            $("#impuesto").val(data.impuesto)
+
+            $.post("../ajax/Venta.php?Operacion=SeleccinarDetalleVenta&id"+idventa,
+                function(r)
+                {
+                    $("#TablaDetallesVenta").html(r)
+
+                }
+            )
+
+        }
+    )
+}
+
 IniciarVenta()
