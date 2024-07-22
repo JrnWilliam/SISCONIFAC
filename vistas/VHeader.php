@@ -130,7 +130,7 @@
               <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-circle-o"></i> Ventas</a></li>
+              <li><a href="VVenta.php"><i class="fa fa-circle-o"></i> Ventas</a></li>
               <li><a href="VCliente.php"><i class="fa fa-circle-o"></i> Clientes</a></li>
             </ul>
           </li>';
