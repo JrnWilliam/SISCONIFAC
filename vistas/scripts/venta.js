@@ -42,6 +42,16 @@ function LimpiarCampos()
     $("#seriecomprobante").val("")
     $("#numcomprobante").val("")
     $("#impuesto").val("")
+    $("#totalventa").val("")
+    $(".filas").remove()
+    $("#total").html(0)
+    $("#BtnGuardar").hide()
+
+    var ahora = new Date()
+    var dia = ("0" + ahora.getDate()).slice(-2)
+    var mes = ("0" + (ahora.getMonth()+1)).slice(-2)
+    var hoy = ahora.getFullYear() + "-" + (mes) + "-" + (dia)
+    $('#fechahora').val(hoy)
 }
 
 function MostrarVentas()
