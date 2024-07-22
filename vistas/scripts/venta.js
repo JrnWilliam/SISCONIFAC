@@ -22,9 +22,11 @@ function MostrarFormularioVenta(valor)
     LimpiarCampos()
     if(valor)
     {
+        $("#impuesto").val(0)
         $("#TablaVenta").hide()
         $("#FormularioVenta").show()
         $("#BtnAgregar").hide()
+        CargarArticulos()
     }
     else
     {
@@ -75,7 +77,7 @@ function MostrarVentas()
                 dataType: "json",
                 error: function(e)
                 {
-                    console.log(e.resposeText)
+                    console.log(e.responseText)
                 }
             },
             "language":
@@ -112,4 +114,28 @@ function GuardarEditarVenta(e)
     LimpiarCampos()
 }
 
+function CargarArticulos()
+{
+    tablaventas = $("#TablaListadoArticulos").dataTable(
+        {
+            "aProcessing": true,
+            "aServerSide": true,
+            dom: 'Bfrtip',
+            buttons:['copyHtml5','excelHtml5','csvHtml5','pdf'],
+            "ajax":
+            {
+                url: "../ajax/Venta.php?Operacion=MostrarArticulos",
+                type: "get",
+                dataType: "json",
+                error: function (e)
+                {
+                    console.log(e.responseText)
+                }
+            },
+            "bDestroy":true,
+            "iDisplayLength":10,
+            "order":[[0,"desc"]]
+        }
+    )
+}
 IniciarVenta()
