@@ -91,7 +91,7 @@ else
                   </div>
                   <div class="form-group col-lg-3 col-md-2 col-sm-6 col-xs-12">
                     <a data-toggle="modal" href="#VentanaModal">
-                      <button id="AgregarArticuloVenta" type="button" class="btn btn-primary"><span class="fa fa-plus">Agregar Articulos</span></button>
+                      <button id="AgregarArticuloVenta" type="button" class="btn btn-primary"><span class="fa fa-plus"></span> Agregar Articulos</button>
                     </a>
                   </div>
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -119,12 +119,11 @@ else
                   </div>
                   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <button class="btn btn-primary" type="submit" id="BtnGuardar" title="Guardar Registros">
-                      <i class="fa fa-save"> Guardar</i>
+                      <i class="fa fa-save"> </i> Guardar
                     </button>
                     <button id="BtnCancelar" class="btn btn-danger" onclick="CerrarFormularioVenta()" type="button" title="Cerrar Formulario">
-                      <i class="fa fa-arrow-circle-left">
-                        Cancelar
-                      </i>
+                      <i class="fa fa-arrow-circle-left"> 
+                      </i> Cancelar
                     </button>
                   </div>
                 </form>
