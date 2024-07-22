@@ -37,7 +37,7 @@ switch($_GET["Operacion"])
         $respuesta = $ventas->SeleccionarRegistroVentas($idventa);
         echo json_encode($respuesta);
     break;
-    case "MostrarVentas":
+    case 'MostrarVentas':
         $respuesta = $ventas->MostrarVentas();
         $data = Array();
 
@@ -49,7 +49,7 @@ switch($_GET["Operacion"])
                 "2"=>$registro->cliente,
                 "3"=>$registro->usuario,
                 "4"=>$registro->tipo_comprobante,
-                "5"=>$registro->serie_comprobante.'-'.$registro->num,
+                "5"=>$registro->serie_comprobante.'-'.$registro->num_comprobante,
                 "6"=>$registro->total_venta,
                 "7"=>($registro->estado=="Aceptado")?'<span class="label bg-green">Aceptado</span>':'<span class="label bg-red">Anulado<span>'
             );
