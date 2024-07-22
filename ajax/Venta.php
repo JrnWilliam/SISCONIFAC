@@ -149,7 +149,7 @@ switch($_GET["Operacion"])
         while($registro = $respuesta->fetch_object())
         {
             $data[] = array(
-                "0"=>'<button class="btn btn-warning" onclick="AgregarDetalleVenta('.$registro->idarticulo.',\''.$registro->nombre.'\')"><span class="fa fa-plus"></span></button>',
+                "0"=>'<button class="btn btn-warning" onclick="AgregarDetalleVenta('.$registro->idarticulo.',\''.$registro->nombre.'\',\''.$registro->precio_venta.'\')"><span class="fa fa-plus"></span></button>',
                 "1"=>$registro->nombre,
                 "2"=>$registro->categoria,
                 "3"=>$registro->codigo,
