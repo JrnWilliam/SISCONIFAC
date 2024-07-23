@@ -97,6 +97,7 @@
     {
         tablaingresos = $("#TablaListadoIngreso").dataTable(
             {
+                "lengthMenu": [5,10,15,20,25,30],
                 "aProcessing": true,
                 "aServerSide": true,
                 dom: 'Bfrtip',
@@ -114,17 +115,20 @@
                         console.log(e.responseText)
                     }
                 },
+                "language":
+                {
+                    "lengthMenu": "Mostrar : _MENU_ Registros"
+                },
                 "bDestroy": true,
                 "iDisplayLength": 10,
                 "order": [[0, "desc"]]
             }
-        ).DataTable();
+        ).DataTable()
     }
 
     function GuardarRegistroIngreso(e)
     {
         e.preventDefault()
-        //$("#BtnGuardar").prop("disabled",true)
         var formData = new FormData($("#FormularioRegistroIngreso")[0])
 
         $.ajax(
@@ -202,8 +206,6 @@
                 function(r)
                 {
                     $("#TablaDetalles").html(r)
-                    // ModificarSubtotales()
-                    // detalle = document.getElementsByClassName("filas").length
                 })
             }
         )
@@ -236,7 +238,7 @@
                 "aProcessing":true,
                 "aServerSide":true,
                 dom: 'Bfrtip',
-                buttons:['copyHtml5','excelHtml5','csvHtml5','pdf'],
+                buttons:[],
                 "ajax":
                 {
                     url: "../ajax/Ingreso.php?Operacion=MostrarArticulos",
