@@ -44,7 +44,7 @@ switch($_GET["Operacion"])
         while($registro = $respuesta->fetch_object())
         {
             $data[] = array(
-                "0"=>(($registro->estado=='Aceptado')?'<button class="btn btn-warning" onclick="SeleccionarRegistroVenta('.$registro->idventa.')"><i class="fa fa-pencil"></i></button>'.'<button class="btn btn-danger" onclick="AnularVenta('.$registro->idventa.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="MostrarRegistroVentaAnulado('.$registro->idventa.')"><i class="fa fa-eye"></i></button>'),
+                "0"=>(($registro->estado=='Aceptado')?'<button class="btn btn-warning" onclick="SeleccionarRegistroVenta('.$registro->idventa.')"><i class="fa fa-pencil"></i></button>'.'<button class="btn btn-danger" onclick="AnularVenta('.$registro->idventa.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="SeleccionarRegistroVentaAnulada('.$registro->idventa.')"><i class="fa fa-eye"></i></button>'),
                 "1"=>$registro->fecha,
                 "2"=>$registro->cliente,
                 "3"=>$registro->usuario,
@@ -94,7 +94,7 @@ switch($_GET["Operacion"])
                 <th><h4 id="total">C$ '.$total.'</h4><input type="hidden" name="totalcompra" id="totalcompra"></th>
             </tfoot>';
     break;
-    case "SeleccionarDetallesVentaAnulada":
+    case "SeleccionarDetalleVentaAnulada":
         $id = $_GET['id'];
         $respuesta = $ventas->SeleccionarRegistroDetalleVentas($id);
         $total = 0;
