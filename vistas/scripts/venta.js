@@ -55,8 +55,9 @@ function LimpiarCampos()
     $("#impuesto").val("")
     $("#totalventa").val("")
     $(".filas").remove()
-    $("#total").html(0)
+    $("#total").html("C$ 0.00")
     $("#BtnGuardar").hide()
+    detalle = 0
 
     var ahora = new Date()
     var dia = ("0" + ahora.getDate()).slice(-2)
@@ -98,6 +99,28 @@ function MostrarVentas()
             "order": [[0,"desc"]]
         }
     ).DataTable()
+}
+
+function AnularVenta(idventa)
+{
+    bootbox.confirm("¿Desea Anular Esta Venta?",
+        function(result)
+        {
+            if(result)
+            {
+                $.post("../ajax/Venta.php?Operacion=AnularVenta",
+                    {
+                        idventa:idventa
+                    },
+                    function(e)
+                    {
+                        bootbox.alert(e)
+                        MostrarVentas()
+                    }
+                )
+            }
+        }
+    )
 }
 
 function GuardarEditarVenta(e)
