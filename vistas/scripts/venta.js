@@ -159,6 +159,26 @@ function EliminarDetalleVenta(indice)
     detalle-=1
 }
 
+function ModificarSubtotales()
+{
+    var cant = document.getElementsByName("cantidad[]")
+    var price = document.getElementsByName("precioventa[]")
+    var desc = document.getElementsByName("descuento[]")
+    var subttl = document.getElementsByName("subtotal")
+
+    for(var i = 0; i< cant.length; i++)
+    {
+        var inccant = cant[i]
+        var incprice = price[i]
+        var incdesc = desc[i]
+        var incsubttl = subttl[i]
+
+        incsubttl.value = (inccant.value * incprice.value) - incdesc.value
+        document.getElementsByName("subtotal")[i].innerHTML = incsubttl.value
+    }
+    CalcularTotales()
+}
+
 function CargarArticulos()
 {
     tablaventas = $("#TablaListadoArticulos").dataTable(
