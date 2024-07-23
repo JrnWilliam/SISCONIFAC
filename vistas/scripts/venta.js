@@ -210,4 +210,12 @@ function SeleccionarRegistroVenta(idventa)
         ActBtnGuardarEdit()
 }
 
+function ActBtnGuardarEdit()
+{
+    $("#idproveedor, #tipocomprobante, #fechahora, #seriecomprobante,#numcomprobante,#impuesto").change(function()
+        {
+            $("#BtnGuardar").show()
+        })
+}
+
 IniciarVenta()
