@@ -2,11 +2,13 @@ var tablaventas
 var impuesto = 15
 var contador = 0
 var detalle = 0
+$("#tipocomprobante").change(AgregarImpuestoVenta)
 
 function IniciarVenta()
 {
     MostrarFormularioVenta(false)
     MostrarVentas()
+    $("#BtnGuardar").hide()
 
     $("#FormularioRegistroVenta").on("submit",function(e)
     {
@@ -352,7 +354,7 @@ function SeleccionarRegistroVentaAnulada(idventa)
 
 function ActBtnGuardarEdit()
 {
-    $("#idproveedor, #tipocomprobante, #fechahora, #seriecomprobante,#numcomprobante,#impuesto").change(function()
+    $("#idcliente, #tipocomprobante, #fechahora, #seriecomprobante,#numcomprobante,#impuesto").change(function()
         {
             $("#BtnGuardar").show()
         })
@@ -368,6 +370,20 @@ function EvaluarVenta()
     {
         $("#BtnGuardar").hide()
         contador =0
+    }
+}
+
+function AgregarImpuestoVenta()
+{
+    var comprobante = $("#tipocomprobante option:selected").text()
+
+    if(comprobante==='Factura')
+    {
+        $("#impuesto").val(impuesto)
+    }
+    else
+    {
+        $("#impuesto").val(0)
     }
 }
 
