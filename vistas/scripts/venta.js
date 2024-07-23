@@ -123,19 +123,19 @@ function GuardarEditarVenta(e)
     LimpiarCampos()
 }
 
-function AgregarDetalleVenta(idarticulo,articulo,precio_venta)
+function AgregarDetalleVenta(idarticulo,articulo,precioventa)
 {
     var cantidad = 1
     var descuento = 0
 
-    if(idarticulo=="")
+    if(idarticulo!="")
     {
-        var subtotal = cantidad * precio_venta
+        var subtotal = cantidad * precioventa
         var fila = '<tr class="filas" id="fila'+contador+'">'+
         '<td><button type="button" class="btn btn-danger" onclick="EliminarDetalleVenta('+contador+')"><i class="fa fa-close"></i></button></td>'+
         '<td><input type="hidden" name="idarticulo[]" value="'+idarticulo+'">'+articulo+'</td>'+
-        '<td><input type="number" name="cantidad[]" id="cantidad[]" value"'+cantidad+'"></td>'+
-        '<td><input type="number" name="precioventa[]" id="precioventa[]" value="'+precio_venta+'"></td>'+
+        '<td><input type="number" name="cantidad[]" id="cantidad'+contador+'" value"'+cantidad+'"></td>'+
+        '<td><input type="number" name="precioventa[]" id="precioventa'+contador+'" value="'+precioventa+'"></td>'+
         '<td><input type="number" name="descuento[]" value="'+descuento+'"></td>'+
         '<td><span name="subtotal" id="subtotal'+contador+'">'+subtotal+'</span></td>'+
         '</tr>'
@@ -159,7 +159,7 @@ function CargarArticulos()
             "aProcessing": true,
             "aServerSide": true,
             dom: 'Bfrtip',
-            buttons:['copyHtml5','excelHtml5','csvHtml5','pdf'],
+            buttons:[],
             "ajax":
             {
                 url: "../ajax/Venta.php?Operacion=MostrarArticulos",
@@ -174,7 +174,7 @@ function CargarArticulos()
             "iDisplayLength":10,
             "order":[[0,"desc"]]
         }
-    )
+    ).DataTable()
 }
 
 function SeleccionarRegistroVenta(idventa)
@@ -198,7 +198,7 @@ function SeleccionarRegistroVenta(idventa)
             $("#numcomprobante").val(data.num_comprobante)
             $("#impuesto").val(data.impuesto)
 
-            $.post("../ajax/Venta.php?Operacion=SeleccinarDetalleVenta&id"+idventa,
+            $.post("../ajax/Venta.php?Operacion=SeleccionarDetalleVenta&id="+idventa,
                 function(r)
                 {
                     $("#TablaDetallesVenta").html(r)
