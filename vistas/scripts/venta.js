@@ -186,9 +186,31 @@ function ModificarSubtotales()
         }
 
         incsubttl.value = (inccant.value * incprice.value)-((inccant.value * incprice.value) * disc)
-        document.getElementsByName("subtotal")[i].innerHTML = incsubttl.value
+        document.getElementsByName("subtotal")[i].innerHTML = incsubttl.value.toFixed(2)
     }
     CalcularTotales()
+}
+
+function CalcularTotales()
+{
+    var sub = document.getElementsByName("subtotal")
+    var total = 0.0;
+
+    Array.from(sub).forEach(function(elemento)
+    {
+        total += parseFloat(elemento.value)
+    })
+    var ttl = total.toLocaleString('es-NI',
+        {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        })
+
+    $("#total").html("C$ " + ttl)
+    console.log(ttl)
+    $("#totalventa").val(total.toFixed(2))
+    console.log(total.toFixed(2))
+    EvaluarCompra()    
 }
 
 function CargarArticulos()
