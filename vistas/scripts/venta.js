@@ -151,7 +151,7 @@ function AnularVenta(idventa)
 function GuardarEditarVenta(e)
 {
     e.preventDefault()
-    var formData = FormData($("#FormularioRegistroVenta")[0]);
+    var formData = new FormData($("#FormularioRegistroVenta")[0]);
 
     $.ajax(
         {
