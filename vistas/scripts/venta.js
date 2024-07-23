@@ -23,9 +23,10 @@ function IniciarVenta()
 function MostrarFormularioVenta(valor)
 {
     LimpiarCampos()
+    HabilitarCamposVenta()
     if(valor)
     {
-        $("#impuesto").val(0)
+        $("#impuesto").val("0")
         $("#TablaVenta").hide()
         $("#FormularioVenta").show()
         $("#BtnAgregar").hide()
@@ -74,7 +75,18 @@ function DeshabilitarCamposVenta()
     $("#seriecomprobante").prop("diabled",true)
     $("#numcomprobante").prop("disabled",true)
     $("impuesto").prop("disabled",true)
-    $("#AgregarArticuloVenta").prop("disabled",true)
+    $("#AgregarArticuloVenta").hide()
+}
+
+function HabilitarCamposVenta()
+{
+    $("#idcliente").prop("disabled",false)
+    $("#fechahora").prop("disabled",false)
+    $("#tipocomprobante").prop("disabled",false)
+    $("#seriecomprobante").prop("disabled",false)
+    $("#numcomprobante").prop("disabled",false)
+    $("#impuesto").prop("disabled",false)
+    $("#AgregarArticuloVenta").show()
 }
 
 function MostrarVentas()
@@ -137,7 +149,7 @@ function AnularVenta(idventa)
 function GuardarEditarVenta(e)
 {
     e.preventDefault()
-    var formdata = FormData($("#FormularioRegistroVenta")[0]);
+    var formData = FormData($("#FormularioRegistroVenta")[0]);
 
     $.ajax(
         {
@@ -223,6 +235,7 @@ function ModificarSubtotales()
         document.getElementsByName("subtotal")[i].innerHTML = incsubttl.value.toFixed(2)
     }
     CalcularTotales()
+    EvaluarVenta()
 }
 
 function CalcularTotales()
@@ -244,7 +257,7 @@ function CalcularTotales()
     console.log(ttl)
     $("#totalventa").val(total.toFixed(2))
     console.log(total.toFixed(2))
-    EvaluarCompra()    
+    EvaluarVenta()    
 }
 
 function CargarArticulos()
@@ -281,6 +294,7 @@ function SeleccionarRegistroVenta(idventa)
         function(data,status)
         {
             data = JSON.parse(data)
+            HabilitarCamposVenta()
             MostrarFormularioVenta(true)
 
             $("#idventa").val(data.idventa)
@@ -342,6 +356,19 @@ function ActBtnGuardarEdit()
         {
             $("#BtnGuardar").show()
         })
+}
+
+function EvaluarVenta()
+{
+    if(detalle>0)
+    {
+        $("#BtnGuardar").show()
+    }
+    else
+    {
+        $("#BtnGuardar").hide()
+        contador =0
+    }
 }
 
 IniciarVenta()
