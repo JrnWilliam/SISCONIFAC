@@ -152,6 +152,13 @@ function AgregarDetalleVenta(idarticulo,articulo,precioventa)
     }
 }
 
+function EliminarDetalleVenta(indice)
+{
+    $("#fila"+indice).remove()
+    CalcularTotales()
+    detalle-=1
+}
+
 function CargarArticulos()
 {
     tablaventas = $("#TablaListadoArticulos").dataTable(
