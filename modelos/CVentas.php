@@ -59,7 +59,7 @@ Class CVentas
 
     public function SeleccionarRegistroDetalleVentas($idventa)
     {
-        $sql = "SELECT dv.idventa,dv.idarticulo,a.nombre,dv.cantidad,dv.precio_venta,dv.descuento,(dv.cantidad * dv.precio_venta - dv.descuento) AS subtotal FROM detalle_venta dv INNER JOIN articulo a ON dv.idarticulo=a.idarticulo WHERE dv.idventa='$idventa'";
+        $sql = "SELECT dv.idventa,dv.idarticulo,a.nombre,dv.cantidad,dv.precio_venta,dv.descuento,(dv.cantidad * dv.precio_venta -((dv.cantidad * dv.precio_venta) * dv.descuento/100)) AS subtotal FROM detalle_venta dv INNER JOIN articulo a ON dv.idarticulo=a.idarticulo WHERE dv.idventa='$idventa'";
         return Ejecutar_Consulta($sql);
     }
 
