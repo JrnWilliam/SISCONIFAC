@@ -140,7 +140,7 @@ else
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             <h4 class="modal-title">Selecciona Un Artículo</h4>
           </div>
-          <div class="modal-body">
+          <div class="modal-body table-responsive">
             <div role="listbox">
             <table class="table table-striped table-bordered table-condensed table-hover" id="TablaListadoArticulos">
               <thead>
@@ -149,6 +149,7 @@ else
                 <th>Categoria</th>
                 <th>Código</th>
                 <th>Stock</th>
+                <th>Precio Venta</th>
                 <th>Imagen</th>
               </thead>
               <tbody>
@@ -160,6 +161,7 @@ else
               <th>Categoria</th>
               <th>Código</th>
               <th>Stock</th>
+              <th>Precio Venta</th>
               <th>Imagen</th>
               </tfoot>
             </table>
