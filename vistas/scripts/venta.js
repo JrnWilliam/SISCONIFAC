@@ -66,6 +66,17 @@ function LimpiarCampos()
     $('#fechahora').val(hoy)
 }
 
+function DeshabilitarCamposVenta()
+{
+    $("#idcliente").prop("disabled",true)
+    $("#fechahora").prop("disabeld",true)
+    $("#tipocomprobante").prop("disabled",true)
+    $("#seriecomprobante").prop("diabled",true)
+    $("#numcomprobante").prop("disabled",true)
+    $("impuesto").prop("disabled",true)
+    $("#AgregarArticuloVenta").prop("disabled",true)
+}
+
 function MostrarVentas()
 {
     tablaventas = $('#TablaListadoVenta').dataTable(
@@ -292,6 +303,37 @@ function SeleccionarRegistroVenta(idventa)
             )
         })
         ActBtnGuardarEdit()
+}
+
+function SeleccionarRegistroVentaAnulada(idventa)
+{
+    $.post("../ajax/Venta.php?Operacion=SeleccionarRegistroVentas",
+        {
+            idventa : idventa
+        },
+        function(data,status)
+        {
+            data = JSON.parse(data)
+            MostrarFormularioVenta(true)
+
+            $("#idventa").val(data.idventa)
+            $("#idcliente").val(data.idcliente)
+            $("#idcliente").selectpicker('refresh')
+            $("#tipocomprobante").val(data.tipo_comprobante)
+            $("#tipocomprobante").selectpicker('refres')
+            $("#fechahora").val(data.fecha)
+            $("#seriecomprobante").val(data.serie_comprobante)
+            $("#numcomprobante").val(data.num_comprobante)
+            $("#impuesto").val(data.impuesto)
+
+            DeshabilitarCamposVenta()
+
+            $:post("../ajax/Venta.php?Operacion=SeleccionarDetalleVentaAnulada&id="+idventa,
+                function(r)
+                {
+                    $("#TablaDetallesVenta").html(r)
+                })
+        })
 }
 
 function ActBtnGuardarEdit()
