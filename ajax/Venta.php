@@ -143,18 +143,19 @@ switch($_GET["Operacion"])
         require_once "../modelos/CArticulo.php";
         $ObjArticulo = new CArticulo();
 
-        $respuesta = $ObjArticulo->MostrarArticuloActivo();
+        $respuesta = $ObjArticulo->MostrarArticulosActivosVenta();
         $data = Array();
 
         while($registro = $respuesta->fetch_object())
         {
             $data[] = array(
-                "0"=>'<button class="btn btn-warning" onclick="AgregarDetalleVenta('.$registro->idarticulo.',\''.$registro->nombre.'\',\''.$registro->precio_venta.'\')"><span class="fa fa-plus"></span></button>',
+                "0"=>'<button class="btn btn-warning" onclick="AgregarDetalleVenta('.$registro->idarticulo.',\''.$registro->nombre.'\',\''.$registro->precioventa.'\')"><span class="fa fa-plus"></span></button>',
                 "1"=>$registro->nombre,
                 "2"=>$registro->categoria,
                 "3"=>$registro->codigo,
                 "4"=>$registro->stock,
-                "5"=>"<img src='../files/articulos/".$registro->imagen."' height='50px' width='50px'>"
+                "5"=>$registro->precioventa,
+                "6"=>"<img src='../files/articulos/".$registro->imagen."' height='50px' width='50px'>"
             );
         }
         $resultado = array(
