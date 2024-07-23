@@ -136,7 +136,7 @@ function AgregarDetalleVenta(idarticulo,articulo,precioventa)
         '<td><input type="hidden" name="idarticulo[]" value="'+idarticulo+'">'+articulo+'</td>'+
         '<td><input type="number" name="cantidad[]" id="cantidad'+contador+'" value"'+cantidad+'"></td>'+
         '<td><input type="number" name="precioventa[]" id="precioventa'+contador+'" value="'+precioventa+'"></td>'+
-        '<td><input type="number" name="descuento[]" value="'+descuento+'"></td>'+
+        '<td><input type="number" name="descuento[]" id="descuento'+contador+'" value="'+descuento+'"></td>'+
         '<td><span name="subtotal" id="subtotal'+contador+'">'+subtotal+'</span></td>'+
         '</tr>'
         contador++
@@ -144,6 +144,7 @@ function AgregarDetalleVenta(idarticulo,articulo,precioventa)
         $("#TablaDetallesVenta").append(fila)
         $("#cantidad"+(contador-1)).on('input',ModificarSubtotales)
         $("#precioventa"+(contador-1)).on('input',ModificarSubtotales)
+        $("#descuento"+(contador-1)).on('input',ModificarSubtotales)
         ModificarSubtotales()
     }
     else
@@ -173,7 +174,18 @@ function ModificarSubtotales()
         var incdesc = desc[i]
         var incsubttl = subttl[i]
 
-        incsubttl.value = (inccant.value * incprice.value) - incdesc.value
+        var disc = parseFloat(incdesc.value)
+
+        if(isNaN(disc) || disc<0)
+        {
+            disc = 0
+        }
+        else
+        {
+            disc = disc / 100
+        }
+
+        incsubttl.value = (inccant.value * incprice.value)-((inccant.value * incprice.value) * disc)
         document.getElementsByName("subtotal")[i].innerHTML = incsubttl.value
     }
     CalcularTotales()
