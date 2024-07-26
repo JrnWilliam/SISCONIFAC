@@ -18,7 +18,7 @@ function IniciarVenta()
     $.post("../ajax/Venta.php?Operacion=SeleccionarCliente",function (r)
     {
         $("#idcliente").html(r)
-        $('#idcliente').selectpicker('refresh')  
+        $('#idcliente').selectpicker('refresh')
     })
 }
 
@@ -72,11 +72,11 @@ function LimpiarCampos()
 function DeshabilitarCamposVenta()
 {
     $("#idcliente").prop("disabled",true)
-    $("#fechahora").prop("disabeld",true)
+    $("#fechahora").prop("disabled",true)
     $("#tipocomprobante").prop("disabled",true)
-    $("#seriecomprobante").prop("diabled",true)
+    $("#seriecomprobante").prop("disabled",true)
     $("#numcomprobante").prop("disabled",true)
-    $("impuesto").prop("disabled",true)
+    $("#impuesto").prop("disabled",true)
     $("#AgregarArticuloVenta").hide()
 }
 
@@ -173,16 +173,16 @@ function GuardarEditarVenta(e)
 
 function AgregarDetalleVenta(idarticulo,articulo,precioventa)
 {
-    var cantidad = 1
+    var cantidad = $('#cantidad' + idarticulo).val()
     var descuento = 0
 
-    if(idarticulo!="")
+    if(idarticulo!="" && cantidad>0)
     {
         var subtotal = cantidad * precioventa
         var fila = '<tr class="filas" id="fila'+contador+'">'+
         '<td><button type="button" class="btn btn-danger" onclick="EliminarDetalleVenta('+contador+')"><i class="fa fa-close"></i></button></td>'+
         '<td><input type="hidden" name="idarticulo[]" value="'+idarticulo+'">'+articulo+'</td>'+
-        '<td><input type="number" name="cantidad[]" id="cantidad'+contador+'" value"'+cantidad+'"></td>'+
+        '<td><input type="number" name="cantidad[]" id="cantidad'+contador+'" value="'+cantidad+'"></td>'+
         '<td><input type="number" name="precioventa[]" id="precioventa'+contador+'" value="'+precioventa+'"></td>'+
         '<td><input type="number" name="descuento[]" id="descuento'+contador+'" value="'+descuento+'"></td>'+
         '<td><span name="subtotal" id="subtotal'+contador+'">'+subtotal+'</span></td>'+
@@ -223,7 +223,6 @@ function ModificarSubtotales()
         var incsubttl = subttl[i]
 
         var disc = parseFloat(incdesc.value)
-
         if(isNaN(disc) || disc<0)
         {
             disc = 0
@@ -256,9 +255,7 @@ function CalcularTotales()
         })
 
     $("#total").html("C$ " + ttl)
-    console.log(ttl)
     $("#totalventa").val(total.toFixed(2))
-    console.log(total.toFixed(2))
     EvaluarVenta()    
 }
 
@@ -303,18 +300,18 @@ function SeleccionarRegistroVenta(idventa)
             $("#idcliente").val(data.idcliente)
             $("#idcliente").selectpicker('refresh')
             $("#tipocomprobante").val(data.tipo_comprobante)
-            $("#tipocomprobante").selectpicker('refres')
+            $("#tipocomprobante").selectpicker('refresh')
             $("#fechahora").val(data.fecha)
             $("#seriecomprobante").val(data.serie_comprobante)
             $("#numcomprobante").val(data.num_comprobante)
             $("#impuesto").val(data.impuesto)
 
-            $.post("../ajax/Venta.php?Operacion=SeleccionarDetalleVenta&id="+idventa,
+            $.post("../ajax/Venta.php?Operacion=SeleccionarDetalleVentas&id="+idventa,
                 function(r)
                 {
                     $("#TablaDetallesVenta").html(r)
                     ModificarSubtotales()
-                    detalle = document.getElementsByClassName("filas")
+                    detalle = document.getElementsByClassName("filas").length
                 }
             )
         })
@@ -344,7 +341,7 @@ function SeleccionarRegistroVentaAnulada(idventa)
 
             DeshabilitarCamposVenta()
 
-            $:post("../ajax/Venta.php?Operacion=SeleccionarDetalleVentaAnulada&id="+idventa,
+            $.post("../ajax/Venta.php?Operacion=SeleccionarDetalleVentaAnulada&id="+idventa,
                 function(r)
                 {
                     $("#TablaDetallesVenta").html(r)
@@ -369,7 +366,7 @@ function EvaluarVenta()
     else
     {
         $("#BtnGuardar").hide()
-        contador =0
+        contador=0
     }
 }
 
