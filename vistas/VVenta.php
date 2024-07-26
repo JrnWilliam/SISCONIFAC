@@ -134,7 +134,7 @@ else
       </section>
     </div>
     <div class="modal fade" id="VentanaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
+      <div class="modal-dialog" style="width: 40% !important;">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -148,6 +148,7 @@ else
                 <th>Nombre</th>
                 <th>Categoria</th>
                 <th>Código</th>
+                <th>Cantidad</th>
                 <th>Stock</th>
                 <th>Precio Venta</th>
                 <th>Imagen</th>
@@ -160,6 +161,7 @@ else
               <th>Nombre</th>
               <th>Categoria</th>
               <th>Código</th>
+              <th>Cantidad</th>
               <th>Stock</th>
               <th>Precio Venta</th>
               <th>Imagen</th>
