@@ -33,7 +33,7 @@ switch($_GET["Operacion"])
         $respuesta = $ventas->AnularVentas($idventa);
         echo $respuesta ? "Se Anulo Correctamente la Venta" : "Error no se Logro Anular la Venta";
     break;
-    case "SeleccionarRegistroVentas":
+    case 'SeleccionarRegistroVentas':
         $respuesta = $ventas->SeleccionarRegistroVentas($idventa);
         echo json_encode($respuesta);
     break;
@@ -44,7 +44,7 @@ switch($_GET["Operacion"])
         while($registro = $respuesta->fetch_object())
         {
             $data[] = array(
-                "0"=>(($registro->estado=='Aceptado')?'<button class="btn btn-warning" onclick="SeleccionarRegistroVenta('.$registro->idventa.')"><i class="fa fa-pencil"></i></button>'.'<button class="btn btn-danger" onclick="AnularVenta('.$registro->idventa.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="SeleccionarRegistroVentaAnulada('.$registro->idventa.')"><i class="fa fa-eye"></i></button>'),
+                "0"=>(($registro->estado=='Aceptado')?'<button class="btn btn-warning" onclick="SeleccionarRegistroVenta('.$registro->idventa.')"><i class="fa fa-pencil"></i></button>'.' <button class="btn btn-danger" onclick="AnularVenta('.$registro->idventa.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="SeleccionarRegistroVentaAnulada('.$registro->idventa.')"><i class="fa fa-eye"></i></button>'),
                 "1"=>$registro->fecha,
                 "2"=>$registro->cliente,
                 "3"=>$registro->usuario,
@@ -80,7 +80,7 @@ switch($_GET["Operacion"])
             '<td><input type="hidden" name="idarticulo[]" value="'.$registro->idarticulo.'">'.$registro->nombre.'</td>'.
             '<td><input type="number" name="cantidad[]" id="cantidad'.$registro->idarticulo.'" value="'.$registro->cantidad.'" oninput="ModificarSubtotales(); EvaluarVenta();"></td>'.
             '<td><input type="number" name="precioventa[]" id="precioventa'.$registro->idarticulo.'" value="'.$registro->precio_venta.'" oninput="ModificarSubtotales(); EvaluarVenta();"></td>'.
-            '<td><input type="number" name="descuento[]" value="'.$registro->descuento.'"></td>'.
+            '<td><input type="number" name="descuento[]" value="'.$registro->descuento.'" oninput="ModificarSubtotales(); EvaluarVenta();"></td>'.
             '<td><span name="subtotal" id="subtotal'.$registro->idarticulo.'">'.(($registro->precio_venta*$registro->cantidad)-$registro->descuento).'</span></td>'.
             '</tr>';
             $total = $total +(($registro->precio_venta*$registro->cantidad)-$registro->descuento);
@@ -91,7 +91,7 @@ switch($_GET["Operacion"])
                 <th></th>
                 <th></th>
                 <th></th>
-                <th><h4 id="total">C$ '.$total.'</h4><input type="hidden" name="totalcompra" id="totalcompra"></th>
+                <th><h4 id="total">C$ '.$total.'</h4><input type="hidden" name="totalventa" id="totalventa"></th>
             </tfoot>';
     break;
     case "SeleccionarDetalleVentaAnulada":
@@ -115,9 +115,9 @@ switch($_GET["Operacion"])
             '<td>'.$registro->cantidad.'</td>'.
             '<td>'.$registro->precio_venta.'</td>'.
             '<td>'.$registro->descuento.'</td>'.
-            '<td>'.$registro->subtotal.'</td>'.
+            '<td>'.number_format($registro->subtotal,2,'.','').'</td>'.
             '</tr>';
-            $total = $total + (($registro->precio_venta*$registro->cantidad)-$registro->descuento);
+            $total = $total + (($registro->precio_venta*$registro->cantidad)-(($registro->precio_venta*$registro->cantidad)*($registro->descuento/100)));
         }
         echo '<tfoot>
                 <th>TOTAL</th>
@@ -125,7 +125,7 @@ switch($_GET["Operacion"])
                 <th></th>
                 <th></th>
                 <th></th>
-                <th><h4 id="total">C$ '.$total.'</h4><input type="hidden" name="totalcompra" id="totalcompra"></th>
+                <th><h4 id="total">C$ '.number_format($total,2,'.',',').'</h4><input type="hidden" name="totalventa" id="totalventa"></th>
             </tfoot>';
     break;
     case "SeleccionarCliente":
@@ -153,9 +153,10 @@ switch($_GET["Operacion"])
                 "1"=>$registro->nombre,
                 "2"=>$registro->categoria,
                 "3"=>$registro->codigo,
-                "4"=>$registro->stock,
-                "5"=>$registro->precioventa,
-                "6"=>"<img src='../files/articulos/".$registro->imagen."' height='50px' width='50px'>"
+                "4"=>'<input type="number" id="cantidad'.$registro->idarticulo.'" min="1" value="1" class="form-control">',
+                "5"=>$registro->stock,
+                "6"=>$registro->precioventa,
+                "7"=>"<img src='../files/articulos/".$registro->imagen."' height='50px' width='50px'>"
             );
         }
         $resultado = array(
