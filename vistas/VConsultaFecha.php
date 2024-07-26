@@ -76,6 +76,7 @@ else
     }
     require 'VFooter.php';
 ?>
+<script src=""></script>
 <?php
 }
 ob_end_flush();  
