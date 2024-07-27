@@ -11,6 +11,16 @@ else
     require 'VHeader.php';
     if($_SESSION['escritorio']==1)
     {
+      require '../modelos/CConsultas.php';
+      $ObjConsulta = new CConsultas();
+
+      $respuestac = $ObjConsulta->TotalComprasHoy();
+      $registroc = $respuestac->fetch_object();
+      $totalcompra = $registroc->totalcompra;
+
+      $respuestav = $ObjConsulta->TotalVentasHoy();
+      $registrov = $respuestav->fetch_object();
+      $totalventa = $registrov->totalventa;
 ?>
 <div class="content-wrapper">
   <section class="content">
@@ -23,14 +33,12 @@ else
             </h1>
             <div class="box-tools pull-right"></div>
           </div>
-          <!-- /.box-header -->
-          <!-- centro -->
           <div class="panel-body">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <div class="small-box bg-aqua">
                     <div class="inner">
                         <h4 style="font-size: 17px">
-                            <strong></strong>
+                            <strong>C$ <?php echo $totalcompra?></strong>
                             <p>Compras</p>
                         </h4>
                     </div>
@@ -45,7 +53,7 @@ else
                 <div class="small-box bg-green">
                     <div class="inner">
                         <h4 style="font-size: 17px">
-                            <strong></strong>
+                            <strong>C$ <?php echo $totalventa?></strong>
                             <p>Ventas</p>
                         </h4>
                     </div>
