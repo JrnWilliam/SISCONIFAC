@@ -35,9 +35,9 @@ else
             <div class="form-inline col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <label for="idcliente">Cliente</label>
                 <select name="idcliente" id="idcliente" class="form-control selectpicker" data-live-search="true" required></select>
-                <button type="button" class="btn btn-success" onclick=""><i class="fa fa-search"></i> Buscar</button>
+                <button type="button" class="btn btn-success" style="margin-top: 20px;" onclick="MostrarConsultasVFechas()"><i class="fa fa-search"></i> Buscar</button>
             </div>
-            <table id="TablaConsultaFecha" class="table table-striped table-bordered table-condensed table-hover">
+            <table id="TablaConsultaVenta" class="table table-striped table-bordered table-condensed table-hover">
               <thead>
                 <th>Fecha</th>
                 <th>Usuario</th>
