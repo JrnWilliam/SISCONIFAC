@@ -12,7 +12,57 @@ else
     if($_SESSION['escritorio']==1)
     {
 ?>
-
+<div class="content-wrapper">
+  <section class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box">
+          <div class="box-header with-border">
+            <h1 class="box-title">
+              Escritorio
+            </h1>
+            <div class="box-tools pull-right"></div>
+          </div>
+          <!-- /.box-header -->
+          <!-- centro -->
+          <div class="panel-body">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="small-box bg-aqua">
+                    <div class="inner">
+                        <h4 style="font-size: 17px">
+                            <strong></strong>
+                            <p>Compras</p>
+                        </h4>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag">
+                        </i>
+                    </div>
+                    <a href="VIngreso.php" class="small-box-footer">Compras <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="small-box bg-green">
+                    <div class="inner">
+                        <h4 style="font-size: 17px">
+                            <strong></strong>
+                            <p>Ventas</p>
+                        </h4>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag">
+                        </i>
+                    </div>
+                    <a href="VVenta.php" class="small-box-footer">Ventas <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+          </div>
+        <div class="panel-body" style="height: 400px">
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 <?php
     }
     else
