@@ -76,7 +76,7 @@ else
     }
     require 'VFooter.php';
 ?>
-<script src=""></script>
+<script src="../vistas/scripts/consultacompra.js"></script>
 <?php
 }
 ob_end_flush();  
