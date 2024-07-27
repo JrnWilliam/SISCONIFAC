@@ -81,7 +81,7 @@ else
     }
     require 'VFooter.php';
 ?>
-
+<script src="../vistas/scripts/consultaventa.js"></script>
 <?php
 }
 ob_end_flush();  
