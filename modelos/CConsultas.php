@@ -31,5 +31,11 @@ Class CConsultas
         $sql = "SELECT IFNULL(SUM(total_venta),0) as totalventa from ventas WHERE DATE(fecha_hora)=CURDATE()";
         return Ejecutar_Consulta($sql);
     }
+
+    public function ComprasUltimos10Dias()
+    {
+        $sql = "SELECT CONCAT(DAY(fecha_hora),'-',MONTH(fecha_hora)) AS fecha,SUM(total_compra) AS total FROM ingreso GROUP BY fecha_hora ORDER BY fecha_hora DESC LIMIT 0,10";
+        return Ejecutar_Consulta($sql);
+    }
 }
 ?>
