@@ -120,7 +120,7 @@ function MostrarVentas()
                 "lengthMenu": "Mostrar : _MENU_ Registros"
             },
             "bDestroy": true,
-            "iDisplayLength": 5,
+            "iDisplayLength": 10,
             "order": [[0,"desc"]]
         }
     ).DataTable()
