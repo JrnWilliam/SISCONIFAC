@@ -82,7 +82,7 @@
           if ($_SESSION['escritorio'] == 1)
           {
             echo '<li>
-              <a href="#">
+              <a href="VEscritorio.php">
                 <i class="fa fa-tasks"></i> <span>Escritorio</span>
               </a>
             </li>';
