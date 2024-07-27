@@ -19,5 +19,17 @@ Class CConsultas
         $sql = "SELECT DATE(v.fecha_hora) AS fecha,u.nombre AS usuario,p.nombre as cliente,v.tipo_comprobante,v.serie_comprobante,v.num_comprobante,v.total_venta,v.impuesto,v.estado FROM ventas v INNER JOIN persona p ON v.idcliente = p.idpersona INNER JOIN usuario u ON v.idusuario = u.idusuario WHERE DATE(v.fecha_hora) >= '$fechainicio' AND DATE(v.fecha_hora) <= '$fechafin' AND v.idcliente='$idcliente'";
         return Ejecutar_Consulta($sql);
     }
+
+    public function TotalComprasHoy()
+    {
+        $sql = "SELECT IFNULL(SUM(total_compra),0) as totalcompra FROM ingreso WHERE DATE(fecha_hora)=CURDATE()";
+        return Ejecutar_Consulta($sql);
+    }
+
+    public function TotalVentasHoy()
+    {
+        $sql = "SELECT IFNULL(SUM(total_venta),0) as totalventa from ventas WHERE DATE(fecha_hora)=CURDATE()";
+        return Ejecutar_Consulta($sql);
+    }
 }
 ?>
