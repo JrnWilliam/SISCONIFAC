@@ -40,7 +40,7 @@ Class CConsultas
 
     public function VentasUltimos10Dias()
     {
-        $sql = "SELECT CONCAT(DAY(fecha_hora),'-',MONTH(fecha_hora)) AS fecha,SUM(total_venta) AS total FROM ventas GROUP BY fecha_hora ORDER BY fecha_hora DESC LIMIT 0,10";
+        $sql = "SELECT CONCAT(DAY(fecha_hora),'-',MONTH(fecha_hora)) AS fechav,SUM(total_venta) AS totalv FROM ventas GROUP BY fecha_hora ORDER BY fecha_hora DESC LIMIT 0,10";
         return Ejecutar_Consulta($sql);
     }
 }
