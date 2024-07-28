@@ -13,7 +13,7 @@ $("#FrmLogin").on('submit', function(e)
     {
         if(data != "null")
         {
-            $(location).attr("href","VCategoria.php");
+            $(location).attr("href","VEscritorio.php");
         }
         else
         {
