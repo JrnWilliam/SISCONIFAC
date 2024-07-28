@@ -91,6 +91,18 @@ else
               </div>
             </div>
           </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="box box-primary">
+              <div class="box-header with-border">
+                Ventas de los Ultimos 10 Días
+              </div>
+              <div class="box-body">
+                <canvas id="ventas" width="400" height="300">
+
+                </canvas>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
