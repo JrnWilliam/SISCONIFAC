@@ -21,6 +21,19 @@ else
       $respuestav = $ObjConsulta->TotalVentasHoy();
       $registrov = $respuestav->fetch_object();
       $totalventa = $registrov->totalventa;
+
+      $compras10 = $ObjConsulta->ComprasUltimos10Dias();
+      $fechascompras = '';
+      $totalescompras = '';
+
+      while($registrofcompras = $compras10->fetch_object())
+      {
+        $fechascompras = $fechascompras.'"'.$registrofcompras->fecha.'",';
+        $totalescompras = $totalescompras.$registrofcompras->total.',';
+      }
+
+      $fechascompras = substr($fechascompras,0,-1);
+      $totalescompras = substr($totalescompras,0,-1);
 ?>
 <div class="content-wrapper">
   <section class="content">
@@ -65,7 +78,19 @@ else
                 </div>
             </div>
           </div>
-        <div class="panel-body" style="height: 400px">
+        <div class="panel-body">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="box box-primary">
+              <div class="box-header with-border">
+                Compras de los Ultimos 10 Días
+              </div>
+              <div class="box-body">
+                <canvas id="compras" width="400" height="300">
+
+                </canvas>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -81,6 +106,53 @@ else
 ?>
 <script src="../public/js/chart.min.js"></script>
 <script src="../public/js/Chart.bundle.min.js"></script>
+<script>
+  var ctx = document.getElementById("compras").getContext('2d');
+  var compra = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: [<?php echo $fechascompras;?>],
+        datasets: [{
+            label: 'N° Compras en C$ de los Ultimos 10 Días',
+            data: [<?php echo $totalescompras;?>],
+            backgroundColor: [
+                '#FFAEBC',
+                '#B4F8C8',
+                '#A0E7E5',
+                '#FBE7C6',
+                '#FFCE66',
+                '#F9AB40',
+                '#A9E5D5',
+                '#44455B',
+                '#F0F7E0',
+                '#D3BBDD'
+            ],
+            borderColor: [
+                '#FFAEBC',
+                '#B4F8C8',
+                '#A0E7E5',
+                '#FBE7C6',
+                '#FFCE66',
+                '#F9AB40',
+                '#A9E5D5',
+                '#44455B',
+                '#F0F7E0',
+                '#D3BBDD'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+</script>
 <?php
 }
 ob_end_flush()  
