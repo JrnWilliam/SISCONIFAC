@@ -10,9 +10,7 @@ else
 {
     if($_SESSION['almacen']==1)
     {
-?>
-
-<?php
+        require('PDF_MC_Table.php');
     }
     else
     {
