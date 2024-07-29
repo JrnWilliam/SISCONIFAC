@@ -34,6 +34,19 @@ else
 
       $fechascompras = substr($fechascompras,0,-1);
       $totalescompras = substr($totalescompras,0,-1);
+
+      $ventas10 = $ObjConsulta->VentasUltimos10Dias();
+      $fechasventas = '';
+      $ventastotales = '';
+
+      while($registrofventas = $ventas10->fetch_object())
+      {
+        $fechasventas = $fechasventas.'"'.$registrofventas->fechav.'",';
+        $ventastotales = $ventastotales.$registrofventas->totalv.',';
+      }
+
+      $fechasventas = substr($fechasventas,0,-1);
+      $ventastotales = substr($ventastotales,0,-1);
 ?>
 <div class="content-wrapper">
   <section class="content">
@@ -127,6 +140,53 @@ else
         datasets: [{
             label: 'N° Compras en C$ de los Ultimos 10 Días',
             data: [<?php echo $totalescompras;?>],
+            backgroundColor: [
+                '#FFAEBC',
+                '#B4F8C8',
+                '#A0E7E5',
+                '#FBE7C6',
+                '#FFCE66',
+                '#F9AB40',
+                '#A9E5D5',
+                '#44455B',
+                '#F0F7E0',
+                '#D3BBDD'
+            ],
+            borderColor: [
+                '#FFAEBC',
+                '#B4F8C8',
+                '#A0E7E5',
+                '#FBE7C6',
+                '#FFCE66',
+                '#F9AB40',
+                '#A9E5D5',
+                '#44455B',
+                '#F0F7E0',
+                '#D3BBDD'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+</script>
+<script>
+  var ctx = document.getElementById("ventas").getContext('2d');
+  var venta = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: [<?php echo $fechasventas;?>],
+        datasets: [{
+            label: 'N° Ventas en C$ de los Ultimos 10 Días',
+            data: [<?php echo $ventastotales;?>],
             backgroundColor: [
                 '#FFAEBC',
                 '#B4F8C8',
