@@ -326,7 +326,7 @@ function addNumTVA($tva)
 	$this->RoundedRect($r1, $y1, ($r2 - $r1), ($y2-$y1), 2.5, 'D');
 	$this->Line( $r1, $mid, $r2, $mid);
 	$this->SetXY( $r1 + 16 , $y1+1 );
-	$this->Cell(40, 4, "DIRECCI�N", '', '', "C");
+	$this->Cell(40, 4, "DIRECCIÓN", '', '', "C");
 	$this->SetFont( "Arial", "", 10);
 	$this->SetXY( $r1 + 16 , $y1+5 );
 	$this->Cell(40, 5, $tva, '', '', "C");
@@ -347,51 +347,52 @@ function addReference($ref)
 function addCols( $tab )
 {
 	global $colonnes;
-	
-	$r1  = 10;
-	$r2  = $this->w - ($r1 * 2) ;
-	$y1  = 79;
-	$y2  = $this->h - 50 - $y1;
-	$this->SetXY( $r1, $y1 );
-	$this->Rect( $r1, $y1, $r2, $y2, "D");
-	$this->Line( $r1, $y1+6, $r1+$r2, $y1+6);
-	$colX = $r1;
-	$colonnes = $tab;
-	while ( list( $lib, $pos ) = each ($tab) )
+    
+    $r1  = 10;
+    $r2  = $this->w - ($r1 * 2);
+    $y1  = 79;
+    $y2  = $this->h - 50 - $y1;
+    $this->SetXY($r1, $y1);
+    $this->Rect($r1, $y1, $r2, $y2, "D");
+    $this->Line($r1, $y1+6, $r1+$r2, $y1+6);
+    $colX = $r1;
+    $colonnes = $tab;
+    foreach ($tab as $lib => $pos)
 	{
-		$this->SetXY( $colX, $y1+2 );
-		$this->Cell( $pos, 1, $lib, 0, 0, "C");
-		$colX += $pos;
-		$this->Line( $colX, $y1, $colX, $y1+$y2);
-	}
+        $this->SetXY($colX, $y1+2);
+        $this->Cell($pos, 1, $lib, 0, 0, "C");
+        $colX += $pos;
+        $this->Line($colX, $y1, $colX, $y1+$y2);
+    }
 }
 
 function addLineFormat( $tab )
 {
 	global $format, $colonnes;
-	
-	while ( list( $lib, $pos ) = each ($colonnes) )
+    
+    foreach ($colonnes as $lib => $pos)
 	{
-		if ( isset( $tab["$lib"] ) )
-			$format[ $lib ] = $tab["$lib"];
-	}
+        if (isset($tab["$lib"])) {
+            $format[$lib] = $tab["$lib"];
+        }
+    }
 }
 
 function lineVert( $tab )
 {
 	global $colonnes;
 
-	reset( $colonnes );
-	$maxSize=0;
-	while ( list( $lib, $pos ) = each ($colonnes) )
+    $maxSize = 0;
+    foreach ($colonnes as $lib => $pos)
 	{
-		$texte = $tab[ $lib ];
-		$longCell  = $pos -2;
-		$size = $this->sizeOfText( $texte, $longCell );
-		if ($size > $maxSize)
-			$maxSize = $size;
-	}
-	return $maxSize;
+        $texte = $tab[$lib];
+        $longCell = $pos - 2;
+        $size = $this->sizeOfText($texte, $longCell);
+        if ($size > $maxSize) {
+            $maxSize = $size;
+        }
+    }
+    return $maxSize;
 }
 
 // add a line to the invoice/estimate
@@ -406,24 +407,24 @@ function addLine( $ligne, $tab )
 {
 	global $colonnes, $format;
 
-	$ordonnee     = 10;
-	$maxSize      = $ligne;
+    $ordonnee     = 10;
+    $maxSize      = $ligne;
 
-	reset( $colonnes );
-	while ( list( $lib, $pos ) = each ($colonnes) )
+    foreach ($colonnes as $lib => $pos)
 	{
-		$longCell  = $pos -2;
-		$texte     = $tab[ $lib ];
-		$length    = $this->GetStringWidth( $texte );
-		$tailleTexte = $this->sizeOfText( $texte, $length );
-		$formText  = $format[ $lib ];
-		$this->SetXY( $ordonnee, $ligne-1);
-		$this->MultiCell( $longCell, 4 , $texte, 0, $formText);
-		if ( $maxSize < ($this->GetY()  ) )
-			$maxSize = $this->GetY() ;
-		$ordonnee += $pos;
-	}
-	return ( $maxSize - $ligne );
+        $longCell  = $pos - 2;
+        $texte     = $tab[$lib];
+        $length    = $this->GetStringWidth($texte);
+        $tailleTexte = $this->sizeOfText($texte, $length);
+        $formText  = $format[$lib];
+        $this->SetXY($ordonnee, $ligne-1);
+        $this->MultiCell($longCell, 4, $texte, 0, $formText);
+        if ($maxSize < ($this->GetY())) {
+            $maxSize = $this->GetY();
+        }
+        $ordonnee += $pos;
+    }
+    return ($maxSize - $ligne);
 }
 
 function addRemarque($remarque)
@@ -528,11 +529,11 @@ function addTVAs( $igv, $total,$moneda )
 	$y1  = $this->h - 40;
 	$this->SetFont( "Arial", "", 8);
 	$this->SetXY( $re, $y1+5 );
-	$this->Cell( 17,4, $moneda.sprintf("%0.2F", $total-($total*$igv/($igv+100))), '', '', 'R');
+	$this->Cell( 17,4, $moneda.sprintf("%0.2F",$total), '', '', 'R' );//3 
 	$this->SetXY( $re, $y1+10 );
-	$this->Cell( 17,4, $moneda.sprintf("%0.2F", ($total*$igv/($igv+100))), '', '', 'R');
+	$this->Cell( 17,4, $moneda.sprintf("%0.2F", ($total*($igv/100))), '', '', 'R');
 	$this->SetXY( $re, $y1+14.8 );
-	$this->Cell( 17,4, $moneda.sprintf("%0.2F", $total), '', '', 'R');
+	$this->Cell( 17,4, $moneda.sprintf("%0.2F", $total+($total*($igv/100))), '', '', 'R');//1
 	
 }
 
