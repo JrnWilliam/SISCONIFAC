@@ -60,8 +60,10 @@ function ValorEnLetras($x, $Moneda )
        $s = $s . " " . $Frc. "/100"; 
        //$s = $s . " " . $Frc . "/100"; 
     } 
-    $letrass=$Signo . $s . " M.N."; 
-    return ($Signo . $s . " M.N."); 
+    //$letrass=$Signo . $s . " M.N.";
+    $letrass=$Signo . $s; 
+    return ($letrass);
+    //return ($Signo . $s . " M.N."); 
     
 } 
 
@@ -163,7 +165,8 @@ function Parte($x)
 { 
     $Rtn=''; 
     $t=''; 
-    $i=''; 
+    $i=0;
+    $x = (int)$x; 
     Do 
     { 
       switch($x) 
@@ -203,7 +206,7 @@ function Parte($x)
       If($t == $this->Void) 
       { 
         $i = $i + 1; 
-        $x = $x / 1000; 
+        $x = (int)($x / 1000); 
         If($x== 0) $i = 0; 
       } 
       else 
