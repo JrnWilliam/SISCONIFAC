@@ -51,10 +51,8 @@ else
 
             $pdf->SetFont('Arial','',10);
             $pdf->Row(array(utf8_decode($nombre),utf8_decode($categoria),$codigo,$stock,utf8_decode($descripcion)));
-
-            $pdf->Output();
         }
-
+        $pdf->Output();
     }
     else
     {
