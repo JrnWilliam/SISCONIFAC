@@ -78,7 +78,35 @@
 
             $pdf->addLineFormat( $cols);
             $pdf->addLineFormat($cols);
-            
+
+            $y = 89;
+
+            $respuestad = $Objingreso -> DetalleFacturaIngreso($_GET["id"]);
+
+            while($registrod = $respuestad->fetch_object())
+            {
+                $line = array(
+                    utf8_decode("Código")=>"$registrod->codigo",
+                    utf8_decode("Descripción")=>utf8_decode("$registrod->articulo"),
+                    "Cantidad"=>"$registrod->cantidad",
+                    "P.C."=>"$registrod->precio_compra",
+                    "P.V."=>"$registrod->precio_venta",
+                    "SubTotal"=>number_format("$registrod->subtotal", 2, '.', '')
+                );
+                $size = $pdf->addLine($y,$line);
+                $y += $size + 2;
+            }
+
+            require_once 'Letras.php';
+            $C = new EnLetras();
+            $aletras = strtoupper(
+                $C->ValorEnLetras($registroi->total_compra+($registroi->total_compra*($registroi->impuesto/100)),"Cordobas Netos")
+            );
+
+            $pdf->addCadreTVAs("---".$aletras);
+            $pdf->addTVAs($registroi->impuesto,$registroi->total_compra,"C$ ");
+            $pdf->addCadreEurosFrancs("IVA"."$registroi->impuesto %");
+            $pdf->Output("Orden de Compra","I");
         }
         else
         {
