@@ -43,8 +43,16 @@ switch($_GET["Operacion"])
 
         while($registro = $respuesta->fetch_object())
         {
+            if($registro->tipo_comprobante=='Voucher')
+            {
+                $url = '../reportes/TVenta.php?id=';
+            }
+            else
+            {
+                $url = '../reportes/FVenta.php?id=';
+            }
             $data[] = array(
-                "0"=>(($registro->estado=='Aceptado')?'<button class="btn btn-warning" onclick="SeleccionarRegistroVenta('.$registro->idventa.')"><i class="fa fa-pencil"></i></button>'.' <button class="btn btn-danger" onclick="AnularVenta('.$registro->idventa.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="SeleccionarRegistroVentaAnulada('.$registro->idventa.')"><i class="fa fa-eye"></i></button>'),
+                "0"=>(($registro->estado=='Aceptado')?'<button class="btn btn-warning" onclick="SeleccionarRegistroVenta('.$registro->idventa.')"><i class="fa fa-pencil"></i></button>'.' <button class="btn btn-danger" onclick="AnularVenta('.$registro->idventa.')"><i class="fa fa-close"></i></button>'.' <a target="_blank" href="'.$url.$registro->idventa.'"><button class="btn btn-info" type="button"><i class="fa fa-file"></i></button></a>':'<button class="btn btn-warning" onclick="SeleccionarRegistroVentaAnulada('.$registro->idventa.')"><i class="fa fa-eye"></i></button>'),
                 "1"=>$registro->fecha,
                 "2"=>$registro->cliente,
                 "3"=>$registro->usuario,
