@@ -104,7 +104,7 @@
                 echo "<tr>";
                 echo "<td>".$registrod->cantidad."</td>";
                 echo "<td>".$registrod->articulo;
-                echo "<td align='right'>C$ ".$registrod->subtotal."</td>";
+                echo "<td align='right'>C$ ".number_format($registrod->subtotal, 2, '.', '')."</td>";
                 echo "</tr>";
                 $cantidad += $registrod->cantidad;
               }
