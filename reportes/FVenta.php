@@ -92,7 +92,7 @@
                 "Cantidad"=>"$registrod->cantidad",
                 "P.U"=>"$registrod->precio_venta",
                 "Descuento"=>"$registrod->descuento",
-                "Subtotal"=>number_format($registrod->subtotal, 2, '.', '')
+                "Subtotal"=>number_format("$registrod->subtotal", 2, '.', '')
             );
             $size = $pdf->addLine($y,$line);
             $y += $size + 2;

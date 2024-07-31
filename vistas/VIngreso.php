@@ -69,7 +69,7 @@ else
                     <label for="tipocomprobante">Tipo de Comprobante: </label>
                     <div role="listbox">
                     <select name="tipocomprobante" id="tipocomprobante" class="form-control selectpicker" required>
-                      <option value="Factura">Factura</option>
+                      <option value="Orden de Compra">Orden de Compra</option>
                       <option value="Voucher">Voucher</option>
                     </select>
                     </div>
