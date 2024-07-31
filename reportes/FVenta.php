@@ -51,7 +51,7 @@
 
         $pdf->addClientAdresse(
             utf8_decode($registrov->cliente),
-            "Domicilio: ".utf8_decode($registrov->direccion),
+            utf8_decode("Dirección: ").utf8_decode($registrov->direccion),
             utf8_decode($registrov->tipo_documento).": ".
             $registrov->num_documento,
             "Email: ".$registrov->email,
