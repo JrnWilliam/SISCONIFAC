@@ -69,5 +69,17 @@ Class CIngresos
         $sql = "SELECT i.idingreso, DATE(i.fecha_hora) AS fecha,i.idproveedor,p.nombre AS proveedor,u.idusuario,u.nombre AS usuario,i.tipo_comprobante,i.serie_comprobante,i.num_comprobante,i.total_compra,i.impuesto,i.estado FROM ingreso i INNER JOIN  persona p ON i.idproveedor=p.idpersona INNER JOIN usuario u ON i.idusuario=u.idusuario ORDER BY i.idingreso DESC";
         return Ejecutar_Consulta($sql);
     }
+
+    public function CabeceraFacIngreso($idingreso)
+    {
+        $sql = "SELECT i.idingreso,i.idproveedor,p.nombre as proveedor,p.direccion,p.tipo_documento,p.num_documento,p.email,p.telefono,i.idusuario,u.nombre AS usuario,i.tipo_comprobante,i.serie_comprobante,i.num_comprobante,DATE(i.fecha_hora) AS fecha,i.impuesto,i.total_compra FROM ingreso i INNER JOIN persona p ON i.idproveedor=p.idpersona INNER JOIN usuario u on i.idusuario=u.idusuario WHERE i.idingreso='$idingreso'";
+        return Ejecutar_Consulta($sql);
+    }
+
+    public function DetalleFacturaIngreso($idingreso)
+    {
+        $sql = "SELECT a.nombre as articulo,a.codigo,di.cantidad,di.precio_compra,di.precio_venta,(di.cantidad * di.precio_compra) as subtotal FROM detalle_ingreso di INNER JOIN articulo a ON di.idarticulo = a.idarticulo WHERE di.idingreso ='$idingreso'";
+        return Ejecutar_Consulta($sql);
+    }
 }
 ?>
