@@ -369,17 +369,16 @@ margin-left:50px;
 
 
 }
-.zona_impresion{
-
+.ZonaImprimir
+{
 width: 340px;
 padding:10px 5px 10px 5px;
 
 float:left;
 margin-left:00px;
 border-style: solid;
-border:1px solid  #999;
+border:1px solid #999;
 box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4); 
-
 }
 .box_contado{
 
