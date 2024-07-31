@@ -45,6 +45,9 @@
                 "$registroi->num_comprobante"
             );
 
+            $pdf->temporaire("");
+            $pdf->addDate($registroi->fecha);
+
             $pdf->addClientAdresse(
                 utf8_decode($registroi->proveedor),
                 utf8_decode("Direccion: ").utf8_decode($registroi->direccion),
@@ -52,6 +55,30 @@
                 "Email: ".$registroi->email,
                 "Telefono: ".$registroi->telefono
             );
+
+            $cols = array(
+                utf8_decode("Código")=>23,
+                utf8_decode("Descripción")=>78,
+                "Cantidad"=>22,
+                "P.C."=>25,
+                "P.V."=>20,
+                "SubTotal"=>22
+            );
+
+            $pdf->addCols( $cols);
+
+            $cols = array(
+                utf8_decode("Código")=>"L",
+                utf8_decode("Descripción")=>"L",
+                "Cantidad"=>"C",
+                "P.C."=>"R",
+                "P.V."=>"R",
+                "SubTotal"=>"C"
+            );
+
+            $pdf->addLineFormat( $cols);
+            $pdf->addLineFormat($cols);
+            
         }
         else
         {
