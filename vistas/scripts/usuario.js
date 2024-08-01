@@ -31,7 +31,6 @@ function LimpiarCamposUsuarios()
     $("#imagen").unwrap()
     $("#imagenactual").val("")
     $("#imgactual").attr("src","")
-    //$("#permisos input[type=checkbox]").prop("checked", false);
 }
 
 function MostrarFormularioUsuario(valor)
@@ -135,8 +134,6 @@ function SeleccionarRegistroUsuario(idusuario)
                 $("#imgactual").hide()
             }
             $("#idusuario").val(data.idusuario)
-            user = data.idusuario
-            console.log(user)
             $("#nombre").val(data.nombre)
             $("#tipodocumento").val(data.tipo_documento)
             $("#tipodocumento").selectpicker('refresh')
