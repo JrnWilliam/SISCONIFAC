@@ -44,13 +44,22 @@ switch($_GET["Operacion"])
 
         while($registro = $respuesta->fetch_object())
         {
+            if($registro->tipo_comprobante=="Orden de Compra")
+            {
+                $url = '../reportes/FIngreso.php?id=';
+            }
+            else
+            {
+                $url = '../reportes/TIngreso.php?id=';
+            }
+
             $data[] = array(
-                "0"=>($registro->estado=='Aceptado')?'<button class="btn btn-warning" onclick="MostrarRegistroIngreso('.$registro->idingreso.')"><i class="fa fa-eye"></i></button>'.' <button class= "btn btn-danger" onclick="AnularIngreso('.$registro->idingreso.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning" onclick="MostrarRegistroIngresoAnulado('.$registro->idingreso.')"><i class="fa fa-eye"></i></button>',
+                "0"=>($registro->estado=='Aceptado')?'<button class="btn btn-warning" onclick="MostrarRegistroIngreso('.$registro->idingreso.')"><i class="fa fa-pencil"></i></button>'.' <button class= "btn btn-danger" onclick="AnularIngreso('.$registro->idingreso.')"><i class="fa fa-close"></i></button>'.' <a target="_blank" href="'.$url.$registro->idingreso.'"><button type="button" class="btn btn-info"><i class="fa fa-file"></i></button></a>':'<button class="btn btn-warning" onclick="MostrarRegistroIngresoAnulado('.$registro->idingreso.')"><i class="fa fa-eye"></i></button>',
                 "1"=>$registro->fecha,
                 "2"=>$registro->proveedor,
                 "3"=>$registro->usuario,
                 "4"=>$registro->tipo_comprobante,
-                "5"=>$registro->serie_comprobante,
+                "5"=>$registro->serie_comprobante.'-'.$registro->num_comprobante,
                 "6"=>$registro->total_compra,
                 "7"=>($registro->estado=='Aceptado')?'<span class="label bg-green">Aceptado</span>':'<span class="label bg-red">Cerrada</span>'
             );

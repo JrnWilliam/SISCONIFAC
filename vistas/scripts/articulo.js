@@ -66,7 +66,7 @@ function ListarRegistros()
 {
     tablaarticulo = $('#TablaListadoArticulos').dataTable(
         {
-            "lengthMenu": [ 10, 15, 20, 25, 30],
+            "lengthMenu": [5,10,15,20,25,30],
             "aProcessing": true,
             "aServerSide": true,
             dom: '<Bl<f>rtip>',

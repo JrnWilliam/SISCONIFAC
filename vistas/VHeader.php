@@ -77,7 +77,7 @@
     <aside class="main-sidebar">
       <section class="sidebar">
         <ul class="sidebar-menu">
-          <li class="header"></li>
+          <!-- <li class="header"></li> -->
           <?php
           if ($_SESSION['escritorio'] == 1)
           {
@@ -180,7 +180,7 @@
           </li>';
             }
           ?>
-          <li>
+          <!-- <li>
             <a href="#">
               <i class="fa fa-plus-square"></i> <span>Ayuda</span>
               <small class="label pull-right bg-red">PDF</small>
@@ -191,7 +191,7 @@
               <i class="fa fa-info-circle"></i> <span>Acerca De...</span>
               <small class="label pull-right bg-yellow">IT</small>
             </a>
-          </li>
+          </li> -->
 
         </ul>
       </section>

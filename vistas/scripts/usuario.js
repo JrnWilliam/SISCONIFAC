@@ -7,7 +7,7 @@ function IniciarUsuarios()
 
     $("#FormularioRegistroUsuario").on("submit", function(e){
         GuardaryEditarUsuarios(e)
-        LimpiarCamposUsuarios()
+        //LimpiarCamposUsuarios()
     })
 
     $.post("../ajax/Usuario.php?operacion=Permisos&iduser=",function(r){
@@ -31,7 +31,7 @@ function LimpiarCamposUsuarios()
     $("#imagen").unwrap()
     $("#imagenactual").val("")
     $("#imgactual").attr("src","")
-    $("#permisos input[type=checkbox]").prop("checked", false);
+    //$("#permisos input[type=checkbox]").prop("checked", false);
 }
 
 function MostrarFormularioUsuario(valor)
@@ -56,15 +56,17 @@ function MostrarFormularioUsuario(valor)
 function CerrarFormularioUsuario()
 {
     LimpiarCamposUsuarios()
+    $("#permisos input[type=checkbox]").prop("checked", false)
     MostrarFormularioUsuario(false)
 }
 
 function ListarRegistrosUsuarios()
 {
     tablausuario = $("#TablaListadoUsuario").dataTable({
+        "lengthMenu": [5,10,15,20,25,30],
         "aProcessing": true,
         "aServerSide": true,
-        dom: 'Bfrtip',
+        dom: '<Bl<f>rtip>',
         buttons: [
             'copyHtml5',
             'excelHtml5',
@@ -80,6 +82,10 @@ function ListarRegistrosUsuarios()
             {
                 console.log(e.responseText)
             }
+        },
+        "language":
+        {
+            "lengthMenu": "Mostrar : _MENU_ Registros"
         },
         "bDestroy": true,
         "iDisplayLength": 10,
@@ -111,6 +117,7 @@ function GuardaryEditarUsuarios(e)
 
 function SeleccionarRegistroUsuario(idusuario)
 {
+    var user
     $.post("../ajax/Usuario.php?operacion=SeleccionarUsuario",
         {
             idusuario : idusuario
@@ -128,6 +135,8 @@ function SeleccionarRegistroUsuario(idusuario)
                 $("#imgactual").hide()
             }
             $("#idusuario").val(data.idusuario)
+            user = data.idusuario
+            console.log(user)
             $("#nombre").val(data.nombre)
             $("#tipodocumento").val(data.tipo_documento)
             $("#tipodocumento").selectpicker('refresh')

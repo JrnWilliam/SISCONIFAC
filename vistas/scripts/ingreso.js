@@ -74,14 +74,14 @@
         if(valor)
         {
             $("#impuesto").val("0")
-            $("#TablaIngresos").hide()
+            $("#TablaIngreso").hide()
             $("#FormularioIngreso").show()
             $("#BtnAgregar").hide()
             ListarRegistrosArticulos()
         }
         else
         {
-            $("#TablaIngresos").show()
+            $("#TablaIngreso").show()
             $("#FormularioIngreso").hide()
             $("#BtnAgregar").show()
         }
@@ -95,16 +95,18 @@
 
     function ListarRegistrosIngreso()
     {
-        tablaingresos = $("#TablaListadoIngreso").dataTable(
+        tablaingresos = $('#TablaListadoIngreso').dataTable(
             {
                 "lengthMenu": [5,10,15,20,25,30],
                 "aProcessing": true,
                 "aServerSide": true,
-                dom: 'Bfrtip',
-                buttons:
-                [
-                    'copyHtml5','excelHtml5','csvHtml5','pdf'
-                ],
+                dom: '<Bl<f>rtip>',
+                buttons: [
+                            'copyHtml5',
+		                    'excelHtml5',
+		                    'csvHtml5',
+		                    'pdf'
+            ],
                 "ajax":
                 {
                     url: "../ajax/Ingreso.php?Operacion=MostrarIngresos",
@@ -253,7 +255,7 @@
                 "iDisplayLength":10,
                 "order":[[0,"desc"]]
             }
-        )
+        ).DataTable()
     }
 
     function AgregarImpuesto()
