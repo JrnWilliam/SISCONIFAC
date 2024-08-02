@@ -161,7 +161,7 @@ switch($_GET["Operacion"])
                 "1"=>$registro->nombre,
                 "2"=>$registro->categoria,
                 "3"=>$registro->codigo,
-                "4"=>'<input type="number" id="cantidad'.$registro->idarticulo.'" min="1" value="1" class="form-control">',
+                "4"=>'<input type="number" id="cantidadart'.$registro->idarticulo.'" min="1" value="1" class="form-control">',
                 "5"=>$registro->stock,
                 "6"=>$registro->precioventa,
                 "7"=>"<img src='../files/articulos/".$registro->imagen."' height='50px' width='50px'>"
