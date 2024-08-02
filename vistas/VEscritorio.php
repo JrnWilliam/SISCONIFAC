@@ -63,7 +63,8 @@ else
             <?php
               if($_SESSION['compras']==1)
               {
-                echo '            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              ?>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <div class="small-box bg-aqua">
                     <div class="inner">
                         <h4 style="font-size: 17px">
@@ -77,15 +78,19 @@ else
                     </div>
                     <a href="VIngreso.php" class="small-box-footer">Compras <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
-            </div>';
+            </div>
+            <?php
               }
+              ?>
+              <?php
               if($_SESSION['ventas']==1)
               {
-                echo '<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                ?>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <div class="small-box bg-green">
                     <div class="inner">
                         <h4 style="font-size: 17px">
-                            <strong>C$ <?php echo $totalventa?></strong>
+                            <strong>C$ <?php echo number_format($totalventa, 2, '.', ',')?></strong>
                             <p>Ventas</p>
                         </h4>
                     </div>
@@ -95,7 +100,8 @@ else
                     </div>
                     <a href="VVenta.php" class="small-box-footer">Ventas <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
-            </div>';
+            </div>
+            <?php
               }
             ?>
           </div>
