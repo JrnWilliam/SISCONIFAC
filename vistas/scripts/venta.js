@@ -3,6 +3,7 @@ var impuesto = 15
 var contador = 0
 var detalle = 0
 $("#tipocomprobante").change(AgregarImpuestoVenta)
+var stockdisponible = {}
 
 function IniciarVenta()
 {
@@ -171,30 +172,36 @@ function GuardarEditarVenta(e)
     LimpiarCampos()
 }
 
-function AgregarDetalleVenta(idarticulo,articulo,precioventa)
+function AgregarDetalleVenta(idarticulo,articulo,precioventa,stock)
 {
     var cantidad = $('#cantidadart' + idarticulo).val()
     var descuento = 0
 
+    if(cantidad > stock)
+    {
+        bootbox.alert("Stock Insuficiente, Solo hay " + stock + " Unidades Disponibles de "+ articulo)
+        return
+    }
+
     if(idarticulo!="" && cantidad>0)
     {
-        var subtotal = cantidad * precioventa
-        var fila = '<tr class="filas" id="fila'+contador+'">'+
-        '<td><button type="button" class="btn btn-danger" onclick="EliminarDetalleVenta('+contador+')"><i class="fa fa-close"></i></button></td>'+
-        '<td><input type="hidden" name="idarticulo[]" value="'+idarticulo+'">'+articulo+'</td>'+
-        '<td><input type="number" name="cantidad[]" id="cantidad'+contador+'" value="'+cantidad+'"></td>'+
-        '<td><input type="number" name="precioventa[]" id="precioventa'+contador+'" value="'+precioventa+'"></td>'+
-        '<td><input type="number" name="descuento[]" id="descuento'+contador+'" value="'+descuento+'"></td>'+
-        '<td><span name="subtotal" id="subtotal'+contador+'">'+subtotal+'</span></td>'+
-        '</tr>'
-        contador++
-        detalle++
-        $("#TablaDetallesVenta").append(fila)
-        $("#cantidad"+(contador-1)).on('input',ModificarSubtotales)
-        $("#precioventa"+(contador-1)).on('input',ModificarSubtotales)
-        $("#descuento"+(contador-1)).on('input',ModificarSubtotales)
-        ModificarSubtotales()
-        $('#cantidadart'+idarticulo).val(1)
+            var subtotal = cantidad * precioventa
+            var fila = '<tr class="filas" id="fila'+contador+'">'+
+            '<td><button type="button" class="btn btn-danger" onclick="EliminarDetalleVenta('+contador+')"><i class="fa fa-close"></i></button></td>'+
+            '<td><input type="hidden" name="idarticulo[]" value="'+idarticulo+'">'+articulo+'</td>'+
+            '<td><input type="number" name="cantidad[]" id="cantidad'+contador+'" value="'+cantidad+'"></td>'+
+            '<td><input type="number" name="precioventa[]" id="precioventa'+contador+'" value="'+precioventa+'"></td>'+
+            '<td><input type="number" name="descuento[]" id="descuento'+contador+'" value="'+descuento+'"></td>'+
+            '<td><span name="subtotal" id="subtotal'+contador+'">'+subtotal+'</span></td>'+
+            '</tr>'
+            contador++
+            detalle++
+            $("#TablaDetallesVenta").append(fila)
+            $("#cantidad"+(contador-1)).on('input',ModificarSubtotales)
+            $("#precioventa"+(contador-1)).on('input',ModificarSubtotales)
+            $("#descuento"+(contador-1)).on('input',ModificarSubtotales)
+            ModificarSubtotales()
+            $('#cantidadart'+idarticulo).val(1)
     }
     else
     {
@@ -277,14 +284,6 @@ function CargarArticulos()
                 {
                     console.log(e.responseText)
                 }
-            },
-            dataSrc: function(json)
-            {
-                json.aaData.forEach(function(articulo)
-            {
-                stockdisponible[articulo[0]] = articulo[5] 
-            })
-            return json.aaData;
             },
             "bDestroy":true,
             "iDisplayLength":10,
