@@ -173,7 +173,7 @@ function GuardarEditarVenta(e)
 
 function AgregarDetalleVenta(idarticulo,articulo,precioventa)
 {
-    var cantidad = $('#cantidad' + idarticulo).val()
+    var cantidad = $('#cantidadart' + idarticulo).val()
     var descuento = 0
 
     if(idarticulo!="" && cantidad>0)
@@ -194,6 +194,7 @@ function AgregarDetalleVenta(idarticulo,articulo,precioventa)
         $("#precioventa"+(contador-1)).on('input',ModificarSubtotales)
         $("#descuento"+(contador-1)).on('input',ModificarSubtotales)
         ModificarSubtotales()
+        $('#cantidadart'+idarticulo).val(1)
     }
     else
     {
