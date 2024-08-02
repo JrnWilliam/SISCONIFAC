@@ -278,6 +278,14 @@ function CargarArticulos()
                     console.log(e.responseText)
                 }
             },
+            dataSrc: function(json)
+            {
+                json.aaData.forEach(function(articulo)
+            {
+                stockdisponible[articulo[0]] = articulo[5] 
+            })
+            return json.aaData;
+            },
             "bDestroy":true,
             "iDisplayLength":10,
             "order":[[0,"desc"]]
