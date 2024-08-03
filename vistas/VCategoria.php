@@ -60,11 +60,11 @@ else
           </div>
           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <button class="btn btn-primary" type="submit" id="BtnGuardar">
-              <i class="fa fa-save"></i> Guardar
+              <i class="fa fa-save"></i> <strong>Guardar</strong>
             </button>
             <button class="btn btn-danger" onclick="CerrarFormulario()" type="button">
             <i class="fa fa-arrow-circle-left">
-            </i> Cancelar
+            </i> <strong>Cancelar</strong>
           </button>
           </div>
         </form>

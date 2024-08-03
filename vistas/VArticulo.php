@@ -84,20 +84,21 @@ else
             <label>Código: </label>
             <input type="text" class="form-control" name="codigo" id="codigo" autocomplete="off" placeholder="Codigo de Barras" required>
             <br>
-            <button class="btn btn-success" onclick="GenerarCodBarra()" type="button"><li class="fa fa-barcode"> Generar Codigo de Barras</li></button>
-            <button type="button" class="btn btn-info" onclick="Imprimir()"><li class="fa fa-print"> Imprimir</li></button>
+            <button class="btn btn-success" onclick="GenerarCodBarra()" type="button"><li class="fa fa-barcode"></li> <strong>Generar Codigo de Barras</strong></button>
+            <button type="button" class="btn btn-info" onclick="Imprimir()"><strong><li class="fa fa-print"></li> Imprimir</strong></button>
             <div id="Imprimir">
               <svg id="barcode"></svg>
             </div>
           </div>
           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <button class="btn btn-primary" type="submit" id="BtnGuardar" title="Guardar Registros">
-              <i class="fa fa-save"> Guardar</i>
+              <i class="fa fa-save"></i>
+              <strong>Guardar</strong>
             </button>
             <button class="btn btn-danger" onclick="CerrarFormulario()" type="button" title="Cerrar Formulario">
             <i class="fa fa-arrow-circle-left">
-              Cancelar
             </i>
+            <strong>Cancelar</strong>
           </button>
           </div>
         </form>

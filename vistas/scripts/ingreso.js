@@ -30,7 +30,7 @@
         $("#tipocomprobante").val('').selectpicker('refresh')
         $("#seriecomprobante").val("")
         $("#numcomprobante").val("")
-        $("#impuesto").val("")
+        $("#impuesto").val(impuesto)
         $("#idproveedor").val('').selectpicker('refresh')
         $("#totalcompra").val("")
         $(".filas").remove()
@@ -261,7 +261,8 @@
     function AgregarImpuesto()
     {
         var tcomprobante=$("#tipocomprobante option:selected").text()
-        if(tcomprobante==='Factura')
+        console.log(tcomprobante)
+        if(tcomprobante==='Orden de Compra')
         {
             $("#impuesto").val(impuesto)
         }

@@ -110,12 +110,12 @@ else
                             </div>
                             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <button class="btn btn-primary" type="submit" id="BtnGuardar" title="Guardar Registros">
-                                    <i class="fa fa-save"> Guardar</i>
+                                    <i class="fa fa-save"> </i> <strong>Guardar</strong>
                                 </button>
                                 <button class="btn btn-danger" onclick="CerrarFormularioUsuario()" type="button" title="Cerrar Formulario">
                                     <i class="fa fa-arrow-circle-left">
-                                        Cancelar
                                     </i>
+                                    <strong>Cancelar</strong>
                                 </button>
                             </div>
                     </div>
