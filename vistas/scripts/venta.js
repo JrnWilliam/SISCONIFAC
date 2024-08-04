@@ -55,7 +55,6 @@ function GenerarNumComprobante(tcomprobante,scomprobante)
 function GenerarSerieComprobante()
 {
     var tipocomp = $("#tipocomprobante option:selected").text()
-    console.log(tipocomp)
     if(tipocomp ==='Factura')
     {
         $("#seriecomprobante").val("F")
