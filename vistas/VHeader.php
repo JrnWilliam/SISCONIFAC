@@ -184,7 +184,7 @@
             if($_SESSION['acceso']==1)
             {
               echo '<li>
-                      <a href="#" onclick="RealizarBackUp(event)">
+                      <a href="#" onclick="IniciarBackUp(event)">
                       <i class="fa fa-plus-square"></i> <span>Back Up</span>
                       <small class="label pull-right bg-red">🔒</small>
                       </a>
