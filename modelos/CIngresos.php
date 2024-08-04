@@ -81,5 +81,11 @@ Class CIngresos
         $sql = "SELECT a.nombre as articulo,a.codigo,di.cantidad,di.precio_compra,di.precio_venta,(di.cantidad * di.precio_compra) as subtotal FROM detalle_ingreso di INNER JOIN articulo a ON di.idarticulo = a.idarticulo WHERE di.idingreso ='$idingreso'";
         return Ejecutar_Consulta($sql);
     }
+
+    public function GenerarNumComprobante($tipocomprobante,$seriecomprobante)
+    {
+        $sql = "SELECT MAX(num_comprobante) AS ultimo FROM ingreso WHERE tipo_comprobante='$tipocomprobante' AND serie_comprobante = '$seriecomprobante'";
+        return Ejecutar_Consulta($sql);
+    }
 }
 ?>
