@@ -177,5 +177,29 @@ switch($_GET["Operacion"])
         );
         echo json_encode($resultado);
     break;
+    case 'GenerarNumComprobante':
+        $respuesta = $ventas->GenerarNumComprobante($tipocomprobante,$seriecomprobante);
+        $fila = $respuesta->fetch_assoc();
+
+        $nuevonum = ($fila['ultimo'] == null) ? 1 : intval($fila['ultimo']) + 1;
+        
+        if($nuevonum >= 100 && $nuevonum <= 999)
+        {
+            $nunformateado = sprintf('%02d', $nuevonum);    
+        }
+        else
+        {
+            if($nuevonum >= 10 && $nuevonum <= 99)
+            {
+                $nunformateado = sprintf('%03d', $nuevonum);
+            }
+            else
+            {
+                $nunformateado = sprintf('%04d', $nuevonum);
+            }
+        }
+
+        echo json_encode(['nuevonum' => $nunformateado]);
+    break;
 }
 ?>
