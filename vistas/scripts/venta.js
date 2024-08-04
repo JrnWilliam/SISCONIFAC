@@ -14,6 +14,9 @@ function IniciarVenta()
     MostrarFormularioVenta(false)
     MostrarVentas()
     $("#BtnGuardar").hide()
+
+    $("#seriecomprobante").prop("disabled",true)
+    $("#numcomprobante").prop("disabled",true)
     
 
     $("#FormularioRegistroVenta").on("submit",function(e)
@@ -119,8 +122,6 @@ function DeshabilitarCamposVenta()
     $("#idcliente").prop("disabled",true)
     $("#fechahora").prop("disabled",true)
     $("#tipocomprobante").prop("disabled",true)
-    $("#seriecomprobante").prop("disabled",true)
-    $("#numcomprobante").prop("disabled",true)
     $("#impuesto").prop("disabled",true)
     $("#AgregarArticuloVenta").hide()
 }
@@ -130,8 +131,6 @@ function HabilitarCamposVenta()
     $("#idcliente").prop("disabled",false)
     $("#fechahora").prop("disabled",false)
     $("#tipocomprobante").prop("disabled",false)
-    $("#seriecomprobante").prop("disabled",false)
-    $("#numcomprobante").prop("disabled",false)
     $("#impuesto").prop("disabled",false)
     $("#AgregarArticuloVenta").show()
 }
