@@ -13,6 +13,9 @@
         ListarRegistrosIngreso()
         $("#BtnGuardar").hide()
 
+        $("#seriecomprobante").prop("disabled",true)
+        $("#numcomprobante").prop("disabled",true)
+
         $("#FormularioRegistroIngreso").on("submit",function(e)
         {
             GuardarRegistroIngreso(e)
@@ -87,8 +90,6 @@
         $("#idproveedor").prop("disabled",true)
         $("#fechahora").prop("disabled",true)
         $("#tipocomprobante").prop("disabled",true)
-        $("#seriecomprobante").prop("disabled",true)
-        $("#numcomprobante").prop("disabled",true)
         $("#impuesto").prop("disabled",true)
         $("#AgregarArticulo").hide()
     }
@@ -98,8 +99,6 @@
         $("#idproveedor").prop("disabled",false)
         $("#fechahora").prop("disabled",false)
         $("#tipocomprobante").prop("disabled",false)
-        $("#seriecomprobante").prop("disabled",false)
-        $("#numcomprobante").prop("disabled",false)
         $("#impuesto").prop("disabled",false)
         $("#AgregarArticulo").show()
     }
