@@ -1,6 +1,6 @@
 function IniciarBackUp(event)
 {
-    event.preventDefault();
+    event.preventDefault()
     RealizarBackUp()
 }
 
@@ -22,5 +22,3 @@ function RealizarBackUp()
         }
     )
 }
-
-IniciarBackUp()
