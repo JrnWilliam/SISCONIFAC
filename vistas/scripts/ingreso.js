@@ -2,7 +2,10 @@
     var impuesto = 15   
     var contador= 0
     var detalle = 0
+    var tcomprobante = $("#tipocomprobante").val()
+    var scomprobante = $("#seriecomprobante").val()
     $("#tipocomprobante").change(AgregarImpuesto)
+    $("#tipocomprobante").change(GenerarSerieComprobante)
 
     function IniciarIngresos()
     {
@@ -15,6 +18,8 @@
             GuardarRegistroIngreso(e)
         })
 
+        AgregarImpuesto()
+
         $.post("../ajax/Ingreso.php?Operacion=SeleccionarProveedor",
             function(r)
             {
@@ -22,15 +27,47 @@
                 $("#idproveedor").selectpicker('refresh');
             }
         )
+
+        GenerarSerieComprobante()
+        scomprobante = $("#seriecomprobante").val()
+
+        GenerarNumComprobante(tcomprobante, scomprobante).then(function (NuevoNumComprobante)
+        {
+            $("#numcomprobante").val(NuevoNumComprobante)
+        })
     }
+
+    function GenerarNumComprobante(tcomprobante,scomprobante)
+    {
+        return $.post("../ajax/Venta.php?Operacion=GenerarNumComprobante",
+        {
+            tipocomprobante: tcomprobante,
+            seriecomprobante: scomprobante
+        }
+        ).then(function(response)
+        {
+            var result = JSON.parse(response)
+            return result.nuevonum;
+        })
+    }
+
+    function GenerarSerieComprobante()
+    {
+        var tipocomp = $("#tipocomprobante option:selected").text()
+        if(tipocomp ==='Orden de Compra')
+        {
+            $("#seriecomprobante").val("O/C")
+        }
+        else
+        {
+            $("#seriecomprobante").val("V")
+        }
+}
 
     function LimpiarCampos()
     {
         $("#idingreso").val("")
         $("#tipocomprobante").val('').selectpicker('refresh')
-        $("#seriecomprobante").val("")
-        $("#numcomprobante").val("")
-        $("#impuesto").val(impuesto)
         $("#idproveedor").val('').selectpicker('refresh')
         $("#totalcompra").val("")
         $(".filas").remove()
@@ -73,7 +110,6 @@
         LimpiarCampos()
         if(valor)
         {
-            $("#impuesto").val("0")
             $("#TablaIngreso").hide()
             $("#FormularioIngreso").show()
             $("#BtnAgregar").hide()
@@ -91,6 +127,12 @@
     {
         LimpiarCampos()
         MostrarFormularioIngreso(false)
+        AgregarImpuesto()
+        GenerarSerieComprobante()
+        GenerarNumComprobante(tcomprobante, scomprobante).then(function (NuevoNumComprobante)
+        {
+            $("#numcomprobante").val(NuevoNumComprobante)
+        })
     }
 
     function ListarRegistrosIngreso()
@@ -148,6 +190,11 @@
                 }
             }
         )
+        GenerarNumComprobante(tcomprobante, scomprobante).then(function (NuevoNumComprobante)
+        {
+            $("#numcomprobante").val(NuevoNumComprobante)
+        })
+        
         LimpiarCampos()
     }
 
@@ -363,5 +410,16 @@
             $("#BtnGuardar").show()
         })   
     }
+
+    $("#tipocomprobante, #seriecomprobante").change(function()
+    {
+        var tcomprobante = $("#tipocomprobante").val()
+        var scomprobante = $("#seriecomprobante").val()
+
+        GenerarNumComprobante(tcomprobante, scomprobante).then(function(NuevoNumComprobante)
+        {
+            $("#numcomprobante").val(NuevoNumComprobante)
+        })
+    })
 
     IniciarIngresos()
