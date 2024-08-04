@@ -2,25 +2,68 @@ var tablaventas
 var impuesto = 15
 var contador = 0
 var detalle = 0
-$("#tipocomprobante").change(AgregarImpuestoVenta)
 var stockdisponible = {}
+var tcomprobante = $("#tipocomprobante").val()
+var scomprobante = $("#seriecomprobante").val()
+$("#tipocomprobante").change(AgregarImpuestoVenta)
+$("#tipocomprobante").change(GenerarSerieComprobante)
+
 
 function IniciarVenta()
 {
     MostrarFormularioVenta(false)
     MostrarVentas()
     $("#BtnGuardar").hide()
+    
 
     $("#FormularioRegistroVenta").on("submit",function(e)
     {
         GuardarEditarVenta(e)
     })
 
+    AgregarImpuestoVenta()
+    
     $.post("../ajax/Venta.php?Operacion=SeleccionarCliente",function (r)
     {
         $("#idcliente").html(r)
         $('#idcliente').selectpicker('refresh')
     })
+
+    GenerarSerieComprobante()
+    scomprobante = $("#seriecomprobante").val()
+
+    GenerarNumComprobante(tcomprobante, scomprobante).then(function (NuevoNumComprobante)
+    {
+        $("#numcomprobante").val(NuevoNumComprobante)
+    })
+}
+
+function GenerarNumComprobante(tcomprobante,scomprobante)
+{
+    return $.post("../ajax/Venta.php?Operacion=GenerarNumComprobante",
+        {
+            tipocomprobante: tcomprobante,
+            seriecomprobante: scomprobante
+        }
+    ).then(function(response)
+    {
+        var result = JSON.parse(response)
+        return result.nuevonum;
+    })
+}
+
+function GenerarSerieComprobante()
+{
+    var tipocomp = $("#tipocomprobante option:selected").text()
+    console.log(tipocomp)
+    if(tipocomp ==='Factura')
+    {
+        $("#seriecomprobante").val("F")
+    }
+    else
+    {
+        $("#seriecomprobante").val("V")
+    }
 }
 
 function MostrarFormularioVenta(valor)
@@ -29,7 +72,6 @@ function MostrarFormularioVenta(valor)
     HabilitarCamposVenta()
     if(valor)
     {
-        $("#impuesto").val("0")
         $("#TablaVenta").hide()
         $("#FormularioVenta").show()
         $("#BtnAgregar").hide()
@@ -47,6 +89,12 @@ function CerrarFormularioVenta()
 {
     LimpiarCampos()
     MostrarFormularioVenta(false)
+    AgregarImpuestoVenta()
+    GenerarSerieComprobante()
+    GenerarNumComprobante(tcomprobante, scomprobante).then(function (NuevoNumComprobante)
+    {
+        $("#numcomprobante").val(NuevoNumComprobante)
+    })
 }
 
 function LimpiarCampos()
@@ -54,9 +102,6 @@ function LimpiarCampos()
     $("#idventa").val("")
     $("#idcliente").val('').selectpicker('refresh')
     $("#tipocomprobante").val('').selectpicker('refresh')
-    $("#seriecomprobante").val("")
-    $("#numcomprobante").val("")
-    $("#impuesto").val("")
     $("#totalventa").val("")
     $(".filas").remove()
     $("#total").html("C$ 0.00")
@@ -169,12 +214,17 @@ function GuardarEditarVenta(e)
             }
         }
     )
+
+    GenerarNumComprobante(tcomprobante, scomprobante).then(function (NuevoNumComprobante)
+    {
+        $("#numcomprobante").val(NuevoNumComprobante)
+    })
     LimpiarCampos()
 }
 
 function AgregarDetalleVenta(idarticulo,articulo,precioventa,stock)
 {
-    var cantidad = $('#cantidadart' + idarticulo).val()
+    var cantidad = parseInt($('#cantidadart' + idarticulo).val())
     var descuento = 0
 
     if(cantidad > stock)
@@ -391,5 +441,16 @@ function AgregarImpuestoVenta()
         $("#impuesto").val(0)
     }
 }
+
+$("#tipocomprobante, #seriecomprobante").change(function()
+{
+    var tcomprobante = $("#tipocomprobante").val()
+    var scomprobante = $("#seriecomprobante").val()
+
+    GenerarNumComprobante(tcomprobante, scomprobante).then(function(NuevoNumComprobante)
+    {
+        $("#numcomprobante").val(NuevoNumComprobante)
+    })
+})
 
 IniciarVenta()
