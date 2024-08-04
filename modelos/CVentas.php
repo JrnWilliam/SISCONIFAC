@@ -80,5 +80,11 @@ Class CVentas
         $sql = "SELECT a.nombre AS articulo,a.codigo, dv.cantidad,dv.precio_venta,dv.descuento,(dv.cantidad * dv.precio_venta -((dv.cantidad * dv.precio_venta) * dv.descuento/100)) AS subtotal FROM detalle_venta dv INNER JOIN articulo a ON dv.idarticulo = a.idarticulo WHERE dv.idventa = '$idventa'";
         return Ejecutar_Consulta($sql);
     }
+
+    public function GenerarNumComprobante($tipocomprobante,$seriecomprobante)
+    {
+        $sql = "SELECT MAX(num_comprobante) AS ultimo FROM ventas WHERE tipo_comprobante='$tipocomprobante' AND serie_comprobante = '$seriecomprobante'";
+        return Ejecutar_Consulta($sql);
+    }
 }
 ?>
