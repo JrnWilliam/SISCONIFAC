@@ -31,10 +31,10 @@
         $pdf->AddPage();
 
         $pdf -> addSociete(
-            utf8_decode($empresa),
+            mb_convert_encoding($empresa, 'ISO-8859-1'),
             $ruc."\n".
-            utf8_decode("Dirección: ").utf8_decode($direccion)."\n".
-            utf8_decode("Teléfono: ").$telefono."\n".
+            mb_convert_encoding("Dirección: ", 'ISO-8859-1').mb_convert_encoding($direccion, 'ISO-8859-1')."\n".
+            mb_convert_encoding("Teléfono: ", 'ISO-8859-1').$telefono."\n".
             "email: ".$email,
             $logo,
             $extension
@@ -50,17 +50,17 @@
         $pdf->addDate($registrov->fecha);
 
         $pdf->addClientAdresse(
-            utf8_decode($registrov->cliente),
-            utf8_decode("Dirección: ").utf8_decode($registrov->direccion),
-            utf8_decode($registrov->tipo_documento).": ".
+            mb_convert_encoding($registrov->cliente, 'ISO-8859-1'),
+            mb_convert_encoding("Dirección: ", 'ISO-8859-1').mb_convert_encoding($registrov->direccion, 'ISO-8859-1'),
+            mb_convert_encoding($registrov->tipo_documento, 'ISO-8859-1').": ".
             $registrov->num_documento,
             "Email: ".$registrov->email,
             "Telefono: ".$registrov->telefono
         );
 
         $cols = array(
-            utf8_decode("Código")=>23,
-            utf8_decode("Descripción")=>78,
+            mb_convert_encoding("Código", 'ISO-8859-1')=>23,
+            mb_convert_encoding("Descripción", 'ISO-8859-1')=>78,
             "Cantidad"=>22,
             "P.U"=>25,
             "Descuento"=>20,
@@ -70,8 +70,8 @@
         $pdf->addCols( $cols);
 
         $cols = array(
-            utf8_decode("Código")=>"L",
-            utf8_decode("Descripción")=>"L",
+            mb_convert_encoding("Código", 'ISO-8859-1')=>"L",
+            mb_convert_encoding("Descripción", 'ISO-8859-1')=>"L",
             "Cantidad"=>"C",
             "P.U"=>"R",
             "Descuento"=>"R",
@@ -87,8 +87,8 @@
         while($registrod = $respuestad->fetch_object())
         {
             $line = array(
-                utf8_decode("Código")=>"$registrod->codigo",
-                utf8_decode("Descripción")=>utf8_decode("$registrod->articulo"),
+                mb_convert_encoding("Código", 'ISO-8859-1')=>"$registrod->codigo",
+                mb_convert_encoding("Descripción", 'ISO-8859-1')=>mb_convert_encoding("$registrod->articulo", 'ISO-8859-1'),
                 "Cantidad"=>"$registrod->cantidad",
                 "P.U"=>"$registrod->precio_venta",
                 "Descuento"=>"$registrod->descuento",
