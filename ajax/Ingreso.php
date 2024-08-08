@@ -178,7 +178,7 @@ switch($_GET["Operacion"])
         echo json_encode($resultado);
     break;
     case 'GenerarNumComprobante':
-        $respuesta = $ventas->GenerarNumComprobante($tipocomprobante,$seriecomprobante);
+        $respuesta = $ingreso->GenerarNumComprobante($tipocomprobante,$seriecomprobante);
         $fila = $respuesta->fetch_assoc();
 
         $nuevonum = ($fila['ultimo'] == null) ? 1 : intval($fila['ultimo']) + 1;
