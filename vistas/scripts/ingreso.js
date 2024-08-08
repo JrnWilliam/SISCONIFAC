@@ -13,8 +13,7 @@
         ListarRegistrosIngreso()
         $("#BtnGuardar").hide()
 
-        $("#seriecomprobante").prop("disabled",true)
-        $("#numcomprobante").prop("disabled",true)
+        DesactivarCampos()
 
         $("#FormularioRegistroIngreso").on("submit",function(e)
         {
@@ -42,7 +41,7 @@
 
     function GenerarNumComprobante(tcomprobante,scomprobante)
     {
-        return $.post("../ajax/Venta.php?Operacion=GenerarNumComprobante",
+        return $.post("../ajax/Ingreso.php?Operacion=GenerarNumComprobante",
         {
             tipocomprobante: tcomprobante,
             seriecomprobante: scomprobante
@@ -420,5 +419,11 @@
             $("#numcomprobante").val(NuevoNumComprobante)
         })
     })
+
+    function DesactivarCampos()
+    {
+        $("#seriecomprobante").prop("readonly",true)
+        $("#numcomprobante").prop("readonly",true)
+    }
 
     IniciarIngresos()

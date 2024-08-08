@@ -15,9 +15,7 @@ function IniciarVenta()
     MostrarVentas()
     $("#BtnGuardar").hide()
 
-    $("#seriecomprobante").prop("disabled",true)
-    $("#numcomprobante").prop("disabled",true)
-    
+    DesactivarCampos()
 
     $("#FormularioRegistroVenta").on("submit",function(e)
     {
@@ -450,5 +448,11 @@ $("#tipocomprobante, #seriecomprobante").change(function()
         $("#numcomprobante").val(NuevoNumComprobante)
     })
 })
+
+function DesactivarCampos()
+{
+    $("#seriecomprobante").prop("readonly",true)
+    $("#numcomprobante").prop("readonly",true)
+}
 
 IniciarVenta()
