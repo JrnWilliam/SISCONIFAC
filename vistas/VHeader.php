@@ -180,7 +180,29 @@
           </li>';
             }
           ?>
-          <?php
+          <li class="treeview">
+            <a href="#">
+            <i class="fa fa-gears"></i>
+            <span>Herramientas</span>
+            <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+            <li>
+                <a href="#" onclick="IniciarBackUp(event)">
+                <i class="fa fa-plus-square"></i> <span>Back Up</span>
+                <small class="label pull-right bg-red">🔒</small>
+                </a>
+            </li>
+            <li class="treeview">
+              <a href="VRestaurar.php">
+              <i class="fa fa-files-o"></i>
+              <span>Restaurar BD</span>
+              <small class="label pull-right bg-green">📥</small>
+              </a>
+            </li>
+            </ul>
+          </li>
+          <!-- <?php
             if($_SESSION['acceso']==1)
             {
               echo '<li>
@@ -190,7 +212,7 @@
                       </a>
                     </li>';
             }
-          ?>
+          ?> -->
           <!-- <li>
             <a href="#">
               <i class="fa fa-info-circle"></i> <span>Acerca De...</span>
