@@ -3404,8 +3404,9 @@ input[type=search] {
     }
 }
 
-.form-group {
-    margin-bottom: 15px
+.form-group
+{
+    margin-bottom: 15px;
 }
 
 .checkbox,
@@ -3515,7 +3516,7 @@ textarea.input-sm {
     padding: 5px 10px;
     font-size: 12px;
     line-height: 1.5;
-    border-radius: 3px
+    border-radius: 3px;
 }
 
 .form-group-sm select.form-control {
