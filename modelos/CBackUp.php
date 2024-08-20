@@ -2,6 +2,8 @@
   function BackUpDB($host,$user,$pass,$name,$tables="*")
   {
     $return = "";
+    $return .= "CREATE DATABASE IF NOT EXISTS `$name` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;\n";
+    $return .= "USE `$name`;\n\n";
     $conexion = new mysqli($host,$user,$pass,$name);
 
     if($tables =='*')
@@ -54,6 +56,22 @@
         }
         $return.= "\n\n\n";
     }
+
+    // Respaldar los triggers
+    $triggers_result = $conexion->query("SHOW TRIGGERS");
+    while ($trigger = mysqli_fetch_assoc($triggers_result))
+    {
+        $trigger_name = $trigger['Trigger'];
+        $trigger_table = $trigger['Table'];
+        $trigger_timing = $trigger['Timing'];
+        $trigger_event = $trigger['Event'];
+        $trigger_statement = $trigger['Statement'];
+
+        $return .= "DELIMITER //\n";
+        $return .= "CREATE TRIGGER `$trigger_name` $trigger_timing $trigger_event ON `$trigger_table` FOR EACH ROW $trigger_statement //\n";
+        $return .= "DELIMITER ;\n\n";
+    }
+
     $fecha = date("dmY-HisA");
 
     $operador = fopen('../files/BackUps/'. $name . $fecha . '.sql','w+');
