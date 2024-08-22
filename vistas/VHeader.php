@@ -1,11 +1,11 @@
 <?php
-  if(strlen(session_id())<1)
-  {
-    session_start();
-  }
+if (strlen(session_id()) < 1) {
+  session_start();
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -47,15 +47,15 @@
           <ul class="nav navbar-nav">
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="../files/usuarios/<?php echo $_SESSION['imagen'];?>" class="user-image" alt="User Image">
-                <span class="hidden-xs"><?php echo $_SESSION['nombre'];?></span>
+                <img src="../files/usuarios/<?php echo $_SESSION['imagen']; ?>" class="user-image" alt="User Image">
+                <span class="hidden-xs"><?php echo $_SESSION['nombre']; ?></span>
               </a>
               <ul class="dropdown-menu">
                 <li class="user-header">
-                  <img src="../files/usuarios/<?php echo $_SESSION['imagen'];?>" class="img-circle" alt="User Image">
+                  <img src="../files/usuarios/<?php echo $_SESSION['imagen']; ?>" class="img-circle" alt="User Image">
                   <p>
                     <?php
-                      echo $_SESSION['cargo']; 
+                    echo $_SESSION['cargo'];
                     ?>
                     <small></small>
                   </p>
@@ -79,8 +79,7 @@
         <ul class="sidebar-menu">
           <!-- <li class="header"></li> -->
           <?php
-          if ($_SESSION['escritorio'] == 1)
-          {
+          if ($_SESSION['escritorio'] == 1) {
             echo '<li>
               <a href="VEscritorio.php">
                 <i class="fa fa-tasks"></i> <span>Escritorio</span>
@@ -89,9 +88,8 @@
           }
           ?>
           <?php
-            if($_SESSION['almacen']==1)
-            {
-              echo '<li class="treeview">
+          if ($_SESSION['almacen'] == 1) {
+            echo '<li class="treeview">
             <a href="#">
               <i class="fa fa-laptop"></i>
               <span>Almacén</span>
@@ -102,12 +100,11 @@
               <li><a href="VCategoria.php"><i class="fa fa-circle-o"></i> Categorías</a></li>
             </ul>
           </li>';
-            }
+          }
           ?>
           <?php
-            if($_SESSION['compras']==1)
-            {
-              echo '<li class="treeview">
+          if ($_SESSION['compras'] == 1) {
+            echo '<li class="treeview">
             <a href="#">
               <i class="fa fa-th"></i>
               <span>Compras</span>
@@ -118,12 +115,11 @@
               <li><a href="VProveedor.php"><i class="fa fa-circle-o"></i> Proveedores</a></li>
             </ul>
           </li>';
-            }
+          }
           ?>
           <?php
-            if($_SESSION['ventas']==1)
-            {
-              echo '<li class="treeview">
+          if ($_SESSION['ventas'] == 1) {
+            echo '<li class="treeview">
             <a href="#">
               <i class="fa fa-shopping-cart"></i>
               <span>Ventas</span>
@@ -134,12 +130,11 @@
               <li><a href="VCliente.php"><i class="fa fa-circle-o"></i> Clientes</a></li>
             </ul>
           </li>';
-            }
+          }
           ?>
           <?php
-            if($_SESSION['acceso']==1)
-            {
-              echo '<li class="treeview">
+          if ($_SESSION['acceso'] == 1) {
+            echo '<li class="treeview">
             <a href="#">
               <i class="fa fa-folder"></i> <span>Acceso</span>
               <i class="fa fa-angle-left pull-right"></i>
@@ -150,12 +145,11 @@
 
             </ul>
           </li>';
-            }
+          }
           ?>
           <?php
-            if($_SESSION['consultacompras']==1)
-            {
-              echo '<li class="treeview">
+          if ($_SESSION['consultacompras'] == 1) {
+            echo '<li class="treeview">
             <a href="#">
               <i class="fa fa-bar-chart"></i> <span>Consulta Compras</span>
               <i class="fa fa-angle-left pull-right"></i>
@@ -164,12 +158,11 @@
               <li><a href="VConsultaCompras.php"><i class="fa fa-circle-o"></i> Consulta Compras</a></li>
             </ul>
           </li>';
-            }
+          }
           ?>
           <?php
-            if($_SESSION['consultaventas']==1)
-            {
-              echo '<li class="treeview">
+          if ($_SESSION['consultaventas'] == 1) {
+            echo '<li class="treeview">
             <a href="#">
               <i class="fa fa-bar-chart"></i> <span>Consulta Ventas</span>
               <i class="fa fa-angle-left pull-right"></i>
@@ -178,9 +171,12 @@
               <li><a href="VConsultaVentas.php"><i class="fa fa-circle-o"></i> Consulta Ventas</a></li>
             </ul>
           </li>';
-            }
+          }
           ?>
-          <li class="treeview">
+          <?php
+          if ($_SESSION['acceso'] == 1)
+          {
+            echo '          <li class="treeview">
             <a href="#">
             <i class="fa fa-gears"></i>
             <span>Herramientas</span>
@@ -201,18 +197,19 @@
               </a>
             </li>
             </ul>
-          </li>
+          </li>';
+          }
+          ?>
           <!-- <?php
-            if($_SESSION['acceso']==1)
-            {
-              echo '<li>
+                if ($_SESSION['acceso'] == 1) {
+                  echo '<li>
                       <a href="#" onclick="IniciarBackUp(event)">
                       <i class="fa fa-plus-square"></i> <span>Back Up</span>
                       <small class="label pull-right bg-red">🔒</small>
                       </a>
                     </li>';
-            }
-          ?> -->
+                }
+                ?> -->
           <!-- <li>
             <a href="#">
               <i class="fa fa-info-circle"></i> <span>Acerca De...</span>
