@@ -19,7 +19,7 @@ else
                         <div class="box">
                             <div class="box-header with-border">
                                 <h1 class="box-title">
-                                    Gestion de Categorias
+                                    Restaurar la Base de Datos
                                 </h1>
                             </div>
                             <div class="panel-body">
@@ -29,11 +29,11 @@ else
                                 </div>
                                 <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <br>
-                                <button class="btn btn-primary" type="submit" id="BtnGuardar" title="Guardar Registros">
+                                <button class="btn btn-primary" type="button" onclick="RestaurarBD()" id="BtnRestaurar" title="Restaurar BD">
                                     <i class="fa fa-save"></i>
                                     <strong>Restaurar</strong>
                                 </button>
-                                <button class="btn btn-danger" onclick="CerrarFormulario()" type="button" title="Cerrar Formulario">
+                                <button class="btn btn-danger" onclick="LimpiarCampos()" type="button" title="Cerrar Formulario">
                                     <i class="fa fa-arrow-circle-left"></i>
                                     <strong>Cancelar</strong>
                                 </button>
@@ -52,7 +52,7 @@ else
     }
     require 'VFooter.php';
     ?>
-
+<script src="../vistas/scripts/restaurar.js"></script>
 <?php
 }
 ob_end_flush();
