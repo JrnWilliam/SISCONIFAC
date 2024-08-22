@@ -30,7 +30,7 @@ else
                                 <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <br>
                                 <button class="btn btn-primary" type="button" onclick="RestaurarBD()" id="BtnRestaurar" title="Restaurar BD">
-                                    <i class="fa fa-save"></i>
+                                    <i class="fa fa-files-o"></i>
                                     <strong>Restaurar</strong>
                                 </button>
                                 <button class="btn btn-danger" onclick="LimpiarCampos()" type="button" title="Cerrar Formulario">
