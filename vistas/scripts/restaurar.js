@@ -33,4 +33,11 @@ function RestaurarBD()
     {
         bootbox.alert('Por favor, seleccione un archivo antes de restaurar.');
     }
+    LimpiarCampos()
+}
+
+function LimpiarCampos()
+{
+    $("#script").wrap('<form>').closest('form').get(0).reset()
+    $("#script").unwrap()
 }
