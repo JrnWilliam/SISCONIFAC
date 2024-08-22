@@ -1,4 +1,3 @@
-<!-- Septimo Codigo -->
 <?php
   function RestaurarDB($host, $usuario, $pass, $ruta)
   {
