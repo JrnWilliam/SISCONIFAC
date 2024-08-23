@@ -5,6 +5,7 @@
       $return .= "CREATE DATABASE IF NOT EXISTS `$name` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;\n";
       $return .= "USE `$name`;\n\n";
       $conexion = new mysqli($host, $user, $pass, $name);
+      $conexion->set_charset("utf8mb4");
   
       if ($tables == '*') {
           $tables = array();
@@ -36,25 +37,37 @@
           $createTableQuery = preg_replace('/,\s*\)/', "\n)", $createTableQuery);
           
           $return .= "\n\n" . $createTableQuery . ";\n\n";
-  
-          for ($i = 0; $i < $numcampos; $i++) {
-              while ($fila = mysqli_fetch_row($result)) {
-                  $return .= 'INSERT INTO ' . $tabla . ' VALUES(';
-                  for ($j = 0; $j < $numcampos; $j++) {
-                      $fila[$j] = addslashes($fila[$j]);
-                      $fila[$j] = preg_replace("/\n/", "\\n", $fila[$j]);
-                      if (isset($fila[$j])) {
-                          $return .= '"' . $fila[$j] . '"';
-                      } else {
-                          $return .= '""';
-                      }
-                      if ($j < ($numcampos - 1)) {
-                          $return .= ',';
-                      }
-                  }
-                  $return .= ");\n";
-              }
-          }
+
+        for ($i = 0; $i < $numcampos; $i++)
+        {
+            while ($fila = mysqli_fetch_row($result))
+            {
+                $return .= 'INSERT INTO ' . $tabla . ' VALUES(';
+                for ($j = 0; $j < $numcampos; $j++)
+                {
+                    // Decodificar entidades HTML
+                    $fila[$j] = html_entity_decode($fila[$j], ENT_QUOTES, 'UTF-8');
+                    
+                    // Escapar caracteres especiales para SQL
+                    $fila[$j] = $conexion->real_escape_string($fila[$j]);
+                    $fila[$j] = preg_replace("/\n/", "\\n", $fila[$j]);
+                    
+                    if (isset($fila[$j]))
+                    {
+                        $return .= '"' . $fila[$j] . '"';
+                    }
+                    else
+                    {
+                        $return .= '""';
+                    }
+                    if ($j < ($numcampos - 1))
+                    {
+                        $return .= ',';
+                    }
+                }
+                $return .= ");\n";
+            }
+        }
           $return .= "\n\n\n";
       }
   
